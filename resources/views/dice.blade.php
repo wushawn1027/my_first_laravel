@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dice</title>
     <style>
         * {
             box-sizing: border-box;
@@ -57,8 +57,8 @@
         // 骰子遊戲,按下按鈕會一直擲骰子,直到骰子三顆相等時停止
         // 紀錄每次的結果=>輸出
         // 最後輸出一共擲幾次骰子
-        
-        
+
+
         var roll = document.querySelector('#roll');
         var reset = document.querySelector('#reset');
         var result1 = document.querySelector('.result1');
@@ -83,8 +83,8 @@
         reset.addEventListener('click',function(){
                 window.location.href = window.location.href; // 重新整理
         })
-        
-        
+
+
     </script>
 </body>
 </html>

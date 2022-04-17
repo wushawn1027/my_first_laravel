@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,32 +15,12 @@ use App\Http\Controllers\Controller;
 */
 Route::get('/', [Controller::class, 'index']);
 
-Route::get('/microsoft', [Controller::class, 'microsoft']);
+Route::get('/microsoft', [NewsController::class, 'index']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/color', [NewsController::class, 'color']);
 
-// Route::get('/test', function () {
-//     return view('welcome');
-// });
+Route::get('/bmi', [NewsController::class, 'bmi']);
 
-// Route::get('/say', function () {
-//     return 'Hello world!';
-// });
+Route::get('/dice', [NewsController::class, 'dice']);
 
-// Route::get('/microsoft', function () {
-//     return view('RWD');
-// });
 
-// Route::get('/weather', function () {
-//     return view('weather-1');
-// });
-
-// Route::get('/bmi', function () {
-//     return view('js-BMI');
-// });
-
-// Route::get('/骰子', function () {
-//     return view('js-擲骰子');
-// });

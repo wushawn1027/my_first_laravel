@@ -221,7 +221,7 @@
                         </li>
                         <li class="li-search"><span class="search">搜尋 </span><i class="fa-solid fa-magnifying-glass"></i></li>
                         <li><a href="" class="link"><span>購物車 </span><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><span>登入 </span><img src="/img/mectrl_headerPicture.jpg" width="35" height="35" alt=""></li>
+                        <li><a href="/"><span> 登入 </span><img src="/img/mectrl_headerPicture.jpg" width="35" height="35" alt=""></a></li>
                     </ul>
                 </div>
             </div>

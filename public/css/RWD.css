@@ -40,7 +40,7 @@ nav {
 }
 .header-left, .header-right {
     display: flex;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 .header-left{
@@ -57,12 +57,12 @@ nav {
     justify-content: flex-end;
 }
 
-nav .pc-menu { 
+nav .pc-menu {
     width: 100%;
     max-width: 750px;
     min-width: 400px;
     display: flex;
-} 
+}
 nav .pc-menu li a {
     color: black;
 }
@@ -80,10 +80,10 @@ nav .pc-menu li a {
     font-size: 13px !important;
     line-height: 60px;
 }
-.header-right>ul>li:last-child  {
+.header-right>ul>li>a:last-child  {
     display: flex;
     align-items: center;
-} 
+}
 .header-right>ul>li a{
     color: black;
 }
@@ -173,7 +173,7 @@ nav .pc-menu li a {
 }
 .right-sub-up {
     display: none;
-} 
+}
 nav .burger-menu-link li:focus .sub-dropdown-menu , nav .burger-menu-link li:focus .right-sub-up{
     display: block;
 }
@@ -304,7 +304,7 @@ nav .header-right .burger-menu-link li:focus .right-sub-down {
     border-bottom: 1px black solid;
 }
 
-/* ------------------S3 & S5----------------- */    
+/* ------------------S3 & S5----------------- */
 .containers3 , .containers5 {
     width: 100%;
     display: flex;
@@ -472,7 +472,7 @@ footer .footer-top{
 
 .footer-top a {
     color: rgb(117, 117, 117);
-    
+
 }
 .footer-top li {
     margin-bottom: 10px;
@@ -483,7 +483,7 @@ footer .footer-top{
 .footer-bottom {
     display: flex;
     justify-content: space-between;
-} 
+}
 .footer-bottom ul {
     list-style: none;
     display: flex;
@@ -502,7 +502,7 @@ footer .footer-top{
     display: flex;
     margin: auto;
     margin-right: 0;
-} 
+}
 .footer-bottom-right li{
     margin: 0 10px;
 }
@@ -539,7 +539,7 @@ footer .footer-top{
     .container-innerbox {
         width: 100%;
         flex-direction: column;
-    } 
+    }
     .container-innerbox div {
         width: 100%;
     }
