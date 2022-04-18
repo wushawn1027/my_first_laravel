@@ -1,86 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <title>數位方塊Bootstrap作業</title>
-</head>
-<style>
-    * {
-         box-sizing: border-box;
-    }
-    html {
-        scroll-behavior: smooth;
-    }
-    body {
-        padding: 0;
-        margin: 0;
-    }
-    a {
-        color: black;
-        text-decoration: none !important;
-    }
-    /* ---------------------------------container------------------------------------ */
-    
-    .container-xxl {
-        height: 700px;
-    }
-    #banner .container-fluid , #map .container-fluid {
+@extends('shopping.template')
+
+    @section('link')
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    @endsection
+
+
+    @section('title')
+    數位方塊Bootstrap作業
+    @endsection
+
+    @section('css')
+    <style>
+        #banner .container-fluid , #map .container-fluid {
         height: 650px;
     }
-    /* ------------------------------------nav--------------------------------------- */
-    .logo {
-        height: 60px;
-    }
-    nav .container-xxl{
-        width: 80%;
-        height: 90px;
-        position: relative;
-    }
-    .Login {
-        width: 100px;
-        height: 40px;
-        position: absolute;
-        top: 80px;
-        left: 75%;
-        background-color: rgb(243, 242, 242);
-        z-index: 4;
-        display: none;
-        text-align: center;
-    }
-    #dropLogin:checked~.Login {
-        display: block!important;
-    }
-    nav #burger , nav .burgerImg , nav #burgerMenu , nav .imgX{
-        display: none!important;
-    }
-    nav #burgerMenu {
-        width: 100%;
-        height: 250px;
-        position: absolute;
-        top: 90px;
-        z-index: 3;
-        display: flex;
-        justify-content: center;
-    }
-    nav #burgerMenuBox {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    /* nav #burgerMenuBox button #burgerMenuBoxA {
-        text-decoration: none !important;
-    } */
-    nav ul li {
-        list-style: none;
-    }
+
     /* ------------------------------------banner--------------------------------------- */
     #banner .container-fluid {
         height: 870px;
@@ -103,7 +37,7 @@
     }
     /* ------------------------------------merch--------------------------------------- */
     #merch .container-xxl {
-        height: 750px;
+        height: 750px!important;
     }
     #merch .stars svg{
             width: 16px;
@@ -125,20 +59,7 @@
         top: 50%;
         transform: translate(-90% , -50%);
     }
-    /* ------------------------------------footer--------------------------------------- */
-    #links .container-xxl {
-        height: 300px;
-    }
-    #copyright .container-xxl {
-        height: 50px;
-    }
-    /* ------------------------------------media--------------------------------------- */
-    /* -----------------------------------1300-------------------------------------- */
-    @media(max-width:1300px) {
-        nav .container-xxl{
-            width: 90%;
-        }
-    }
+
     /* -----------------------------------1200-------------------------------------- */
     @media(max-width:1200px) {
         #gallery .container-xxl {
@@ -163,34 +84,11 @@
             height: 100%;
         }
         #merch .sm-height {
-        height: 256px !important; 
-        }
-        #links .container-xxl {
-            height: 700px;
-        }
-        #copyright .container-xxl {
-            height: 100px;
+        height: 256px !important;
         }
     }
     /* -----------------------------------768-------------------------------------- */
     @media(max-width:768px) {
-        nav .container-xxl #nav-ul { 
-            display: none!important;
-        }
-        nav .burgerImg {
-            display: block!important;
-        }
-        #burger:checked~#burgerMenu {
-            display: block!important;
-            z-index: 3;
-        }
-        /* #burger:focus .burgerImg {
-            display: none!important;
-        }
-        #burger:focus .ImgX {
-            display: block!important;
-        } */
-
         #banner .container-fluid {
             width: 100%;
             height: 530px;
@@ -237,91 +135,22 @@
             top: 50%;
             transform: translate(-50% , -50%);
         }
-
-        #links .container-xxl {
-            height: 1200px;
-        }
-        #links #div-logo2 {
-            justify-content: center ;
-        }
     }
+
     /* -----------------------------------650-------------------------------------- */
     @media(max-width:650px) {
         #intro .container-xxl {
             height: 1300px;
-        }
-        #intro .container-xxl {
-            height: 1300px;
-        }
+        }}
         #merch .container-xxl {
             height: 300px;
         }
     }
-</style>
 
-<body>
-    <!----------------- nav ---------------->
-    <nav>
-        <div class="container-xxl">
-            <div class="d-flex justify-content-between">
-                <a href="" class="p-3">
-                    <img src="/img/logo.jpg" class="logo" alt="">
-                </a>
-                <ul id="nav-ul" class="d-flex justify-content-end align-items-center p-0 m-0">
-                    <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder hover:bg-light">Blog</a>
-                    </li>
-                    <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">Portfolio</a>
-                    </li>
-                    <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">About</a>
-                    </li>
-                    <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">Contact</a>
-                    </li>
-                    <li class="me-3">
-                        <a href=""><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
-                    </li>
-                    <li class="">
-                        <input type="checkbox" id="dropLogin" hidden>
-                        <label for="dropLogin"><i class="fs-4 fa-solid fa-circle-user text-black"></i></label></i>
-                        <div class="Login p-2 rounded">
-                            <a href="">Login</a>
-                        </div>
-                    </li>
-                    
-                </ul>
-                <input type="checkbox" id="burger" class="ms-auto" hidden>
-                <label for="burger" class="d-flex justify-content-center align-items-center">
-                    <div id="" class="ms-auto ">
-                        <img src="/img/burger-menu.png" style="width: 35px; height: 35px;" class="burgerImg" alt="">
-                        <img src="/img/X.png" style="width: 35px; height: 35px;" class="imgX" alt="">
-                    </div>
-                </label>
-                <div id="burgerMenu">
-                    <div id="burgerMenuBox" class="bg-light shadow-3 p-4">
-                        <button  class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Blog</a>
-                            </button>
-                        <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Portfolio</a>
-                        </button>
-                        <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">About</a>
-                        </button>
-                        <button class="btn btn-link btn-block border-bottom m-0 mb-3">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Contact</a>
-                        </button>
-                        <div class="w-100 d-flex justify-content-center align-items-center m-0">
-                            <a onclick="self.location.href='shopping-s1.html'"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
-                            <i class="fs-4 fa-solid fa-circle-user text-black ms-3"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    </style>
+@endsection
+
+@section('main')
     <main>
         <!------------------ banner ------------------>
         <section id="banner">
@@ -330,20 +159,20 @@
                     <div class="swiper mySwiper w-100 h-100">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <img src="/img/gray-0.png" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="">
                           </div>
                           <div class="swiper-slide">
-                            <img src="/img/gray-1.png" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-1.png')}}" class="w-100 h-100" alt="">
                           </div>
                           <div class="swiper-slide">
-                            <img src="/img/gray-0.png" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="">
                           </div>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-                </div> 
+                </div>
             </div>
         </section>
         <!------------------ intro ------------------>
@@ -359,31 +188,31 @@
                 <div class="row">
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
-                            <img src="/img/wave.png" alt="">
+                            <img src="{{$data2[0]->img}}" alt="">
                         </div>
-                        <p class="h5 text-center">Shooting Stars</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                        <p class="fs-7 text-center text-primary">Learn More 
+                        <p class="h5 text-center">{{$data2[0]->title}}</p>
+                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
+                        <p class="fs-7 text-center text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
-                            <img src="/img/scisser.png" alt="">
+                            <img src="{{asset('img/scisser.png')}}" alt="">
                         </div>
-                        <p class="h5 text-center">The Catalyzer</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                        <p class="fs-7 text-center text-primary">Learn More 
+                        <p class="h5 text-center">{{$data2[0]->title}}</p>
+                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
+                        <p class="fs-7 text-center text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
-                            <img src="/img/user-1.png" alt="">
+                            <img src="{{asset('img/user-1.png')}}" alt="">
                         </div>
-                        <p class="h5 text-center">Neptune</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                        <p class="fs-7 text-center text-primary">Learn More 
+                        <p class="h5 text-center">{{$data2[0]->title}}</p>
+                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
+                        <p class="fs-7 text-center text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
@@ -403,24 +232,24 @@
                 <div id="gallery-box" class="row w-100 d-flex">
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-50">
-                            <img src="/img/500-300.png" class="w-100" alt="">
+                            <img src="{{asset('img/500-300.png')}}" class="w-100" alt="">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="/img/501-301.png" class="w-100" alt="">
+                            <img src="{{asset('img/501-301.png')}}" class="w-100" alt="">
                         </div>
                         <div class="md:p-2 p-1 w-100">
-                            <img src="/img/600-360.png" class="w-100" alt="">
-                        </div>     
+                            <img src="{{asset('img/600-360.png')}}" class="w-100" alt="">
+                        </div>
                     </div>
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-100">
-                            <img src="/img/601-361.png" class="w-100" alt="">
-                        </div> 
-                        <div class="md:p-2 p-1 w-50">
-                            <img src="/img/503-303.png" class="w-100" alt="">
+                            <img src="{{asset('img/601-361.png')}}" class="w-100" alt="">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="/img/502-302.png" class="w-100" alt="">
+                            <img src="{{asset('img/503-303.png')}}" class="w-100" alt="">
+                        </div>
+                        <div class="md:p-2 p-1 w-50">
+                            <img src="{{asset('img/502-302.png')}}" class="w-100" alt="">
                         </div>
                     </div>
                 </div>
@@ -476,7 +305,7 @@
                         </table>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="fs-7 text-primary">Learn More 
+                        <p class="fs-7 text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                         <div class="">
@@ -498,7 +327,7 @@
                 <div class="row">
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="/img/720-400.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/720-400.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Chichen Itza</h5>
@@ -508,7 +337,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="/img/721-401.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/721-401.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Colosseum Roma</h5>
@@ -518,7 +347,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="/img/722-402.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/722-402.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Great Pyramid of Giza</h5>
@@ -528,7 +357,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="/img/723-403.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/723-403.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">San Francisco</h5>
@@ -545,12 +374,12 @@
                 <div class="row w-75 d-flex flex-column justify-content-center">
                     <div id="spe-div1" class="col p-3 d-flex border-bottom">
                         <div class="d-flex justify-content-center m-4">
-                            <img src="/img/wave.png" class="" alt="">
+                            <img src="{{asset('img/wave.png')}}" class="" alt="">
                         </div>
                         <div class="">
                             <p class="h5 ">Shooting Stars</p>
                             <p class="fs-7 text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                            <p class="fs-7 text-primary">Learn More 
+                            <p class="fs-7 text-primary">Learn More
                                 <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                             </p>
                         </div>
@@ -559,22 +388,22 @@
                         <div class="">
                             <p class="h5 ">The Catalyzer</p>
                             <p class="fs-7 text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                            <p class="fs-7 text-primary">Learn More 
+                            <p class="fs-7 text-primary">Learn More
                                 <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                             </p>
                         </div>
                         <div class="d-flex justify-content-center m-4">
-                            <img src="/img/scisser.png" alt="">
+                            <img src="{{asset('img/scisser.png')}}" alt="">
                         </div>
                     </div>
                     <div id="spe-div1" class="col p-3 d-flex ">
                         <div class="d-flex justify-content-center m-4">
-                            <img src="/img/user-1.png" alt="">
+                            <img src="{{asset('img/user-1.png')}}" alt="">
                         </div>
                         <div class="">
                             <p class="h5 ">Neptune</p>
                             <p class="fs-7 text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                            <p class="fs-7 text-primary">Learn More 
+                            <p class="fs-7 text-primary">Learn More
                                 <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                             </p>
                         </div>
@@ -585,7 +414,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </section>
         <!------------------ merch ------------------>
@@ -593,7 +422,7 @@
             <div class="container-xxl container-xl container-lg container-md">
                 <div class="row d-flex flex-column flex-lg-row">
                     <div class="col-12 col-lg-6 h-auto sm-height">
-                        <img src="/img/400-400.png" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="">
+                        <img src="{{asset('img/400-400.png')}}" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="">
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
                         <p class="text-secondary">BRAND NAME</p>
@@ -662,7 +491,7 @@
                 <div class="row d-flex flex-wrap justify-content-center">
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/420-260.png" class="card-img-top md:h-50" alt="">
+                            <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The Catalyzer</h5>
@@ -672,7 +501,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/421-261.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Shooting Stars</h5>
@@ -682,7 +511,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/422-262.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Neptune</h5>
@@ -692,7 +521,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/423-263.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The 400 Blows<h5>
@@ -702,7 +531,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/424-264.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The Catalyzer</h5>
@@ -712,7 +541,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/425-265.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Shooting Stars</h5>
@@ -722,7 +551,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/427-267.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Neptune</h5>
@@ -732,7 +561,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="/img/428-268.png" class="card-img-top" alt="">
+                            <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
                               <p class="fs-6 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The 400 Blows<h5>
@@ -769,82 +598,13 @@
                 </div>
             </div>
         </section>
-
     </main>
-    <!------------------ footer ------------------>
-    <footer>
-        <!------------------ links ------------------>
-        <section id="links">
-            <div class="container-xxl container-xl container-lg container-md d-flex align-items-center">
-                <div class="row w-100 d-flex align-items-center">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
-                        <div id="div-logo2" class="w-100 d-flex xxl:justify-content-start p-1">
-                            <img src="/img/logo2.png" class="" alt="">
-                        </div>
-                        <p class="fs-6 text-muted d-flex align-items-center">Air plant banjo lyft occupy retro adaptogen indego</p>
-                    </div>
-                    <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7 col-sm-12 d-flex flex-row flex-wrap">
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
-                            <p class="text-black">CATEGORIES</p>
-                            <p class="text-black">First Link</p>
-                            <p class="text-black">Second Link</p>
-                            <p class="text-black">Third Link</p>
-                            <p class="text-black">Fourth Link</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
-                            <p class="text-black">CATEGORIES</p>
-                            <p class="text-black">First Link</p>
-                            <p class="text-black">Second Link</p>
-                            <p class="text-black">Third Link</p>
-                            <p class="text-black">Fourth Link</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
-                            <p class="text-black">CATEGORIES</p>
-                            <p class="text-black">First Link</p>
-                            <p class="text-black">Second Link</p>
-                            <p class="text-black">Third Link</p>
-                            <p class="text-black">Fourth Link</p>
-                        </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
-                            <p class="text-black">CATEGORIES</p>
-                            <p class="text-black">First Link</p>
-                            <p class="text-black">Second Link</p>
-                            <p class="text-black">Third Link</p>
-                            <p class="text-black">Fourth Link</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!------------------ copyright ------------------>
-        <section id="copyright" class="bg-light">
-            <div class="container-xxl container-xl container-lg container-md container-sm d-flex align-items-center">
-                <div id="copy-row" class="row w-100 d-flex flex-row justify-content-between align-items-center">
-                    <div id="" class="d-flex justify-content-center col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12">
-                        <p class="text-muted">© 2020 Tailblocks — </p>
-                        <a href="#" class="text-secondary">@knyttneve</a>
-                    </div>
-                    <div id="copy-social" class="d-flex col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 justify-content-center">
-                        <i class="p-2 fs-5 text-secondary fa-brands fa-facebook-f"></i>
-                        <i class="p-2 fs-5 text-secondary fa-brands fa-twitter"></i>
-                        <i class="p-2 fs-5 text-secondary fa-brands fa-instagram"></i>
-                        <i class="p-2 fs-5 text-secondary fa-brands fa-linkedin-in"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </footer>
-
+@endsection
 
 
 
 <!------------------ script ------------------>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-            crossorigin="anonymous">
-    </script>
+@section('script')
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -859,5 +619,5 @@
             },
         });
     </script>
-</body>
-</html>
+
+@endsection

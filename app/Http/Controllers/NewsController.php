@@ -13,11 +13,7 @@ class NewsController extends Controller
     public function color(){
         return view('color');
     }
-
-    public function bmi(){
-        return view('BMI');
-    }
-
+    
     public function dice(){
         return view('dice');
     }

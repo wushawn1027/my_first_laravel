@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +20,17 @@ Route::get('/microsoft', [NewsController::class, 'index']);
 
 Route::get('/color', [NewsController::class, 'color']);
 
-Route::get('/bmi', [NewsController::class, 'bmi']);
-
 Route::get('/dice', [NewsController::class, 'dice']);
 
 
+Route::get('/login', [Controller::class, 'login']);
+
+Route::get('/bootstrap', [BsController::class, 'index']);
+
+Route::get('/shoppingS1', [BsController::class, 'shoppingS1']);
+
+Route::get('/shoppingS2', [BsController::class, 'shoppingS2']);
+
+Route::get('/shoppingS3', [BsController::class, 'shoppingS3']);
+
+Route::get('/shoppingS4', [BsController::class, 'shoppingS4']);
