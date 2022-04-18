@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <title>Shopping-Step2</title>
+    <style>
+        * {
+         box-sizing: border-box;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    /* ------------------nav------------------- */
+    .logo {
+        height: 60px;
+    }
+    nav .container-xxl{
+        width: 80%;
+        height: 90px;
+    }
+    nav #burger {
+        display: none!important;
+        z-index: 3;
+    }
+    @media(max-width:1300px) {
+        nav .container-xxl{
+            width: 90%;
+        }
+    }
+    nav ul li {
+        list-style: none;
+    }
+    @media(max-width:768px) {
+        nav .container-xxl #nav-ul {
+            display: none!important;
+        }
+        nav #burger {
+            display: flex!important;
+        }
+    }
+    /* ------------------main------------------- */
+    main {
+        background-color: rgb(180, 181, 182);
+        height: 1000px;
+    }
+    #shopping-s2 {
+        background-color: rgb(243, 242, 242);
+        width: 900px;
+        height: 910px;
+    }
+    #shopping-s2 .buy-progress {
+        height: 180px;
+        border-bottom: 1px solid rgb(219, 216, 216);
+    }
+    #shopping-s2 .steps .step {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    #shopping-s2 .steps .step::before {
+        content: attr(data-text);
+        position: absolute;
+        bottom: -30px;
+        text-align: center;
+        word-break: keep-all;
+        color: black;
+    }
+    #shopping-s2 .steps .buy-progress-bar {
+        width: 180px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: darkgray;
+        margin: 0px 8px;
+    }
+    #shopping-s2 .steps .progress-100 {
+        background-color: rgb(71, 179, 71);
+    }
+    #shopping-s2 .steps .green{
+        background-color: rgb(71, 179, 71);
+    }
+    #shopping-s2 .steps .progress-25::before {
+        content: '';
+        display: block;
+        width: 35%;
+        height: 100%;
+        background-color: rgb(71, 179, 71);
+        border-radius: 5px;
+    }
+    #pay {
+        height: 240px;
+        display: flex;
+        border-bottom: 1px solid rgb(219, 216, 216);
+    }
+    #pay .payBox , #send .sendBox , #send , #order-table{
+        border-bottom: 1px solid rgb(219, 216, 216);
+    }
+    
+    table {
+        width: 200px;
+    }
+    .btn-lg {
+        width: 150px;
+    }
+    #btnGoBack {
+        border: 1px solid blue;
+    }
+    /* ------------------footer------------------- */
+    #links .container-xxl {
+        height: 300px;
+    }
+    #copyright .container-xxl {
+        height: 50px;
+    }
+    @media(max-width:992px) {
+        
+        #links .container-xxl {
+            height: 700px;
+        }
+        #copyright .container-xxl {
+            height: 100px;
+        }
+    }
+    @media(max-width:768px) {
+        #shopping-s2 {
+            width: 500px;
+        }
+        #shopping-s2 .steps .buy-progress-bar {
+            width: 40px;
+        }
+        #links .container-xxl {
+        height: 1200px;
+        }
+        #links #div-logo2 {
+            justify-content: center ;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!------------------ nav ------------------>
+    <nav>
+        <div class="container-xxl">
+            <div class="d-flex justify-content-between">
+                <a href="" class="p-3">
+                    <img src="/img/logo.jpg" class="logo" alt="">
+                </a>
+                <ul id="nav-ul" class="d-flex justify-content-end align-items-center p-0 m-0">
+                    <li class="me-5">
+                        <a href="" class="fs-7 fw-bolder hover:bg-light">Blog</a>
+                    </li>
+                    <li class="me-5">
+                        <a href="" class="fs-7 fw-bolder">Portfolio</a>
+                    </li>
+                    <li class="me-5">
+                        <a href="" class="fs-7 fw-bolder">About</a>
+                    </li>
+                    <li class="me-5">
+                        <a href="" class="fs-7 fw-bolder">Contact</a>
+                    </li>
+                    <li class="me-3">
+                        <a href=""><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
+                    </li>
+                    <li class="">
+                        <i class="fs-4 fa-solid fa-circle-user text-black"></i>
+                    </li>
+                </ul>
+                <div id="burger" class="d-flex justify-content-center align-items-center">
+                    <nav class="navbar navbar-light ">
+                        <div class="container">
+                          <button class="navbar-toggler ms-auto " type="button" data-mdb-toggle="collapse"
+                            data-mdb-target="#navbarToggleExternalContent3" aria-controls="navbarToggleExternalContent3"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <img src="/img/burger-menu.png" style="width: 35px; height: 35px;" class="" alt="">
+                          </button>
+                        </div>
+                      </nav>
+                      <div class="collapse" id="navbarToggleExternalContent3">
+                        <div class="bg-light shadow-3 p-4">
+                          <button class="btn btn-link btn-block border-bottom m-0">
+                              <a href="" class="fs-7 fw-bolder hover:bg-light">Blog</a>
+                            </button>
+                          <button class="btn btn-link btn-block border-bottom m-0">
+                            <a href="" class="fs-7 fw-bolder">Portfolio</a>
+                          </button>
+                          <button class="btn btn-link btn-block border-bottom m-0">
+                            <a href="" class="fs-7 fw-bolder">About</a>
+                          </button>
+                          <button class="btn btn-link btn-block border-bottom m-0">
+                            <a href="" class="fs-7 fw-bolder">Contact</a>
+                          </button>
+                          <div class="w-100 d-flex justify-content-center align-items-center m-0">
+                            <a href="http://127.0.0.1:5500/shopping-s2.html"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
+                            <i class="fs-4 fa-solid fa-circle-user text-black"></i>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!------------------ main ------------------>
+    <main class="pt-5 pb-5 d-flex justify-content-center">
+        <section id="shopping-s2" class="container-xxl rounded-3 p-5">
+            <div class="buy-progress">
+                <h2 class="fw-bolder">購物車</h2>
+                <div class="p-4 steps d-flex align-items-center">
+                    <div class="step green" data-text="確認購物車">1</div>
+                    <div class="buy-progress-bar progress-100"></div>
+                    <div class="step green" data-text="付款與運送方式">2</div>
+                    <div class="buy-progress-bar progress-25"></div>
+                    <div class="step" data-text="填寫資料">3</div>
+                    <div class="buy-progress-bar"></div>
+                    <div class="step" data-text="完成訂購">4</div>
+                </div>
+            </div>
+            <div id="pay" class="d-flex flex-column mt-3">
+                <h3 class="w-100">付款方式</h3>
+                <div class="">
+                    <div class="payBox p-3">
+                        <input type="radio" name="payWay" id="payCard">
+                        <label class="fs-5 ms-1" for="payCard">信用卡付款</label>
+                    </div>
+                    <div class="payBox p-3">
+                        <input type="radio" name="payWay" id="payATM">
+                        <label class="fs-5 ms-1" for="payATM">網路 ATM</label>
+                    </div>
+                    <div class="p-3">
+                        <input type="radio" name="payWay" id="payStore">
+                        <label class="fs-5 ms-1" for="payStore">超商代碼</label>
+                    </div>
+                </div>
+            </div>
+            <div id="send" class="d-flex flex-column mt-4">
+                <h3 class="w-100">運送方式</h3>
+                <div class="">
+                    <div class="sendBox p-3">
+                        <input type="radio" name="sendWay" id="sendHome">
+                        <label class="fs-5 ms-1" for="sendHome">黑貓宅配</label>
+                    </div>
+                    <div class="p-3">
+                        <input type="radio" name="sendWay" id="sendStore">
+                        <label class="fs-5 ms-1" for="sendStore">超商店到店</label>
+                    </div>
+                </div>
+            </div>
+            <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
+                <table>
+                    <tr>
+                        <td class="text-secondary">數量:</td>
+                        <td class="float-end fw-bolder fs-5">3</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">小計:</td>
+                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">運費:</td>
+                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">總計:</td>
+                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+                <div class="">
+                    <button id="btnGoBack" type="button" onclick="self.location.href='shopping-s1.html'" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
+                </div>
+                <div class="">
+                    <button type="button" onclick="self.location.href='shopping-s3.html'" class="btn btn-primary btn-lg fs-6">下一步</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!------------------ footer ------------------>
+    <footer>
+        <!------------------ links ------------------>
+        <section id="links">
+            <div class="container-xxl container-xl container-lg container-md d-flex align-items-center">
+                <div class="row w-100 d-flex align-items-center">
+                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
+                        <div id="div-logo2" class="w-100 d-flex xxl:justify-content-start p-1">
+                            <img src="/img/logo2.png" class="" alt="">
+                        </div>
+                        <p class="fs-6 text-muted d-flex align-items-center">Air plant banjo lyft occupy retro adaptogen indego</p>
+                    </div>
+                    <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7 col-sm-12 d-flex flex-row flex-wrap">
+                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                            <p class="text-black">CATEGORIES</p>
+                            <p class="text-black">First Link</p>
+                            <p class="text-black">Second Link</p>
+                            <p class="text-black">Third Link</p>
+                            <p class="text-black">Fourth Link</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                            <p class="text-black">CATEGORIES</p>
+                            <p class="text-black">First Link</p>
+                            <p class="text-black">Second Link</p>
+                            <p class="text-black">Third Link</p>
+                            <p class="text-black">Fourth Link</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                            <p class="text-black">CATEGORIES</p>
+                            <p class="text-black">First Link</p>
+                            <p class="text-black">Second Link</p>
+                            <p class="text-black">Third Link</p>
+                            <p class="text-black">Fourth Link</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                            <p class="text-black">CATEGORIES</p>
+                            <p class="text-black">First Link</p>
+                            <p class="text-black">Second Link</p>
+                            <p class="text-black">Third Link</p>
+                            <p class="text-black">Fourth Link</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!------------------ copyright ------------------>
+        <section id="copyright" class="bg-light">
+            <div class="container-xxl container-xl container-lg container-md container-sm d-flex align-items-center">
+                <div id="copy-row" class="row w-100 d-flex flex-row justify-content-between align-items-center">
+                    <div id="" class="d-flex justify-content-center col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                        <p class="text-muted">© 2020 Tailblocks — </p>
+                        <a href="#" class="text-secondary">@knyttneve</a>
+                    </div>
+                    <div id="copy-social" class="d-flex col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 justify-content-center">
+                        <i class="p-2 fs-5 text-secondary fa-brands fa-facebook-f"></i>
+                        <i class="p-2 fs-5 text-secondary fa-brands fa-twitter"></i>
+                        <i class="p-2 fs-5 text-secondary fa-brands fa-instagram"></i>
+                        <i class="p-2 fs-5 text-secondary fa-brands fa-linkedin-in"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </footer>
+
+
+
+
+<!------------------ script ------------------>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+            crossorigin="anonymous">
+    </script>
+    
+</body>
+</html>
