@@ -204,28 +204,26 @@
                             <span id="span-1" class="mt-1 bg-primary"></span>
                         </div>
                 </div>
-                <div class="row d-flex flex-row">
-
+                <div class="row">
                     @foreach ($data2 as $news)
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 ">
-                        <div class="d-flex justify-content-center mb-4">
-                        @if ($news->img == "" || $news->img == null)
-                            <div class="imgNull">
-                                {{ mb_substr($news->title,0,1,"utf-8") }}
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                            <div class="d-flex justify-content-center mb-4">
+                            @if ($news->img == "" || $news->img == null)
+                                <div class="d-flex justify-content-center mb-4">
+                                    <div class="imgNull">{{mb_substr($news->title,0,1,"utf-8")}}</div>
+                                </div>
+                            @else
+                                <img src="{{$news->img}}" alt="" >
+                            @endif
                             </div>
-                        @else
-                            <img src="{{$news->img}}" class="imgCircle" alt="" onerror="errorImg(this)">
-                        @endif
-                        </div>
-                        <p class="h5 text-center">{{$news->title}}</p>
-                        <p class="fs-7 text-center text-secondary">{{$news->content}}</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                        </p>
+                            <p class="h5 text-center">{{$news->title}}</p>
+                            <p class="fs-7 text-center text-secondary">{{$news->content}}</p>
+                            <p class="fs-7 text-center text-primary">Learn More
+                                <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                            </p>
                         </div>
                     </div>
                     @endforeach
-
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
                         <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>

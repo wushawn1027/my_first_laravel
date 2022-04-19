@@ -27,7 +27,7 @@ class Controller extends BaseController
     }
 
     public function save_comment(Request $request){
-        DB::
+        // DB::
         dd($request->all());
     }
 }

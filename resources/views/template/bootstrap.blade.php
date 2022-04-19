@@ -262,7 +262,25 @@
         }
     }
 </style>
-
+{{-- @foreach ($data2 as $news)
+                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                        <div class="d-flex justify-content-center mb-4">
+                            @if ($news->img == "" || $news->img == null)
+                                <div class="d-flex justify-content-center mb-4">
+                                    <div class="imgNull">{{mb_substr($news->title,0,1,"utf-8")}}</div>
+                                </div>
+                            @else
+                                <img src="{{$news->img}}" alt="">
+                            @endif
+                            </div>
+                            <p class="h5 text-center">{{$news->title}}</p>
+                            <p class="fs-7 text-center text-secondary">{{$news->content}}</p>
+                            <p class="fs-7 text-center text-primary">Learn More
+                                <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach --}}
 <body>
     <!----------------- nav ---------------->
     <nav>
