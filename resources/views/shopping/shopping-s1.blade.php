@@ -1,4 +1,4 @@
-@extends('shopping.template')
+@extends('template.template')
 
 @section('title')
     Shopping-Step1
@@ -123,7 +123,7 @@
                 <div class="order-list">
                     <div class="d-flex align-items-center">
                         <div class="shoppimg-img me-3">
-                            <img src="{{asset('img/cat4.jpg')}}" class="" alt="">
+                            <img src="{{asset('img/cat4.jpg')}}" class="" alt="" onerror="errorImg(this)">
                         </div>
                         <div clsss="d-flex flex-column">
                             <p class="m-0 fs-6">Chicken momo</p>
@@ -142,7 +142,7 @@
                 <div class="order-list">
                     <div class="d-flex align-items-center">
                         <div class="shoppimg-img me-3">
-                            <img src="/img/rick-roll.gif" class="" alt="">
+                            <img src="/img/rick-roll.gif" class="" alt="" onerror="errorImg(this)">
                         </div>
                         <div clsss="d-flex flex-column">
                             <p class="m-0 fs-6">Spicy Mexican potatoes</p>
@@ -161,7 +161,7 @@
                 <div class="order-list">
                     <div class="d-flex align-items-center">
                         <div class="shoppimg-img me-3">
-                            <img src="/img/cat6.jpg" class="" alt="">
+                            <img src="/img/cat6.jpg" class="" alt="" onerror="errorImg(this)">
                         </div>
                         <div clsss="d-flex flex-column">
                             <p class="m-0 fs-6">Breakfast</p>

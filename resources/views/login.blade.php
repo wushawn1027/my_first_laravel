@@ -75,7 +75,7 @@
             <div id="form" class="w-50 h-100 d-flex flex-column align-items-center justify-content-center" style="background-color: #162446;">
                 <div class="w-50 d-flex justify-content-center mb-5">
                     <div class="d-flex justify-content-center me-2">
-                        <img src="{{asset('img/rick-roll.gif')}}" width="65" height="65" alt="">
+                        <img src="{{asset('img/rick-roll.gif')}}" width="65" height="65" alt="" onerror="errorImg(this)">
                     </div>
                     <h1 class="text-white d-flex align-items-center">數位方塊</h1>
                 </div>

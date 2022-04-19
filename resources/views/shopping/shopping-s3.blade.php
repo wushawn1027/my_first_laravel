@@ -1,4 +1,4 @@
-@extends('shopping.template')
+@extends('template.template')
 
 @section('title')
     Shopping-Step3
@@ -115,23 +115,23 @@
                     <form action="" class="d-flex flex-column">
                         <span class="mb-1 fs-5">姓名</span>
                         <div class="form-group w-100">
-                            <input type="text" id="form-name" class="p-2 form-control mb-3" id="inputName"  placeholder="王小明">
+                            <input type="text" class="p-2 form-control mb-3" id="inputName"  placeholder="王小明">
                         </div>
                         <span class="mb-1 fs-5">電話</span>
                         <div class="form-group w-100">
-                            <input type="number" id="form-phone" class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
+                            <input type="number"  class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
                         </div>
                         <span class="mb-1 fs-5">Email</span>
                         <div class="form-group w-100">
-                            <input type="text" id="form-email" class="p-2 form-control mb-3" id="inputEmail"  placeholder="abc123@gmail.com">
+                            <input type="text"  class="p-2 form-control mb-3" id="inputEmail"  placeholder="abc123@gmail.com">
                         </div>
                         <span class="mb-1 fs-5">地址</span>
                         <div class="w-100 d-flex">
-                            <input type="text" id="form-city" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="城市">
-                            <input type="text" id="form-zoneNum" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
+                            <input type="text" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="城市">
+                            <input type="text" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
                         </div>
                         <div class="">
-                            <input type="text" id="form-address" class="p-2 form-control mb-3" id="inputAddress"  placeholder="地址">
+                            <input type="text" class="p-2 form-control mb-3" id="inputAddress"  placeholder="地址">
                         </div>
 
                     </form>

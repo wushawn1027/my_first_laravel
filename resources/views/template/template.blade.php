@@ -82,7 +82,12 @@
         display: flex;
         flex-direction: column;
     }
-
+    /* nav .liLogin:hover .burgerImg {
+        display: none!important;
+    }
+    nav .liLogin:hover .ImgX {
+        display: block!important;
+    } */
     /* nav #burgerMenuBox button #burgerMenuBoxA {
         text-decoration: none !important;
     } */
@@ -126,10 +131,10 @@
             display: block!important;
             z-index: 3;
         }
-        /* #burger:focus .burgerImg {
+        /* nav .liLogin:hover .burgerImg {
             display: none!important;
         }
-        #burger:focus .ImgX {
+        nav .liLogin:hover .ImgX {
             display: block!important;
         } */
 
@@ -148,7 +153,7 @@
         <div class="container-xxl">
             <div class="d-flex">
                 <a href="/bootstrap" class="p-3 me-auto">
-                    <img src="{{asset('img/logo.jpg')}}" class="logo" alt="">
+                    <img src="{{asset('img/logo.jpg')}}" class="logo" alt="" onerror="errorImg(this)">
                 </a>
                 <ul id="nav-ul" class="ms-auto d-flex justify-content-end align-items-center p-0 m-0">
                     <li class="me-5">
@@ -178,12 +183,12 @@
                 <input type="checkbox" id="burger" class="" hidden>
                 <label for="burger" class="d-flex justify-content-center align-items-center">
                     <div id="" class="">
-                        <img src="{{asset('img/burger-menu.png')}}" style="width: 35px; height: 35px;" class="burgerImg" alt="">
-                        <img src="{{asset('img/X.png')}}" style="width: 35px; height: 35px;" class="imgX" alt="">
+                        <img src="{{asset('img/burger-menu.png')}}" style="width: 35px; height: 35px;" class="burgerImg" alt="" onerror="errorImg(this)">
+                        <img src="{{asset('img/X.png')}}" style="width: 35px; height: 35px;" class="imgX" alt="" onerror="errorImg(this)">
                     </div>
                 </label>
                 <div id="burgerMenu">
-                    <div id="burgerMenuBox" class="bg-light shadow-3 p-4">
+                    <div id="burgerMenuBox" class="w-100 bg-light p-4">
                         <button  class="btn btn-link btn-block border-bottom m-0">
                             <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Blog</a>
                             </button>
@@ -216,7 +221,7 @@
                 <div class="row w-100 d-flex align-items-center">
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
                         <div id="div-logo2" class="w-100 d-flex xxl:justify-content-start p-1">
-                            <img src="{{asset('img/logo2.png')}}" class="" alt="">
+                            <img src="{{asset('img/logo2.png')}}" class="" alt="" onerror="errorImg(this)">
                         </div>
                         <p class="fs-6 text-muted d-flex align-items-center">Air plant banjo lyft occupy retro adaptogen indego</p>
                     </div>
@@ -280,5 +285,14 @@
     </script>
 
     @yield('script')
+
+    <script>
+        function errorImg(img) {
+            img.src = "{{asset('img/ImgError.png')}}";
+            img.onerror = null;
+        }
+    </script>
+
+    
 </body>
 </html>

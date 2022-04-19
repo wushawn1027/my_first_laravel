@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index(){
-        return view('RWD');
+    public function micro(){
+        return view('others.RWD');
     }
 
     public function color(){
-        return view('color');
+        return view('others.color');
     }
-    
+
     public function dice(){
-        return view('dice');
+        return view('others.dice');
     }
 }

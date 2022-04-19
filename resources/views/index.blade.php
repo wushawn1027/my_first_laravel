@@ -1,4 +1,4 @@
-@extends('shopping.template')
+@extends('template.template')
 
     @section('link')
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -22,6 +22,17 @@
     /* ------------------------------------intro--------------------------------------- */
     #intro img {
         width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+    .imgNull {
+        width: 80px;
+        height: 80px;
+        background-color:aqua;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     #intro .btn {
         width: 120px;
@@ -35,6 +46,11 @@
     #special .container-xxl {
         height: 1000px;
     }
+    #special img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+     }
     /* ------------------------------------merch--------------------------------------- */
     #merch .container-xxl {
         height: 750px!important;
@@ -146,7 +162,10 @@
             height: 300px;
         }
     }
+    /* -----------------------------------576-------------------------------------- */
+    @media(max-width:576px) {
 
+    }
     </style>
 @endsection
 
@@ -159,13 +178,13 @@
                     <div class="swiper mySwiper w-100 h-100">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
                           </div>
                           <div class="swiper-slide">
-                            <img src="{{asset('img/gray-1.png')}}" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-1.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
                           </div>
                           <div class="swiper-slide">
-                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="">
+                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
                           </div>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -185,37 +204,28 @@
                             <span id="span-1" class="mt-1 bg-primary"></span>
                         </div>
                 </div>
-                <div class="row">
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                <div class="row d-flex flex-row">
+
+                    @foreach ($data2 as $news)
+                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 ">
                         <div class="d-flex justify-content-center mb-4">
-                            <img src="{{$data2[0]->img}}" alt="">
+                        @if ($news->img == "" || $news->img == null)
+                            <div class="imgNull">
+                                {{ mb_substr($news->title,0,1,"utf-8") }}
+                            </div>
+                        @else
+                            <img src="{{$news->img}}" class="imgCircle" alt="" onerror="errorImg(this)">
+                        @endif
                         </div>
-                        <p class="h5 text-center">{{$data2[0]->title}}</p>
-                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
+                        <p class="h5 text-center">{{$news->title}}</p>
+                        <p class="fs-7 text-center text-secondary">{{$news->content}}</p>
                         <p class="fs-7 text-center text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-                        <div class="d-flex justify-content-center mb-4">
-                            <img src="{{asset('img/scisser.png')}}" alt="">
                         </div>
-                        <p class="h5 text-center">{{$data2[0]->title}}</p>
-                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                        </p>
                     </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-                        <div class="d-flex justify-content-center mb-4">
-                            <img src="{{asset('img/user-1.png')}}" alt="">
-                        </div>
-                        <p class="h5 text-center">{{$data2[0]->title}}</p>
-                        <p class="fs-7 text-center text-secondary">{{$data2[0]->content}}</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                        </p>
-                    </div>
+                    @endforeach
+
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
                         <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
@@ -224,7 +234,7 @@
         </section>
         <!------------------ gallery ------------------>
         <section id="gallery" class="d-flex justify-content-center align-items-center">
-            <div class="container-xxl container-xl container-lg container-md container-sm">
+            <div class="container-xxl container-xl container-lg container-md container-sm d-flex flex-column align-items-center">
                 <div class="row mb-4">
                     <h2 class="col-xxl-5 col-md-12">Master Cleanse Reliac Heirloom</h2>
                     <p class="col-xxl-7 col-md-12 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom.</p>
@@ -232,24 +242,24 @@
                 <div id="gallery-box" class="row w-100 d-flex">
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/500-300.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/500-300.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/501-301.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/501-301.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-100">
-                            <img src="{{asset('img/600-360.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/600-360.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                     </div>
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-100">
-                            <img src="{{asset('img/601-361.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/601-361.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/503-303.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/503-303.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/502-302.png')}}" class="w-100" alt="">
+                            <img src="{{asset('img/502-302.png')}}" class="w-100" alt="" onerror="errorImg(this)">
                         </div>
                     </div>
                 </div>
@@ -327,7 +337,7 @@
                 <div class="row">
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="{{asset('img/720-400.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/720-400.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Chichen Itza</h5>
@@ -337,7 +347,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="{{asset('img/721-401.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/721-401.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Colosseum Roma</h5>
@@ -347,7 +357,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="{{asset('img/722-402.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/722-402.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">Great Pyramid of Giza</h5>
@@ -357,7 +367,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
                         <div class="card p-4 bg-light border-0">
-                            <img src="{{asset('img/723-403.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/723-403.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-primary">SUBTITLE</p>
                               <h5 class="card-title">San Francisco</h5>
@@ -374,7 +384,7 @@
                 <div class="row w-75 d-flex flex-column justify-content-center">
                     <div id="spe-div1" class="col p-3 d-flex border-bottom">
                         <div class="d-flex justify-content-center m-4">
-                            <img src="{{asset('img/wave.png')}}" class="" alt="">
+                            <img src="{{asset('img/wave.png')}}" class="imgCircle" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="">
                             <p class="h5 ">Shooting Stars</p>
@@ -393,12 +403,12 @@
                             </p>
                         </div>
                         <div class="d-flex justify-content-center m-4">
-                            <img src="{{asset('img/scisser.png')}}" alt="">
+                            <img src="{{asset('img/scisser.png')}}" class="imgCircle" alt="" onerror="errorImg(this)">
                         </div>
                     </div>
                     <div id="spe-div1" class="col p-3 d-flex ">
                         <div class="d-flex justify-content-center m-4">
-                            <img src="{{asset('img/user-1.png')}}" alt="">
+                            <img src="{{asset('img/user-1.png')}}" class="imgCircle" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="">
                             <p class="h5 ">Neptune</p>
@@ -422,7 +432,7 @@
             <div class="container-xxl container-xl container-lg container-md">
                 <div class="row d-flex flex-column flex-lg-row">
                     <div class="col-12 col-lg-6 h-auto sm-height">
-                        <img src="{{asset('img/400-400.png')}}" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="">
+                        <img src="{{asset('img/400-400.png')}}" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="" onerror="errorImg(this)">
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
                         <p class="text-secondary">BRAND NAME</p>
@@ -491,7 +501,7 @@
                 <div class="row d-flex flex-wrap justify-content-center">
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="">
+                            <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The Catalyzer</h5>
@@ -501,7 +511,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Shooting Stars</h5>
@@ -511,7 +521,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Neptune</h5>
@@ -521,7 +531,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The 400 Blows<h5>
@@ -531,7 +541,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The Catalyzer</h5>
@@ -541,7 +551,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Shooting Stars</h5>
@@ -551,7 +561,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-9 text-secondary">CATEGORY</p>
                               <h5 class="card-title">Neptune</h5>
@@ -561,7 +571,7 @@
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="">
+                            <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
                               <p class="fs-6 text-secondary">CATEGORY</p>
                               <h5 class="card-title">The 400 Blows<h5>
@@ -621,3 +631,4 @@
     </script>
 
 @endsection
+
