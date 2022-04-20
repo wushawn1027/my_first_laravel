@@ -1,26 +1,38 @@
 @extends('template.template')
 
 @section('title')
-    Shopping-Comment
+    Comment
 @endsection
 
 @section('css')
 <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 1100px;
+        height: 100%
     }
     #shopping-comment {
         background-color: rgb(243, 242, 242);
         width: 900px;
-        height: 1000px;
+        height: 100%;
+    }
+    .commentZone {
+        height: 100%;
     }
     .article {
         height: 150px;
-        border: 1px solid grey;
+        border: 1px solid rgb(133, 131, 131);
+        border-radius: 10px;
+    }
+    .a-box {
+        border-bottom: 1px solid rgb(175, 170, 170);
     }
     .a-content {
-        height: 60px;
+        height: 100%;
+    }
+    #inputContent {
+        resize: none;
+        width: 100%;
+        height: 100px;
     }
     #btnClear , #btnSend {
         width: 150px;
@@ -39,45 +51,29 @@
     <main class="pt-5 pb-5 d-flex justify-content-center">
         <section id="shopping-comment" class="container-xxl rounded-3 p-5 d-flex flex-column">
             <h1 class="w-100 mb-3">留言區</h1>
-            <div class="article w-100 d-flex flex-column p-2 mb-3">
-                <div class="a-box w-100 d-flex just-content-between align-items-center">
-                    <div class="a-innerbox d-flex w-50 align-items-center">
-                        <h2 class="a-title">XXXXX</h2>
-                        <span class="a-name ms-2">XXX</span>
+            <div class="w-100 commentZone">
+                @foreach ($data1 as $comments)
+                <div class="article w-100 d-flex flex-column p-2 mb-3">
+                    <div class="a-box w-100 d-flex just-content-between align-items-center mb-2">
+                        <div class="a-innerbox d-flex w-50 align-items-center">
+                            <h2 class="a-title">{{$comments->title}}</h2>
+                            <span class="a-name ms-2">{{$comments->name}}</span>
+                        </div>
+                        <span class="a-time w-50 d-flex justify-content-end align-items-center">{{$comments->created_at}}</span>
                     </div>
-                    <span class="a-time w-50 d-flex justify-content-end align-items-center">2022/04/19</span>
-                </div>
-                <div class="a-content">
-                    12345678911111111111111111111111111111111
-                </div>
-            </div>
-            <div class="article w-100 d-flex flex-column p-2 mb-3">
-                <div class="a-box w-100 d-flex just-content-between align-items-center">
-                    <div class="a-innerbox d-flex w-50 align-items-center">
-                        <h2 class="a-title">AAAAA</h2>
-                        <span class="a-name ms-2">XXX</span>
+                    <div class="a-content">
+                        {{$comments->content}}
                     </div>
-                    <span class="a-time w-50 d-flex justify-content-end align-items-center">2022/04/19</span>
-                </div>
-                <div class="a-content">
-                    abcdabcdabcdaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </div>
-            </div>
-            <div class="article w-100 d-flex flex-column p-2 mb-3">
-                <div class="a-box w-100 d-flex justify-content-between align-items-center">
-                    <div class="a-innerbox d-flex w-50 align-items-center">
-                        <h2 class="a-title">BBBBB</h2>
-                        <span class="a-name ms-2">XXX</span>
+                    <div class="">
+                        <a href="/comment/delete/{{$comments->id}}">刪除</a>
+                        <a href="/comment/edit/{{$comments->id}}">編輯</a>
                     </div>
-                    <span class="a-time w-50 d-flex justify-content-end align-items-center">2022/04/19</span>
                 </div>
-                <div class="a-content">
-                    dvvsvdjwucimehiskxsmendhbndfcmcxhusfj
-                </div>
+                @endforeach
             </div>
             <div class="form">
                 <h1>歡迎留言</h1>
-                <form action="/comment/save" method="GET" class="d-flex flex-column">
+                <form action="/comment/save" method="GET" class="d-flex flex-column p-1">
                     <span class="mb-1 fs-5">留言者姓名</span>
                     <div class="form-group ">
                         <input type="text" class="p-2 form-control mb-3" id="inputName" name="name" placeholder="">
@@ -88,7 +84,7 @@
                     </div>
                     <span class="mb-1 fs-5">文章內容</span>
                     <div class="form-group w-100">
-                        <textarea type="text" class="p-2 form-control mb-3" id="inputContent" name="content"  placeholder="" rows="4"></textarea>
+                        <textarea type="text" class="p-2 form-control mb-3" id="inputContent" name="content"  placeholder=""></textarea>
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">清除內容</button>

@@ -43,7 +43,7 @@
         border-radius: 50px;
     }
     /* ------------------------------------special--------------------------------------- */
-    #special .container-xxl {
+    #special .container {
         height: 1000px;
     }
     #special img {
@@ -52,7 +52,7 @@
         border-radius: 50%;
      }
     /* ------------------------------------merch--------------------------------------- */
-    #merch .container-xxl {
+    #merch .container {
         height: 750px!important;
     }
     #merch .stars svg{
@@ -78,22 +78,22 @@
 
     /* -----------------------------------1200-------------------------------------- */
     @media(max-width:1200px) {
-        #gallery .container-xxl {
+        #gallery .container {
             height: 500px;
         }
-        #card-1 .container-xxl {
+        #card-1 .container {
             height: 1200px;
         }
     }
     /* -----------------------------------992-------------------------------------- */
     @media(max-width:992px) {
-        #gallery .container-xxl {
+        #gallery .container {
             height: 400px;
         }
-        #card-2 .container-xxl {
+        #card-2 .container {
             height: 1800px;
         }
-        #merch .container-xxl {
+        #merch .container {
         height: 1000px;
         }
         #merch #img-400-400 {
@@ -110,23 +110,23 @@
             height: 530px;
         }
 
-        #intro .container-xxl {
-            height: 1100px;
+        #intro .container {
+            height: 1300px;
         }
 
-        #gallery .container-xxl {
-            height: 300px;
+        #gallery .container {
+            height: 400px;
         }
 
-        #card-1 .container-xxl {
+        #card-1 .container {
             height: 2100px;
         }
 
-        #card-2 .container-xxl {
+        #card-2 .container {
             height: 4400px;
         }
 
-        #special .container-xxl {
+        #special .container {
             height: 1400px;
         }
         #special #spe-div1 , #special #spe-div2 {
@@ -140,7 +140,7 @@
             text-align: center;
         }
 
-        #merch .container-xxl {
+        #merch .container {
             height: 500px;
         }
 
@@ -155,10 +155,10 @@
 
     /* -----------------------------------650-------------------------------------- */
     @media(max-width:650px) {
-        #intro .container-xxl {
+        #intro .container {
             height: 1300px;
         }}
-        #merch .container-xxl {
+        #merch .container {
             height: 300px;
         }
     }
@@ -196,7 +196,7 @@
         </section>
         <!------------------ intro ------------------>
         <section id="intro">
-            <div class="container-xxl container-xl container-lg container-md p-2">
+            <div class="container p-2">
                 <div class="row p-5 d-flex justify-content-center">
                         <p class="h2 text-center mb-4">Raw Denim Heirloom Man Braid</p>
                         <p id="intro-con-row-p2" class="col-8 fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
@@ -205,12 +205,12 @@
                         </div>
                 </div>
                 <div class="row">
-                    @foreach ($data2 as $news)
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                    {{-- @foreach ($data2 as $news)
+                        <div class="col-sm-12 col-md-4">
                             <div class="d-flex justify-content-center mb-4">
                             @if ($news->img == "" || $news->img == null)
-                                <div class="d-flex justify-content-center mb-4">
-                                    <div class="imgNull">{{mb_substr($news->title,0,1,"utf-8")}}</div>
+                                <div class="imgNull d-flex justify-content-center">
+                                    {{mb_substr($news->title,0,1,"utf-8")}}
                                 </div>
                             @else
                                 <img src="{{$news->img}}" alt="" >
@@ -223,19 +223,49 @@
                             </p>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach --}}
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="{{asset('img/wave.png')}}" alt="">
+                        </div>
+                        <p class="h5 text-center">Shooting Stars</p>
+                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
+                        <p class="fs-7 text-center text-primary">Learn More
+                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="{{asset('img/scisser.png')}}" alt="">
+                        </div>
+                        <p class="h5 text-center">The Catalyzer</p>
+                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
+                        <p class="fs-7 text-center text-primary">Learn More
+                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex justify-content-center mb-4">
+                            <img src="{{asset('img/user-1.png')}}" alt="">
+                        </div>
+                        <p class="h5 text-center">Neptune</p>
+                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
+                        <p class="fs-7 text-center text-primary">Learn More
+                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                        </p>
+                    </div>
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
-                        <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
+                    <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
                 </div>
             </div>
         </section>
         <!------------------ gallery ------------------>
         <section id="gallery" class="d-flex justify-content-center align-items-center">
-            <div class="container-xxl container-xl container-lg container-md container-sm d-flex flex-column align-items-center">
+            <div class="container d-flex flex-column align-items-center">
                 <div class="row mb-4">
-                    <h2 class="col-xxl-5 col-md-12">Master Cleanse Reliac Heirloom</h2>
-                    <p class="col-xxl-7 col-md-12 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom.</p>
+                    <h2 class="col-5 col-md-12">Master Cleanse Reliac Heirloom</h2>
+                    <p class="col-7 col-md-12 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom.</p>
                 </div>
                 <div id="gallery-box" class="row w-100 d-flex">
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
@@ -265,7 +295,7 @@
         </section>
         <!------------------ pricing ------------------>
         <section id="pricing">
-            <div class="container-xxl container-xl container-lg container-md d-flex justify-content-center align-items-center">
+            <div class="container d-flex justify-content-center align-items-center">
                 <div class="row w-75 d-flex flex-column align-items-center">
                     <h2 class="col text-center">Pricing</h2>
                     <p class="col text-center text-secondary">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p>
@@ -325,15 +355,15 @@
         </section>
         <!------------------ card-1 ------------------>
         <section id="card-1">
-            <div class="container-xxl container-xl container-lg container-md container-sm">
+            <div class="container">
                 <div class="row mb-4">
-                    <h2 class="col-xxl-5 col-xl-5 col-lg-5 d-flex flex-column">Pitchfork Kickstarter Taxidermy
+                    <h2 class="col-5 col-xl-5 col-lg-5 d-flex flex-column">Pitchfork Kickstarter Taxidermy
                         <span id="span-1" class="mt-2 bg-primary"></span>
                     </h2>
-                    <p class="col-xxl-7 col-xl-7 col-lg-7 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+                    <p class="col-7 col-xl-7 col-lg-7 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
                 </div>
                 <div class="row">
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/720-400.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -343,7 +373,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/721-401.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -353,7 +383,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/722-402.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -363,7 +393,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/723-403.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -378,8 +408,8 @@
         </section>
         <!------------------ special ------------------>
         <section id="special">
-            <div class="container-xxl container-xl container-lg container-md container-sm d-flex justify-content-center align-items-center">
-                <div class="row w-75 d-flex flex-column justify-content-center">
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="row w-75 d-flex flex-column justify-content-center align-items-center">
                     <div id="spe-div1" class="col p-3 d-flex border-bottom">
                         <div class="d-flex justify-content-center m-4">
                             <img src="{{asset('img/wave.png')}}" class="imgCircle" alt="" onerror="errorImg(this)">
@@ -417,8 +447,8 @@
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center mt-2">
-                        <div class="col-1 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary fs-6">Button</button>
                         </div>
                     </div>
                 </div>
@@ -427,7 +457,7 @@
         </section>
         <!------------------ merch ------------------>
         <section id="merch">
-            <div class="container-xxl container-xl container-lg container-md">
+            <div class="container">
                 <div class="row d-flex flex-column flex-lg-row">
                     <div class="col-12 col-lg-6 h-auto sm-height">
                         <img src="{{asset('img/400-400.png')}}" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="" onerror="errorImg(this)">
@@ -495,9 +525,9 @@
         </section>
         <!------------------ card-2 ------------------>
         <section id="card-2">
-            <div class="container-xxl container-xl container-lg container-md d-flex justify-content-center align-items-center">
+            <div class="container d-flex justify-content-center align-items-center">
                 <div class="row d-flex flex-wrap justify-content-center">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -507,7 +537,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -517,7 +547,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -527,7 +557,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -537,7 +567,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -547,7 +577,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -557,7 +587,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -567,7 +597,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -598,7 +628,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label class="text-secondary mb-2" for="exampleFormControlTextarea1">Message</label>
-                            <textarea class="form-control mb-2" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            <textarea class="form-control mb-2" id="exampleFormControlTextarea1" style="resize:none;width:100%;height:100px;"></textarea>
                         </div>
                         <button type="button" class="btn w-100 btn-primary mb-2">button</button>
                         <small id="" class="form-text text-muted">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</small>

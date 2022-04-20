@@ -379,7 +379,7 @@
                         </div>
                 </div>
                 <div class="row">
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
                             <img src="{{asset('img/wave.png')}}" alt="">
                         </div>
@@ -389,7 +389,7 @@
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
                             <img src="{{asset('img/scisser.png')}}" alt="">
                         </div>
@@ -399,7 +399,7 @@
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
                             <img src="{{asset('img/user-1.png')}}" alt="">
                         </div>
@@ -518,7 +518,7 @@
                     <p class="col-xxl-7 col-xl-7 col-lg-7 fs-7 text-secondary">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
                 </div>
                 <div class="row">
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/720-400.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -528,7 +528,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/721-401.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -538,7 +538,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/722-402.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -548,7 +548,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-3">
+                    <div class="col-sm-12 col-md-6 col-xl-3 p-3">
                         <div class="card p-4 bg-light border-0">
                             <img src="{{asset('img/723-403.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -682,7 +682,7 @@
         <section id="card-2">
             <div class="container-xxl container-xl container-lg container-md d-flex justify-content-center align-items-center">
                 <div class="row d-flex flex-wrap justify-content-center">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="">
                             <div class="card-body">
@@ -692,7 +692,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -702,7 +702,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -712,7 +712,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -722,7 +722,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -732,7 +732,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -742,7 +742,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="">
                             <div class="card-body">
@@ -752,7 +752,7 @@
                             </div>
                           </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-10 p-1">
+                    <div class="col-sm-10 col-md-6 col-lg- p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="">
                             <div class="card-body">

@@ -20,6 +20,12 @@ Route::get('/', [Controller::class, 'index']);
 Route::get('/comment', [Controller::class, 'comment']);
 Route::get('/comment/save', [Controller::class, 'save_comment']);
 
+Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
+Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
+
+Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
+
+
 Route::get('/index', [ShoppingCartController::class, 'index']);
 
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);

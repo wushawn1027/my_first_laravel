@@ -35,7 +35,7 @@
     }
     /* ---------------------------------container------------------------------------ */
 
-    .container-xxl {
+    .container {
         height: 700px;
     }
 
@@ -43,7 +43,7 @@
     .logo {
         height: 60px;
     }
-    nav .container-xxl{
+    nav .container{
         width: 80%;
         height: 90px;
         position: relative;
@@ -96,32 +96,32 @@
     }
 
     /* ------------------------------------footer--------------------------------------- */
-    #links .container-xxl {
+    #links .container {
         height: 300px;
     }
-    #copyright .container-xxl {
+    #copyright .container {
         height: 50px;
     }
     /* ------------------------------------media--------------------------------------- */
     /* -----------------------------------1300-------------------------------------- */
     @media(max-width:1300px) {
-        nav .container-xxl{
+        nav .container{
             width: 90%;
         }
     }
     /* -----------------------------------992-------------------------------------- */
     @media(max-width:992px) {
 
-        #links .container-xxl {
+        #links .container {
             height: 700px;
         }
-        #copyright .container-xxl {
+        #copyright .container {
             height: 100px;
         }
     }
     /* -----------------------------------768-------------------------------------- */
     @media(max-width:768px) {
-        nav .container-xxl #nav-ul {
+        nav .container #nav-ul {
             display: none!important;
         }
         nav .burgerImg {
@@ -138,7 +138,7 @@
             display: block!important;
         } */
 
-        #links .container-xxl {
+        #links .container {
             height: 1200px;
         }
         #links #div-logo2 {
@@ -150,7 +150,7 @@
 <body>
     <!----------------- nav ---------------->
     <nav>
-        <div class="container-xxl">
+        <div class="container">
             <div class="d-flex">
                 <a href="/bootstrap" class="p-3 me-auto">
                     <img src="{{asset('img/logo.jpg')}}" class="logo" alt="" onerror="errorImg(this)">
@@ -217,7 +217,7 @@
     <footer>
         <!------------------ links ------------------>
         <section id="links">
-            <div class="container-xxl container-xl container-lg container-md d-flex align-items-center">
+            <div class="container d-flex align-items-center">
                 <div class="row w-100 d-flex align-items-center">
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
                         <div id="div-logo2" class="w-100 d-flex xxl:justify-content-start p-1">
@@ -260,7 +260,7 @@
         </section>
         <!------------------ copyright ------------------>
         <section id="copyright" class="bg-light">
-            <div class="container-xxl container-xl container-lg container-md container-sm d-flex align-items-center">
+            <div class="container d-flex align-items-center">
                 <div id="copy-row" class="row w-100 d-flex flex-row justify-content-between align-items-center">
                     <div id="" class="d-flex justify-content-center col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12">
                         <p class="text-muted">© 2020 Tailblocks — </p>
@@ -293,6 +293,6 @@
         }
     </script>
 
-    
+
 </body>
 </html>
