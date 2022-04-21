@@ -200,7 +200,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
                 <p class="fs-7 text-black">
-                    <a href="/bootstrap"><i class="fa-solid fa-arrow-left me-1"></i></a>
+                    <a href="/"><i class="fa-solid fa-arrow-left me-1"></i></a>
                     返回購物
                 </p>
                 <div class="">

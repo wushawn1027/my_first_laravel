@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('title')
-    Shopping-Step1
+    Shopping-Step4
 @endsection
 
 @section('css')
@@ -216,7 +216,7 @@
             </div>
             <div class="d-flex justify-content-end align-items-center pt-3 pb-3">
                 <div class="">
-                    <button type="button" onclick="location.href='/bootstrap'" class="btn btn-primary btn-lg fs-6">返回首頁</button>
+                    <button type="button" onclick="location.href='/index'" class="btn btn-primary btn-lg fs-6">返回首頁</button>
                 </div>
             </div>
         </section>

@@ -9,7 +9,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-    crossorigin="anonymous">
+    crossorigin="anonymous">)
     <title>
         @yield('title')
     </title>
@@ -152,21 +152,21 @@
     <nav>
         <div class="container">
             <div class="d-flex">
-                <a href="/bootstrap" class="p-3 me-auto">
+                <a href="/" class="p-3 me-auto">
                     <img src="{{asset('img/logo.jpg')}}" class="logo" alt="" onerror="errorImg(this)">
                 </a>
                 <ul id="nav-ul" class="ms-auto d-flex justify-content-end align-items-center p-0 m-0">
                     <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder hover:bg-light">Blog</a>
+                        <a href="" class="fs-7 fw-bolder hover:bg-light">商品管理</a>
                     </li>
                     <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">Portfolio</a>
+                        <a href="" class="fs-7 fw-bolder">Banner</a>
                     </li>
                     <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">About</a>
+                        <a href="/comment" class="fs-7 fw-bolder">Comment</a>
                     </li>
                     <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">Contact</a>
+                        <a href="" class="fs-7 fw-bolder">other</a>
                     </li>
                     <li class="me-3">
                         <a  href="/shoppingS1"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
@@ -190,16 +190,16 @@
                 <div id="burgerMenu">
                     <div id="burgerMenuBox" class="w-100 bg-light p-4">
                         <button  class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Blog</a>
+                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">商品管理</a>
                             </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Portfolio</a>
+                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Banner</a>
                         </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">About</a>
+                            <a id="burgerMenuBoxA" href="/comment" class="fs-7 fw-bolder">Comment</a>
                         </button>
                         <button class="btn btn-link btn-block border-bottom m-0 mb-3">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">Contact</a>
+                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">other</a>
                         </button>
                         <div class="w-100 d-flex justify-content-center align-items-center m-0">
                             <a href="/shoppingS1"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
@@ -292,7 +292,6 @@
             img.onerror = null;
         }
     </script>
-
 
 </body>
 </html>

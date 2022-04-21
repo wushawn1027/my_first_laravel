@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\BsController;
+use App\Http\Controllers\BannerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 
 
-Route::get('/index', [ShoppingCartController::class, 'index']);
+// Route::get('/', [Controller::class, 'index']);
 
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
 
@@ -39,9 +40,35 @@ Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
 Route::get('/login', [Controller::class, 'login']);
 
 
+// Banner 管理頁面 手工建立版本 (遵照resful API的規定)
+// Route::get('/banner', [BannerController::class, 'index']);
+// Route::post('/banner', [BannerController::class, 'store']);
+// Route::get('/banner/create', [BannerController::class, 'create']);
+// Route::get('/banner/{id}', [BannerController::class, 'show']); // 單筆檢視頁
+// Route::post('/banner/{id}', [BannerController::class, 'edit']);
+// Route::patch('/banner/{id}', [BannerController::class, 'update']);
+// Route::delete('/banner/{id}', [BannerController::class, 'destory']);
 
-Route::get('/microsoft', [NewsController::class, 'micro']);
+// 以下一行抵七行
 
-Route::get('/color', [NewsController::class, 'color']);
+// Route::resource('banner', BannerController::class);
 
-Route::get('/dice', [NewsController::class, 'dice']);
+// 部分參考resful API 推薦的寫法
+
+Route::prefix('banner')->group(function() { // Banner管理相關路由 群組化
+
+    Route::get('/', [BannerController::class, 'index']);
+    Route::get('/create', [BannerController::class, 'create']);
+    Route::post('/store', [BannerController::class, 'store']);
+    Route::get('/edit/{id}', [BannerController::class, 'edit']);
+    Route::post('/update/{id}', [BannerController::class, 'update']);
+    Route::post('/delete/{id}', [BannerController::class, 'destory']);
+
+});
+
+
+// Route::get('/microsoft', [NewsController::class, 'micro']);
+
+// Route::get('/color', [NewsController::class, 'color']);
+
+// Route::get('/dice', [NewsController::class, 'dice']);

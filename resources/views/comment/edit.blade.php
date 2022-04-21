@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('title')
-    Comment
+    Comment-Edit
 @endsection
 
 @section('css')
@@ -38,7 +38,7 @@
     <main class="pt-5 pb-5 d-flex justify-content-center">
         <section id="shopping-comment" class="container-xxl rounded-3 p-5 d-flex flex-column">
             <div class="form">
-                <h1>歡迎留言</h1>
+                <h1 class="text-primary fw-bolder">編輯留言</h1>
                 <form action="/comment/update/{{$edit->id}}" method="GET" class="d-flex flex-column p-1">
                         <span class="mb-1 fs-5">留言者姓名</span>
                         <div class="form-group ">

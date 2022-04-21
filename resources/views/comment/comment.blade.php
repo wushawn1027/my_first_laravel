@@ -17,14 +17,15 @@
     }
     .commentZone {
         height: 100%;
+        border-bottom: 1px solid rgb(167, 167, 167);
     }
     .article {
         height: 150px;
-        border: 1px solid rgb(133, 131, 131);
+        border: 1px solid darkblue;
         border-radius: 10px;
     }
     .a-box {
-        border-bottom: 1px solid rgb(175, 170, 170);
+        border-bottom: 1px solid rgb(2, 2, 112);
     }
     .a-content {
         height: 100%;
@@ -49,8 +50,8 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <section id="shopping-comment" class="container-xxl rounded-3 p-5 d-flex flex-column">
-            <h1 class="w-100 mb-3">留言區</h1>
+        <section id="shopping-comment" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
+            <h1 class="w-100 mb-3 text-primary fw-bolder">留言區</h1>
             <div class="w-100 commentZone">
                 @foreach ($data1 as $comments)
                 <div class="article w-100 d-flex flex-column p-2 mb-3">
@@ -59,20 +60,20 @@
                             <h2 class="a-title">{{$comments->title}}</h2>
                             <span class="a-name ms-2">{{$comments->name}}</span>
                         </div>
-                        <span class="a-time w-50 d-flex justify-content-end align-items-center">{{$comments->created_at}}</span>
+                        <span class="a-time w-50 d-flex justify-content-end align-items-center">{{substr($comments->created_at,5,2).'月'.substr($comments->created_at,8,2).'號'}}</span>
                     </div>
                     <div class="a-content">
                         {{$comments->content}}
                     </div>
                     <div class="">
-                        <a href="/comment/delete/{{$comments->id}}">刪除</a>
-                        <a href="/comment/edit/{{$comments->id}}">編輯</a>
+                        <a href="/comment/delete/{{$comments->id}}" class="me-1 text-secondary"><i class="fa-solid fa-trash-can"></i> 刪除</a>
+                        <a href="/comment/edit/{{$comments->id}}" class="ms-1 text-secondary"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
                     </div>
                 </div>
                 @endforeach
             </div>
-            <div class="form">
-                <h1>歡迎留言</h1>
+            <div class="form mt-2">
+                <h1 class="text-primary fw-bolder">歡迎留言</h1>
                 <form action="/comment/save" method="GET" class="d-flex flex-column p-1">
                     <span class="mb-1 fs-5">留言者姓名</span>
                     <div class="form-group ">
