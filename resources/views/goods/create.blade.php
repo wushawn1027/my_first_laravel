@@ -1,7 +1,7 @@
 @extends('template.template')
 
 @section('title')
-    Banner圖片新增
+    商品新增
 @endsection
 
 @section('css')
@@ -31,18 +31,21 @@
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
         <section id="bannerCreate" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
-            <h1 class="w-100 mb-3 text-primary fw-bolder">Banner新增</h1>
+            <h1 class="w-100 mb-3 text-primary fw-bolder">商品新增</h1>
             <div class="mb-4">
-                <form class="d-flex flex-column" action="/banner/store" method="post" enctype="multipart/form-data">
+                <form class="d-flex flex-column" action="/goods/store" method="post" enctype="multipart/form-data">
                     @csrf
-                    <label for="bannerImg" class="fs-5 mb-2">Banner圖片上傳</label>
-                    <input type="file" name="banner_img" id="bannerImg" class="mb-2 text-secondary">
+                    <label for="goodsName" class="fs-5 mb-2">商品名稱</label>
+                    <input type="text" name="name" id="goodsName" class="mb-2 text-secondary">
 
-                    <label for="bannerOpcaity" class="fs-5 mb-2">透明度設定</label>
-                    <input type="text" name="img_opacity" id="imgOpcaity" class="mb-2">
+                    <label for="goodsPrice" class="fs-5 mb-2">商品價格</label>
+                    <input type="text" name="price" id="goodsPrice" class="mb-2">
 
-                    <label for="bannerWeight" class="fs-5 mb-2">權重設定</label>
-                    <input type="number" name="weight" id="weight" class="mb-2">
+                    <label for="goodsNum" class="fs-5 mb-2">商品數量</label>
+                    <input type="number" name="quantity" id="goodsNum" class="mb-2">
+
+                    <label for="goodsIntro" class="fs-5 mb-2">商品介紹</label>
+                    <input type="text" name="introduction" id="goodsIntro" class="mb-2 text-secondary">
                 </form>
             </div>
                     <div class="d-flex justify-content-center">

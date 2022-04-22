@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\BsController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\GoodsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,11 +31,8 @@ Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 // Route::get('/', [Controller::class, 'index']);
 
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
-
 Route::get('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
-
 Route::get('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
-
 Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
 
 Route::get('/login', [Controller::class, 'login']);
@@ -65,6 +63,30 @@ Route::prefix('banner')->group(function() { // Banner管理相關路由 群組�
     Route::post('/delete/{id}', [BannerController::class, 'destory']);
 
 });
+
+
+
+Route::prefix('goods')->group(function() {
+
+    Route::get('/', [GoodsController::class, 'index']);
+    Route::get('/create', [GoodsController::class, 'create']);
+    Route::post('/store', [GoodsController::class, 'store']);
+    Route::get('/edit/{id}', [GoodsController::class, 'edit']);
+    Route::post('/update/{id}', [GoodsController::class, 'update']);
+    Route::post('/delete/{id}', [GoodsController::class, 'destory']);
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Route::get('/microsoft', [NewsController::class, 'micro']);
