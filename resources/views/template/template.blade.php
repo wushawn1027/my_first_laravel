@@ -157,7 +157,7 @@
                 </a>
                 <ul id="nav-ul" class="ms-auto d-flex justify-content-end align-items-center p-0 m-0">
                     <li class="me-5">
-                        <a href="/goods" class="fs-7 fw-bolder hover:bg-light">商品管理</a>
+                        <a href="/product" class="fs-7 fw-bolder hover:bg-light">商品管理</a>
                     </li>
                     <li class="me-5">
                         <a href="/banner" class="fs-7 fw-bolder">Banner</a>
@@ -190,7 +190,7 @@
                 <div id="burgerMenu">
                     <div id="burgerMenuBox" class="w-100 bg-light p-4">
                         <button  class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">商品管理</a>
+                            <a id="burgerMenuBoxA" href="/product" class="fs-7 fw-bolder">商品管理</a>
                             </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
                             <a id="burgerMenuBoxA" href="/banner" class="fs-7 fw-bolder">Banner</a>

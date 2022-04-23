@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $quantity
  * @property string $introduction
  */
-class Goods extends Model
+class Product extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.

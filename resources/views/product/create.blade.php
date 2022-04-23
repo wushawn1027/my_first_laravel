@@ -33,27 +33,25 @@
         <section id="bannerCreate" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
             <h1 class="w-100 mb-3 text-primary fw-bolder">商品新增</h1>
             <div class="mb-4">
-                <form class="d-flex flex-column" action="/goods/store" method="post" enctype="multipart/form-data">
+                <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data">
                     @csrf
-                    <label for="goodsName" class="fs-5 mb-2">商品名稱</label>
-                    <input type="text" name="name" id="goodsName" class="mb-2 text-secondary">
+                    <label for="productName" class="fs-5 mb-2">商品名稱</label>
+                    <input type="text" name="name" id="productName" class="mb-2 text-secondary">
 
-                    <label for="goodsPrice" class="fs-5 mb-2">商品價格</label>
-                    <input type="text" name="price" id="goodsPrice" class="mb-2">
+                    <label for="productPrice" class="fs-5 mb-2">商品價格</label>
+                    <input type="text" name="price" id="productPrice" class="mb-2">
 
-                    <label for="goodsNum" class="fs-5 mb-2">商品數量</label>
-                    <input type="number" name="quantity" id="goodsNum" class="mb-2">
+                    <label for="productNum" class="fs-5 mb-2">商品數量</label>
+                    <input type="number" name="quantity" id="productNum" class="mb-2">
 
-                    <label for="goodsIntro" class="fs-5 mb-2">商品介紹</label>
-                    <input type="text" name="introduction" id="goodsIntro" class="mb-2 text-secondary">
-                </form>
-            </div>
+                    <label for="productIntro" class="fs-5 mb-2">商品介紹</label>
+                    <input type="text" name="introduction" id="productIntro" class="mb-2">
+
                     <div class="d-flex justify-content-center">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">取消</button>
                         <button type="submit" id="btnSend" class="btn btn-primary btn-lg fs-6 ms-1">新增</button>
                     </div>
                 </form>
-            </div>
 
         </section>
     </main>

@@ -6,7 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\BsController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,20 +60,20 @@ Route::prefix('banner')->group(function() { // Banner管理相關路由 群組�
     Route::post('/store', [BannerController::class, 'store']);
     Route::get('/edit/{id}', [BannerController::class, 'edit']);
     Route::post('/update/{id}', [BannerController::class, 'update']);
-    Route::post('/delete/{id}', [BannerController::class, 'destory']);
+    Route::get('/delete/{id}', [BannerController::class, 'destory']);
 
 });
 
 
 
-Route::prefix('goods')->group(function() {
+Route::prefix('product')->group(function() {
 
-    Route::get('/', [GoodsController::class, 'index']);
-    Route::get('/create', [GoodsController::class, 'create']);
-    Route::post('/store', [GoodsController::class, 'store']);
-    Route::get('/edit/{id}', [GoodsController::class, 'edit']);
-    Route::post('/update/{id}', [GoodsController::class, 'update']);
-    Route::post('/delete/{id}', [GoodsController::class, 'destory']);
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/create', [ProductController::class, 'create']);
+    Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/edit/{id}', [ProductController::class, 'edit']);
+    Route::post('/update/{id}', [ProductController::class, 'update']);
+    Route::get('/delete/{id}', [ProductController::class, 'destory']);
 
 });
 
