@@ -36,7 +36,7 @@
                 <form class="d-flex flex-column" action="/product/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
-                    <input type="text" name="name" id="productName" class="mb-2 text-secondary" value="{{$edit->name}}">
+                    <input type="text" name="name" id="productName" class="mb-2" value="{{$edit->name}}">
 
                     <label for="productPrice" class="fs-5 mb-2">商品價格</label>
                     <input type="text" name="price" id="productPrice" class="mb-2" value="{{$edit->price}}">
