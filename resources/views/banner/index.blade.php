@@ -55,36 +55,23 @@
                         </tr>
                       </thead>
                       <tbody>
+
+                        @foreach ($banners as $banner)
                         <tr>
                             <td>
-                                <img src="{{asset('img/400-400.png')}}" alt="" class="bannerImg">
+                                <img src="{{$banner->img_path}}" alt="" class="bannerImg" style="opacity: {{$banner->img_opacity}}">
                             </td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-success">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="{{asset('img/400-400.png')}}" alt="" class="bannerImg">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-success">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
+                            <td>{{$banner->weight}}</td>
+                            <td class="">
+                                <button onclick="location.href='/banner/edit/{{$banner->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
+                                <button onclick="document.querySelector('#deleteForm{{$banner->id}}').submit();" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</button>
+                                <form action="/banner/delete/{{$banner->id}}" method="post" hidden id="deleteForm{{$banner->id}}">
+                                    @csrf
+                                </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <img src="{{asset('img/400-400.png')}}" alt="" class="bannerImg">
-                            </td>
-                            <td>1</td>
-                            <td>
-                                <button class="btn btn-success">編輯</button>
-                                <button class="btn btn-danger">刪除</button>
-                            </td>
-                        </tr>
+                        @endforeach
+
                       </tbody>
                 </table>
             </div>
@@ -95,10 +82,15 @@
 @section('script')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready( function () {
-            $('#bannerList').DataTable();
-        } );
-    </script>
+<script>
+    $(document).ready( function () {
+        $('#bannerList').DataTable();
+    } );
+</script>
+{{-- <script>
+    function delete_banner($id){
+        document.querrySelector('#deleteForm'+$id).submit();
+    }
+</script> --}}
 @endsection
 

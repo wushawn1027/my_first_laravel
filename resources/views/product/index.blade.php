@@ -26,10 +26,17 @@
     .tbodyTr {
         height: 100px;
     }
-
+    .productImg {
+        width: 100px;
+        height: 100px;
+    }
+    .btnED {
+        width: 100%;
+        height: 100%;
+    }
     @media(max-width:992px) {
         #product {
-            width: 500px;
+            width: 600px;
         }
     }
     </style>
@@ -47,6 +54,7 @@
                 <table id="productList" class="display">
                     <thead>
                         <tr>
+                          <th>商品圖片</th>
                           <th>商品名稱</th>
                           <th>商品價格</th>
                           <th>商品數量</th>
@@ -58,13 +66,16 @@
 
                           @foreach ($data as $new)
                           <tr class="tbodyTr">
+                            <td>
+                                <img src="{{$banner->img_path}}" alt="" class="productImg">
+                            </td>
                             <td class="fw-bolder">{{$new->name}}</td>
                             <td>{{$new->price}} 元</td>
                             <td>{{$new->quantity}}</td>
                             <td>{{$new->introduction}}</td>
                             <td>
-                                <div class="d-flax flex-warp btnED">
-                                    <a href="/product/edit/{{$new->id}}" class="me-4 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
+                                <div class="btnED ">
+                                    <a href="/product/edit/{{$new->id}}" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
                                     <a href="/product/delete/{{$new->id}}" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</a>
                                 </div>
                             </td>

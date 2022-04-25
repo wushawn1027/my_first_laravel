@@ -60,7 +60,7 @@ Route::prefix('banner')->group(function() { // Banner管理相關路由 群組�
     Route::post('/store', [BannerController::class, 'store']);
     Route::get('/edit/{id}', [BannerController::class, 'edit']);
     Route::post('/update/{id}', [BannerController::class, 'update']);
-    Route::get('/delete/{id}', [BannerController::class, 'destory']);
+    Route::post('/delete/{id}', [BannerController::class, 'destory']);
 
 });
 

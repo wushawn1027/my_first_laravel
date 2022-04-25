@@ -39,7 +39,7 @@
                     <input type="text" name="name" id="productName" class="mb-2">
 
                     <label for="productPrice" class="fs-5 mb-2">商品價格</label>
-                    <input type="text" name="price" id="productPrice" class="mb-2">
+                    <input type="number" name="price" id="productPrice" class="mb-2">
 
                     <label for="productNum" class="fs-5 mb-2">商品數量</label>
                     <input type="number" name="quantity" id="productNum" class="mb-2">
@@ -47,7 +47,7 @@
                     <label for="productIntro" class="fs-5 mb-2">商品介紹</label>
                     <input type="text" name="introduction" id="productIntro" class="mb-2">
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-5">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">取消</button>
                         <button type="submit" id="btnSend" class="btn btn-primary btn-lg fs-6 ms-1">新增</button>
                     </div>
