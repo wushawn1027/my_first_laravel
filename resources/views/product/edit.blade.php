@@ -33,8 +33,14 @@
         <section id="bannerCreate" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
             <h1 class="w-100 mb-3 text-primary fw-bolder">商品編輯</h1>
             <div class="mb-4">
+                <div>原始圖片</div>
+                <img src="{{$edit->img_path}}" alt="" style="height:100px; weight:150px;">
                 <form class="d-flex flex-column" action="/product/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
                     @csrf
+
+                    <label for="productImg" class="fs-5 mb-2">商品圖片上傳</label>
+                    <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary">
+                    
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
                     <input type="text" name="name" id="productName" class="mb-2" value="{{$edit->name}}">
 

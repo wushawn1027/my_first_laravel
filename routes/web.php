@@ -27,9 +27,6 @@ Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 
 Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 
-
-Route::get('/', [BsController::class, 'index']);
-
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
 Route::get('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
 Route::get('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
@@ -79,7 +76,9 @@ Route::prefix('product')->group(function() {
 
 
 
-
+Route::get('/', [BsController::class, 'index']);
+Route::get('/', [BsController::class, 'merch']);
+// Route::get('/', [BsController::class, 'card2']);
 
 
 

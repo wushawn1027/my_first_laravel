@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function index(){
 
-        $data = Product::orderby('id','desc')->get();
+        $datas = Product::orderby('id','desc')->get();
 
-        return view('product.index',compact('data'));
+        return view('product.index',compact('datas'));
     }
 
     public function create(){
@@ -22,7 +22,11 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
+        $path = Storage::disk('local')->put('public/product', $request->product_img);
+        $path = str_replace("public","storage",$path);
+
         Product::create([
+            'img_path' => '/'.$path,
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
@@ -41,19 +45,34 @@ class ProductController extends Controller
 
     public function update($id, Request $request){
 
-        Product::where('id', $id)->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'introduction' => $request->introduction,
-        ]);
+        $products = Product::find($id);
+
+        if ($request->hasfile('product_img')){
+
+            $path = Storage::disk('local')->put('public/product', $request->product_img);
+            $path = str_replace("public","storage",$path);
+
+            $target = str_replace("storage","public",$products->img_path);
+            Storage::disk('local')->delete($target);
+
+            $products->img_path = '/'.$path;
+        }
+
+            $products->name = $request->name;
+            $products->price = $request->price;
+            $products->quantity = $request->quantity;
+            $products->introduction = $request->introduction;
+            $products->save();
 
         return redirect('/product');
     }
 
     public function destory($id){
 
-        Product::where('id', $id)->delete();
+        $products = Product::find($id);
+        $target = str_replace("storage","public",$products->img_path);
+        Storage::disk('local')->delete($target);
+        $products->delete();
 
         return redirect('/product');
     }

@@ -35,6 +35,10 @@
             <div class="mb-4">
                 <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data">
                     @csrf
+
+                    <label for="productImg" class="fs-5 mb-2">商品圖片上傳</label>
+                    <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary">
+
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
                     <input type="text" name="name" id="productName" class="mb-2">
 

@@ -55,13 +55,22 @@
     #merch .container {
         height: 750px!important;
     }
-    #merch .stars svg{
+    #merch #img-400-400 {
+        width: 100%;
+        height: 488px;
+    }
+    #merch .stars svg {
             width: 16px;
             height: 16px;
         }
-    #merch .ball{
+    #merch .ball {
         width: 20px;
         height: 20px;
+    }
+    /* ------------------------------------card-2--------------------------------------- */
+    #card-2 #card2Img {
+        width: 100%;
+        height: 160px;
     }
     /* ------------------------------------map--------------------------------------- */
     #map .container-fluid {
@@ -97,8 +106,9 @@
         height: 1000px;
         }
         #merch #img-400-400 {
-            height: 100%;
-        }
+        width: auto;
+        height: 256px;
+    }
         #merch .sm-height {
         height: 256px !important;
         }
@@ -459,12 +469,14 @@
         <section id="merch">
             <div class="container">
                 <div class="row d-flex flex-column flex-lg-row">
+                    @foreach ($merchs as $data)
+
                     <div class="col-12 col-lg-6 h-auto sm-height">
-                        <img src="{{asset('img/400-400.png')}}" id="img-400-400" class="merch-img w-100 h-100 rounded " alt="" onerror="errorImg(this)">
+                        <img src="{{$data->img_path}}" id="img-400-400" class="merch-img rounded " alt="" onerror="errorImg(this)">
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
-                        <p class="text-secondary">BRAND NAME</p>
-                        <h2 class="">The Catcher in the Rye</h2>
+                        <p class="text-secondary">商品數量:{{$data->quantity}}</p>
+                        <h2 class="">{{$data->name}}</h2>
                         <div class="d-flex">
                             <div class="d-flex border-end">
                                 <div class="stars">
@@ -492,7 +504,7 @@
                                 <i class="fa-solid fa-comment text-secondary"></i>
                             </div>
                         </div>
-                        <p class="text-secondary">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+                        <p class="text-secondary">{{$data->introduction}}</p>
                         <div class="d-flex border-bottom">
                             <div class="d-flex align-items-center text-secondary">
                                 <span class="m-xl-2">Color</span>
@@ -511,7 +523,7 @@
                             </div>
                         </div>
                         <div class="p-2 d-flex justify-content-between align-items-center">
-                            <p class="fs-4">$58.00</p>
+                            <p class="fs-4">{{$data->price}} 元</p>
                             <div class="d-flex p-2 align-items-center">
                                 <button type="button" class="btn btn-primary btn-lg fs-6 m-2">Button</button>
                                 <button class="rounded-circle h-50 bg-gray-200 p-3 border-0 d-flex align-items-center justify-content-center text-secondary">
@@ -520,14 +532,33 @@
                             </div>
                         </div>
                     </div>
+
+                    @endforeach
                 </div>
             </div>
         </section>
         <!------------------ card-2 ------------------>
-        <section id="card-2">
+        {{-- <section id="card-2">
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="row d-flex flex-wrap justify-content-center">
+
+                    @foreach ($cards as $card)
+
                     <div class="col-sm-10 col-md-6 col-lg-3 p-1">
+                        <div class="card p-3 border-0">
+                            <img src="{{$card->img_path}}" id="card2Img" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
+                            <div class="card-body">
+                              <p class="fs-9 text-secondary">商品數量:{{$card->quantity}}</p>
+                              <h5 class="card-title">{{$card->name}}</h5>
+                              <p class="card-text text-secondary">{{$card->introduction}}</p>
+                              <p class="card-text text-secondary">{{$card->price}} 元</p>
+                            </div>
+                          </div>
+                    </div>
+
+                    @endforeach
+
+                    {{-- <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
                             <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
                             <div class="card-body">
@@ -606,10 +637,10 @@
                               <p class="card-text text-secondary">$18.40</p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!------------------ map ------------------>
         <section id="map">
             <div class="container-fluid">

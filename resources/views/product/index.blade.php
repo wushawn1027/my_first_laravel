@@ -64,19 +64,19 @@
                       </thead>
                       <tbody>
 
-                          @foreach ($data as $new)
+                          @foreach ($datas as $data)
                           <tr class="tbodyTr">
                             <td>
-                                <img src="{{$banner->img_path}}" alt="" class="productImg">
+                                <img src="{{$data->img_path}}" alt="" class="productImg">
                             </td>
-                            <td class="fw-bolder">{{$new->name}}</td>
-                            <td>{{$new->price}} 元</td>
-                            <td>{{$new->quantity}}</td>
-                            <td>{{$new->introduction}}</td>
+                            <td class="fw-bolder">{{$data->name}}</td>
+                            <td>{{$data->price}} 元</td>
+                            <td>{{$data->quantity}}</td>
+                            <td>{{$data->introduction}}</td>
                             <td>
                                 <div class="btnED ">
-                                    <a href="/product/edit/{{$new->id}}" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
-                                    <a href="/product/delete/{{$new->id}}" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</a>
+                                    <a href="/product/edit/{{$data->id}}" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
+                                    <a href="/product/delete/{{$data->id}}" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</a>
                                 </div>
                             </td>
                         </tr>

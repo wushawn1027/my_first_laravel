@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Product;
 
 class BsController extends Controller
 {
@@ -27,5 +28,15 @@ class BsController extends Controller
         return view('index',compact('data2'));
     }
 
+    public function merch(){
+        $merchs = Product::inRandomOrder()->take(1)->get();
 
+        return view('index',compact('merchs'));
+    }
+
+    // public function card2(){
+    //     $cards = Product::orderby('id','desc')->get();
+
+    //     return view('index',compact('cards'));
+    // }
 }
