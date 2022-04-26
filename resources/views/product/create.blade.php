@@ -36,14 +36,17 @@
                 <form class="d-flex flex-column" action="/product/store" method="post" enctype="multipart/form-data">
                     @csrf
 
-                    <label for="productImg" class="fs-5 mb-2">商品圖片上傳</label>
-                    <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary">
+                    <label for="productImg" class="fs-5 mb-2">商品主要圖片上傳</label>
+                    <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary" accept="image/*">
+
+                    <label for="productImg" class="fs-5 mb-2">商品次要圖片上傳 (可選擇多張圖片)</label>
+                    <input type="file" name="second_img[]" id="secondImg" class="mb-2 text-secondary" multiple accept="image/*">
 
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
                     <input type="text" name="name" id="productName" class="mb-2">
 
                     <label for="productPrice" class="fs-5 mb-2">商品價格</label>
-                    <input type="number" name="price" id="productPrice" class="mb-2">
+                    <input type="text" name="price" id="productPrice" class="mb-2">
 
                     <label for="productNum" class="fs-5 mb-2">商品數量</label>
                     <input type="number" name="quantity" id="productNum" class="mb-2">

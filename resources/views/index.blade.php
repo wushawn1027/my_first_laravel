@@ -223,36 +223,23 @@
                 </div>
                 <div class="row">
 
+                    @foreach ($intros as $intro)
                     <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
-                            <img src="{{asset('img/wave.png')}}" alt="">
+                        @if ($intro->img == "" || $intro->img == null)
+                            <div class="imgNull">{{ mb_substr($intro->title,0,1,"utf-8")}}</div>
+                        @else
+                            <img src="{{$intro->img}}" alt="">
+                        @endif
                         </div>
-                        <p class="h5 text-center">Shooting Stars</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
+                        <p class="h5 text-center">{{$intro->title}}</p>
+                        <p class="fs-7 text-center text-secondary">{{$intro->content}}</p>
                         <p class="fs-7 text-center text-primary">Learn More
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                     </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="d-flex justify-content-center mb-4">
-                            <img src="{{asset('img/scisser.png')}}" alt="">
-                        </div>
-                        <p class="h5 text-center">The Catalyzer</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                        </p>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="d-flex justify-content-center mb-4">
-                            <img src="{{asset('img/user-1.png')}}" alt="">
-                        </div>
-                        <p class="h5 text-center">Neptune</p>
-                        <p class="fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug VHS try-hard.</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                        </p>
-                    </div>
+                    @endforeach
+
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
                     <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>

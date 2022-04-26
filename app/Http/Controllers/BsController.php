@@ -31,13 +31,13 @@ class BsController extends Controller
 
     public function index(){
 
-        // $intros = DB::table('news')->orderby('id','desc')->take(3)->get();
+        $intros = DB::table('news')->orderby('id','desc')->take(3)->get();
 
         $merchs = Product::inRandomOrder()->take(1)->get();
 
         $cards = Product::orderby('id','desc')->take(8)->get();
 
-        return view('index',compact( 'merchs' , 'cards'));
+        return view('index',compact('intros' , 'merchs' , 'cards'));
     }
 
 

@@ -18,7 +18,7 @@ class Product extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -27,4 +27,9 @@ class Product extends Model
      * @var array
      */
     protected $fillable = ['created_at', 'updated_at', 'img_path', 'name', 'price', 'quantity', 'introduction'];
+
+    public function imgs(){
+
+        return $this->hasMany(Produat_img::class, 'product_id', 'id'); // 因為是hasMany,所以會輸出一個陣列
+    }
 }

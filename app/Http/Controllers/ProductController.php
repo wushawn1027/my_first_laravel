@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\Product_img;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,7 @@ class ProductController extends Controller
         $path = Storage::disk('local')->put('public/product', $request->product_img);
         $path = str_replace("public","storage",$path);
 
-        Product::create([
+        $product = Product::create([
             'img_path' => '/'.$path,
             'name' => $request->name,
             'price' => $request->price,
@@ -33,14 +34,27 @@ class ProductController extends Controller
             'introduction' => $request->introduction,
         ]);
 
+        // 次要圖片,多圖片上傳
+        foreach ($request->second_img as $index => $element) {
+
+            $path = Storage::disk('local')->put('public/product', $element);
+            $path = str_replace("public","storage",$path);
+
+            Product_img::create([
+                'img_path' => '/'.$path,
+                'product_id'=> $product->id,
+            ]);
+        }
+
         return redirect('/product');
     }
 
     public function edit($id){
 
         $edit = Product::find($id);
+        $product = Product_img::find($id);
 
-        return view('product.edit',compact('edit'));
+        return view('product.edit',compact('product','edit'));
     }
 
     public function update($id, Request $request){

@@ -33,14 +33,26 @@
         <section id="bannerCreate" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
             <h1 class="w-100 mb-3 text-primary fw-bolder">商品編輯</h1>
             <div class="mb-4">
-                <div>原始圖片</div>
-                <img src="{{$edit->img_path}}" alt="" style="height:100px; weight:150px;">
+
                 <form class="d-flex flex-column" action="/product/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
                     @csrf
 
+                    <div>原始主要圖片</div>
+                    <img src="{{$edit->img_path}}" alt="" class="w-25">
                     <label for="productImg" class="fs-5 mb-2">商品圖片上傳</label>
                     <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary">
-                    
+
+                    <div>原始次要圖片</div>
+
+                    <div class="d-flex flex-warp">
+                        @foreach ($product->imgs as $item)
+                        <img src="{{$item->img_path}}" alt="" style="height:50px; weight:100px;" class="me-2">
+                        @endforeach
+                    </div>
+
+                    <label for="productImg" class="fs-5 mb-2">商品次要圖片上傳 (可選擇多張圖片)</label>
+                    <input type="file" name="second_img[]" id="secondImg" class="mb-2 text-secondary" multiple accept="image/*">
+
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
                     <input type="text" name="name" id="productName" class="mb-2" value="{{$edit->name}}">
 
