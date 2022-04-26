@@ -42,6 +42,10 @@
         height: 3px;
         border-radius: 50px;
     }
+    /* ------------------------------------gallery--------------------------------------- */
+    #gallery .container {
+        height: 800px;
+    }
     /* ------------------------------------special--------------------------------------- */
     #special .container {
         height: 1000px;
@@ -68,6 +72,9 @@
         height: 20px;
     }
     /* ------------------------------------card-2--------------------------------------- */
+    #card-2 .container {
+        height: 800px!important;
+    }
     #card-2 #card2Img {
         width: 100%;
         height: 160px;
@@ -100,7 +107,7 @@
             height: 400px;
         }
         #card-2 .container {
-            height: 1800px;
+            height: 1800px !important;
         }
         #merch .container {
         height: 1000px;
@@ -133,7 +140,7 @@
         }
 
         #card-2 .container {
-            height: 4400px;
+            height: 3600px !important;
         }
 
         #special .container {
@@ -215,25 +222,7 @@
                         </div>
                 </div>
                 <div class="row">
-                    {{-- @foreach ($data2 as $news)
-                        <div class="col-sm-12 col-md-4">
-                            <div class="d-flex justify-content-center mb-4">
-                            @if ($news->img == "" || $news->img == null)
-                                <div class="imgNull d-flex justify-content-center">
-                                    {{mb_substr($news->title,0,1,"utf-8")}}
-                                </div>
-                            @else
-                                <img src="{{$news->img}}" alt="" >
-                            @endif
-                            </div>
-                            <p class="h5 text-center">{{$news->title}}</p>
-                            <p class="fs-7 text-center text-secondary">{{$news->content}}</p>
-                            <p class="fs-7 text-center text-primary">Learn More
-                                <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    @endforeach --}}
+
                     <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
                             <img src="{{asset('img/wave.png')}}" alt="">
@@ -469,14 +458,14 @@
         <section id="merch">
             <div class="container">
                 <div class="row d-flex flex-column flex-lg-row">
-                    @foreach ($merchs as $data)
+                    @foreach ($merchs as $merch)
 
                     <div class="col-12 col-lg-6 h-auto sm-height">
-                        <img src="{{$data->img_path}}" id="img-400-400" class="merch-img rounded " alt="" onerror="errorImg(this)">
+                        <img src="{{$merch->img_path}}" id="img-400-400" class="merch-img rounded " alt="" onerror="errorImg(this)">
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
-                        <p class="text-secondary">商品數量:{{$data->quantity}}</p>
-                        <h2 class="">{{$data->name}}</h2>
+                        <p class="text-secondary">商品數量:{{$merch->quantity}}</p>
+                        <h2 class="">{{$merch->name}}</h2>
                         <div class="d-flex">
                             <div class="d-flex border-end">
                                 <div class="stars">
@@ -504,7 +493,7 @@
                                 <i class="fa-solid fa-comment text-secondary"></i>
                             </div>
                         </div>
-                        <p class="text-secondary">{{$data->introduction}}</p>
+                        <p class="text-secondary">{{$merch->introduction}}</p>
                         <div class="d-flex border-bottom">
                             <div class="d-flex align-items-center text-secondary">
                                 <span class="m-xl-2">Color</span>
@@ -523,7 +512,7 @@
                             </div>
                         </div>
                         <div class="p-2 d-flex justify-content-between align-items-center">
-                            <p class="fs-4">{{$data->price}} 元</p>
+                            <p class="fs-4">{{$merch->price}} 元</p>
                             <div class="d-flex p-2 align-items-center">
                                 <button type="button" class="btn btn-primary btn-lg fs-6 m-2">Button</button>
                                 <button class="rounded-circle h-50 bg-gray-200 p-3 border-0 d-flex align-items-center justify-content-center text-secondary">
@@ -538,7 +527,7 @@
             </div>
         </section>
         <!------------------ card-2 ------------------>
-        {{-- <section id="card-2">
+        <section id="card-2">
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="row d-flex flex-wrap justify-content-center">
 
@@ -558,89 +547,9 @@
 
                     @endforeach
 
-                    {{-- <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/420-260.png')}}" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">The Catalyzer</h5>
-                              <p class="card-text text-secondary">$16.00</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/421-261.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">Shooting Stars</h5>
-                              <p class="card-text text-secondary">$21.15</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/422-262.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">Neptune</h5>
-                              <p class="card-text text-secondary">$12.00</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/423-263.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">The 400 Blows<h5>
-                              <p class="card-text text-secondary">$18.40</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/424-264.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">The Catalyzer</h5>
-                              <p class="card-text text-secondary">$16.00</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/425-265.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">Shooting Stars</h5>
-                              <p class="card-text text-secondary">$21.15</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/427-267.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">Neptune</h5>
-                              <p class="card-text text-secondary">$12.00</p>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <img src="{{asset('img/428-268.png')}}" class="card-img-top" alt="" onerror="errorImg(this)">
-                            <div class="card-body">
-                              <p class="fs-6 text-secondary">CATEGORY</p>
-                              <h5 class="card-title">The 400 Blows<h5>
-                              <p class="card-text text-secondary">$18.40</p>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
-        </section> --}}
+        </section>
         <!------------------ map ------------------>
         <section id="map">
             <div class="container-fluid">

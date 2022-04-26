@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\View;
 class ShoppingCartController extends Controller
 {
 
-    public function index(){
-        $data2 = DB::table('news')->orderby('id','desc')->take(3)->get();
-        // return view('shopping.index',['news'=> $data2]);
-        return view('index',compact('data2'));
-    }
+    // public function index(){
+    //     $data2 = DB::table('news')->orderby('id','desc')->take(3)->get();
+    //     // return view('shopping.index',['news'=> $data2]);
+    //     return view('index',compact('data2'));
+    // }
 
     public function shoppingS1(){
         return view('shopping.shopping-s1');

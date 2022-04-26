@@ -70,15 +70,13 @@ Route::prefix('product')->group(function() {
     Route::post('/store', [ProductController::class, 'store']);
     Route::get('/edit/{id}', [ProductController::class, 'edit']);
     Route::post('/update/{id}', [ProductController::class, 'update']);
-    Route::get('/delete/{id}', [ProductController::class, 'destory']);
+    Route::post('/delete/{id}', [ProductController::class, 'destory']);
 
 });
 
 
 
 Route::get('/', [BsController::class, 'index']);
-Route::get('/', [BsController::class, 'merch']);
-// Route::get('/', [BsController::class, 'card2']);
 
 
 
