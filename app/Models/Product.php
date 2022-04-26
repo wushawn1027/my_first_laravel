@@ -30,6 +30,6 @@ class Product extends Model
 
     public function imgs(){
 
-        return $this->hasMany(Produat_img::class, 'product_id', 'id'); // 因為是hasMany,所以會輸出一個陣列
+        return $this->hasMany(Product_img::class, 'product_id', 'id'); // 因為是hasMany,所以會輸出一個陣列
     }
 }

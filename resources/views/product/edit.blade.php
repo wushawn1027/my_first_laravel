@@ -45,8 +45,8 @@
                     <div>原始次要圖片</div>
 
                     <div class="d-flex flex-warp">
-                        @foreach ($product->imgs as $item)
-                        <img src="{{$item->img_path}}" alt="" style="height:50px; weight:100px;" class="me-2">
+                        @foreach ($edit->imgs as $item)
+                        <img src="{{$item->img_path}}" alt="" style="height:60px;" class="me-2">
                         @endforeach
                     </div>
 

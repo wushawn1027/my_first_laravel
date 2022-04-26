@@ -59,9 +59,9 @@
     #merch .container {
         height: 750px!important;
     }
-    #merch #img-400-400 {
+    #merch .swiper-slide img {
         width: 100%;
-        height: 488px;
+        height: 488px!important;
     }
     #merch .stars svg {
             width: 16px;
@@ -112,9 +112,9 @@
         #merch .container {
         height: 1000px;
         }
-        #merch #img-400-400 {
+        #merch .swiper-slide img {
         width: auto;
-        height: 256px;
+        height: 256px !important;
     }
         #merch .sm-height {
         height: 256px !important;
@@ -446,9 +446,22 @@
             <div class="container">
                 <div class="row d-flex flex-column flex-lg-row">
                     @foreach ($merchs as $merch)
-
-                    <div class="col-12 col-lg-6 h-auto sm-height">
-                        <img src="{{$merch->img_path}}" id="img-400-400" class="merch-img rounded " alt="" onerror="errorImg(this)">
+                    
+                    <div class="swiper mySwiper col-12 col-lg-6 h-auto sm-height">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <img src="{{$merch->img_path}}" class="w-100 h-100" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                              <img src="/img/rick-roll.gif" class="w-100 h-100" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                              <img src="/img/gray-0.png" class="w-100 h-100" alt="">
+                            </div>
+                          </div>
+                          <div class="swiper-button-next"></div>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-pagination"></div>
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
                         <p class="text-secondary">商品數量:{{$merch->quantity}}</p>

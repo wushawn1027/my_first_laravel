@@ -219,35 +219,35 @@
         <section id="links">
             <div class="container d-flex align-items-center">
                 <div class="row w-100 d-flex align-items-center">
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
+                    <div class="col-lg-3 col-md-5 col-sm-12 d-flex flex-column align-items-center">
                         <div id="div-logo2" class="w-100 d-flex xxl:justify-content-start p-1">
                             <img src="{{asset('img/logo2.png')}}" class="" alt="" onerror="errorImg(this)">
                         </div>
                         <p class="fs-6 text-muted d-flex align-items-center">Air plant banjo lyft occupy retro adaptogen indego</p>
                     </div>
-                    <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7 col-sm-12 d-flex flex-row flex-wrap">
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                    <div class="col-lg-8 col-md-7 col-sm-12 d-flex flex-row flex-wrap">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
@@ -262,7 +262,7 @@
         <section id="copyright" class="bg-light">
             <div class="container d-flex align-items-center">
                 <div id="copy-row" class="row w-100 d-flex flex-row justify-content-between align-items-center">
-                    <div id="" class="d-flex justify-content-center col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                    <div id="" class="d-flex justify-content-center col-lg-5 col-sm-12">
                         <p class="text-muted">© 2020 Tailblocks — </p>
                         <a href="#" class="text-secondary">@knyttneve</a>
                     </div>

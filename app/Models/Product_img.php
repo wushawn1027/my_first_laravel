@@ -32,6 +32,6 @@ class Product_img extends Model
         //或
 
         // belongsTo / belongsToMany 格式 (對照的model::class,'自己的欄位' ,'對方的欄位')
-        $this->belongsTo(Produat::class, 'product_id', 'id');
+        $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }
