@@ -35,15 +35,17 @@ class ProductController extends Controller
         ]);
 
         // 次要圖片,多圖片上傳
-        foreach ($request->second_img as $index => $element) {
+        if ($request->hasfile('second_img')){
+            foreach ($request->second_img as $index => $element) {
 
-            $path = Storage::disk('local')->put('public/product', $element);
-            $path = str_replace("public","storage",$path);
+                $path = Storage::disk('local')->put('public/product', $element);
+                $path = str_replace("public","storage",$path);
 
-            Product_img::create([
-                'img_path' => '/'.$path,
-                'product_id'=> $product->id,
-            ]);
+                Product_img::create([
+                    'img_path' => '/'.$path,
+                    'product_id'=> $product->id,
+                ]);
+            }
         }
 
         return redirect('/product');
@@ -60,6 +62,7 @@ class ProductController extends Controller
 
         $products = Product::find($id);
 
+        // 主要圖片處理
         if ($request->hasfile('product_img')){
 
             $path = Storage::disk('local')->put('public/product', $request->product_img);
@@ -69,6 +72,20 @@ class ProductController extends Controller
             Storage::disk('local')->delete($target);
 
             $products->img_path = '/'.$path;
+        }
+
+        // 次要圖片處理
+        if ($request->hasfile('second_img')){
+            foreach ($request->second_img as $index => $element) {
+
+                $path = Storage::disk('local')->put('public/product', $element);
+                $path = str_replace("public","storage",$path);
+
+                Product_img::create([
+                    'img_path' => '/'.$path,
+                    'product_id'=> $products->id,
+                ]);
+            }
         }
 
             $products->name = $request->name;
@@ -83,10 +100,32 @@ class ProductController extends Controller
     public function destory($id){
 
         $products = Product::find($id);
+
+        // 找出所有 要被刪除的 商品次要圖片
+        $imgs = Product_img::where('product_id',$id)->get();
+        // 次要圖片可能會有多筆,利用foreach迴圈去刪除資料
+        foreach ($imgs as $key => $value) {
+            $target = str_replace("storage","public",$value->img_path);
+            Storage::disk('local')->delete($target);
+            $value->delete();
+        }
+
         $target = str_replace("storage","public",$products->img_path);
         Storage::disk('local')->delete($target);
         $products->delete();
 
         return redirect('/product');
+    }
+
+    public function delete_img($img_id) {
+
+        $img = Product_img::find($img_id);
+        $target = str_replace("storage","public",$img->img_path);
+        Storage::disk('local')->delete($target);
+        // 資料刪除前,
+        $product_id = $img->product_id;
+        $img->delete();
+
+        return redirect('/product/edit/'.$product_id);
     }
 }

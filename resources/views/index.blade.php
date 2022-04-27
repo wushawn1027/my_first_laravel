@@ -64,9 +64,9 @@
         height: 488px!important;
     }
     #merch .stars svg {
-            width: 16px;
-            height: 16px;
-        }
+        width: 16px;
+        height: 16px;
+    }
     #merch .ball {
         width: 20px;
         height: 20px;
@@ -110,14 +110,17 @@
             height: 1800px !important;
         }
         #merch .container {
-        height: 1000px;
+            height: 1000px;
+        }
+        #merch .swiper-slide {
+            height: 256px !important;
         }
         #merch .swiper-slide img {
-        width: auto;
-        height: 256px !important;
-    }
+            width: 100%;
+            height: auto !important;
+        }
         #merch .sm-height {
-        height: 256px !important;
+            height: 256px !important;
         }
     }
     /* -----------------------------------768-------------------------------------- */
@@ -139,10 +142,6 @@
             height: 2100px;
         }
 
-        #card-2 .container {
-            height: 3600px !important;
-        }
-
         #special .container {
             height: 1400px;
         }
@@ -158,7 +157,17 @@
         }
 
         #merch .container {
-            height: 500px;
+            height: 500px !important;
+        }
+
+        #card-2 .container {
+            height: 3600px !important;
+        }
+        #card-2 .container .card2ImgBox {
+            height: 160px !important;
+        }
+        #card-2 #card2Img {
+            height: 100% !important;
         }
 
         #map #map-text {
@@ -446,17 +455,17 @@
             <div class="container">
                 <div class="row d-flex flex-column flex-lg-row">
                     @foreach ($merchs as $merch)
-                    
+
                     <div class="swiper mySwiper col-12 col-lg-6 h-auto sm-height">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                              <img src="{{$merch->img_path}}" class="w-100 h-100" alt="">
+                              <img src="{{$merch->img_path}}" class="" alt="">
                             </div>
                             <div class="swiper-slide">
-                              <img src="/img/rick-roll.gif" class="w-100 h-100" alt="">
+                              <img src="/img/rick-roll.gif" class="" alt="">
                             </div>
                             <div class="swiper-slide">
-                              <img src="/img/gray-0.png" class="w-100 h-100" alt="">
+                              <img src="/img/gray-0.png" class="" alt="">
                             </div>
                           </div>
                           <div class="swiper-button-next"></div>
@@ -535,7 +544,9 @@
 
                     <div class="col-sm-10 col-md-6 col-lg-3 p-1">
                         <div class="card p-3 border-0">
-                            <img src="{{$card->img_path}}" id="card2Img" class="card-img-top md:h-50" alt="" onerror="errorImg(this)">
+                            <div class="card2ImgBox">
+                                <img src="{{$card->img_path}}" id="card2Img" class="card-img-top " alt="" onerror="errorImg(this)">
+                            </div>
                             <div class="card-body">
                               <p class="fs-9 text-secondary">商品數量:{{$card->quantity}}</p>
                               <h5 class="card-title">{{$card->name}}</h5>

@@ -71,7 +71,7 @@ Route::prefix('product')->group(function() {
     Route::get('/edit/{id}', [ProductController::class, 'edit']);
     Route::post('/update/{id}', [ProductController::class, 'update']);
     Route::post('/delete/{id}', [ProductController::class, 'destory']);
-
+    Route::delete('/delete_img/{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片id
 });
 
 

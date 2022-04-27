@@ -39,19 +39,22 @@
 
                     <div>原始主要圖片</div>
                     <img src="{{$edit->img_path}}" alt="" class="w-25">
-                    <label for="productImg" class="fs-5 mb-2">商品圖片上傳</label>
+                    <label for="productImg" class="fs-5 mb-2">商品主要圖片上傳</label>
                     <input type="file" name="product_img" id="productImg" class="mb-2 text-secondary">
 
-                    <div>原始次要圖片</div>
+                    <div class="mt-3">原始次要圖片</div>
 
-                    <div class="d-flex flex-warp">
+                    <div class="d-flex flex-wrap">
                         @foreach ($edit->imgs as $item)
-                        <img src="{{$item->img_path}}" alt="" style="height:60px;" class="me-2">
+                        <div class="d-flex flex-column me-3 w-25" id="sup_img{{$item->id}}">
+                            <img src="{{$item->img_path}}" alt="" style="height:100px;" class="w-100 me-2 mb-1">
+                            <button type="button" onclick="delete_img({{$item->id}})" class="btn btn-danger w-100 mb-1">刪除圖片</button>
+                        </div>
                         @endforeach
                     </div>
 
                     <label for="productImg" class="fs-5 mb-2">商品次要圖片上傳 (可選擇多張圖片)</label>
-                    <input type="file" name="second_img[]" id="secondImg" class="mb-2 text-secondary" multiple accept="image/*">
+                    <input type="file" name="second_img[]" id="secondImg" class="mb-4 text-secondary" multiple accept="image/*">
 
                     <label for="productName" class="fs-5 mb-2">商品名稱</label>
                     <input type="text" name="name" id="productName" class="mb-2" value="{{$edit->name}}">
@@ -65,12 +68,40 @@
                     <label for="productIntro" class="fs-5 mb-2">商品介紹</label>
                     <input type="text" name="introduction" id="productIntro" class="mb-2" value="{{$edit->introduction}}">
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-5">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">取消</button>
                         <button type="submit" id="btnSend" class="btn btn-primary btn-lg fs-6 ms-1">送出</button>
                     </div>
                 </form>
+                {{-- @foreach ($edit->imgs as $item)
+                    <form action="/product/delete_img/{{$item->id}}" method="post" hidden id="deleteForm{{$item->id}}">
+                        @method('DELETE')
+                        @csrf
+                    </form>
+                @endforeach --}}
 
         </section>
     </main>
+@endsection
+
+@section('script')
+    <script>
+        function delete_img(id){
+            // 準備表單及內部的資料
+            let formData = new FormData();
+            formData.append('_method', 'DELETE');
+            formData.append('_token', '{{ csrf_token() }}');
+
+            // 將準備好的表單藉由fetch送到後台
+            fetch("/product/delete_img/"+id, {
+                method: "POST",
+                body : formData
+            }).then(function(response) {
+                // 成功從資料庫刪除資料後, 將自己的html元素消除
+                let element = document.querySelector('#sup_img'+id);
+                element.parentNode.removeChild(element);
+            })
+        }
+    </script>
+
 @endsection
