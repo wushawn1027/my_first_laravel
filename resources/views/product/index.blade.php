@@ -1,11 +1,16 @@
-@extends('template.template')
+@extends('layouts.app')
 
 @section('title')
     商品管理
 @endsection
 
 @section('link')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 @endsection
 
 @section('css')
@@ -78,7 +83,7 @@
                                     <button onclick="location.href='/product/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
                                     <button onclick="document.querySelector('#deleteForm{{$data->id}}').submit();" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</button>
                                     <form action="/product/delete/{{$data->id}}" method="post" hidden id="deleteForm{{$data->id}}">
-                                        {{-- @method('DELETE') --}}
+                                        {{-- p --}}
                                         @csrf
                                     </form>
                                 </div>

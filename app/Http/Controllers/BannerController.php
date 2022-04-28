@@ -13,11 +13,18 @@ class BannerController extends Controller
         // 將所有banner資料從資料庫拿出來,並輸出到列表頁上
         $banners = Banner::get();
 
-        return view('banner.index' , compact('banners'));
+        $header = 'Banner管理-首頁';
+        $slot = '';
+
+        return view('banner.index' , compact('banners' , 'header' , 'slot'));
     }
 
     public function create(){
-        return view('banner.create');
+
+        $header = 'Banner管理-新增';
+        $slot = '';
+
+        return view('banner.create' , compact('header' , 'slot'));
     }
 
     public function store(Request $request){
@@ -38,7 +45,10 @@ class BannerController extends Controller
 
         $edit = Banner::find($id);
 
-        return view('banner.edit',compact('edit'));
+        $header = 'Banner管理-編輯';
+        $slot = '';
+
+        return view('banner.edit',compact('edit' , 'header' , 'slot'));
     }
 
     public function update($id, Request $request){

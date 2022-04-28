@@ -7,6 +7,7 @@ use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\BsController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,22 +18,35 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [Controller::class, 'index']);
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth','power'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+
+// Route::get('/', [Controller::class, 'index']);
 
 Route::get('/comment', [Controller::class, 'comment']);
 Route::get('/comment/save', [Controller::class, 'save_comment']);
-
 Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
 Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
-
 Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
+
+
 
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
 Route::get('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
 Route::get('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
 Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
 
-Route::get('/login', [Controller::class, 'login']);
+// Route::get('/login', [Controller::class, 'login']);
 
 
 // Banner 管理頁面 手工建立版本 (遵照resful API的規定)
@@ -50,7 +64,7 @@ Route::get('/login', [Controller::class, 'login']);
 
 // 部分參考resful API 推薦的寫法
 
-Route::prefix('banner')->group(function() { // Banner管理相關路由 群組化
+Route::prefix('banner')->middleware(['auth','power'])->group(function() { // Banner管理相關路由 群組化
 
     Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
@@ -63,7 +77,7 @@ Route::prefix('banner')->group(function() { // Banner管理相關路由 群組�
 
 
 
-Route::prefix('product')->group(function() {
+Route::prefix('product')->middleware(['auth','power'])->group(function() {
 
     Route::get('/', [ProductController::class, 'index']);
     Route::get('/create', [ProductController::class, 'create']);
@@ -86,8 +100,10 @@ Route::get('/', [BsController::class, 'index']);
 
 
 
-// Route::get('/microsoft', [NewsController::class, 'micro']);
+Route::get('/microsoft', [NewsController::class, 'micro']);
 
-// Route::get('/color', [NewsController::class, 'color']);
+Route::get('/color', [NewsController::class, 'color']);
 
-// Route::get('/dice', [NewsController::class, 'dice']);
+Route::get('/dice', [NewsController::class, 'dice']);
+
+// Route::get('/index', [NewsController::class, 'bs']);

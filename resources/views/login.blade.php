@@ -84,17 +84,24 @@
                     <div id="login-way" class="text-white text-center me-2">G+</div>
                     <div id="login-way" class="text-white text-center me-2">in</div>
                 </div>
-                <form class="w-50 d-flex flex-column align-items-center">
+                <form method="POST" action="{{ route('login') }}" class="w-50 d-flex flex-column align-items-center">
+                    @csrf
                     <span class="text-white mb-3">or use email your account</span>
                     <div class="form-group w-100">
-                        <input type="email" id="form-email" class="p-3 form-control bg-black border-0 mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                        <input type="email" name="email" class="text-white p-3 form-control bg-black border-0 mb-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                     </div>
                     <div class="form-group w-100">
-                        <input type="password" id="form-password" class="p-3 form-control bg-black border-0 mb-3" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" name="password" class="text-white p-3 form-control bg-black border-0 mb-3" id="exampleInputPassword1" placeholder="Password">
                     </div>
-                    <small id="emailHelp" class="w-100 form-text mb-3"><a href="" class="float-end text-secondary">Forgot your password?</a></small>
+                    <div class="block mt-4">
+                        <label for="remember_me" class="inline-flex items-center">
+                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                            <span class="ml-2 text-sm text-white">{{ __('記住我!') }}</span>
+                        </label>
+                    </div>
+                    <small id="emailHelp" class="w-100 form-text mb-3"><a href="{{ route('password.request') }}" class="float-end text-primary">Forgot your password?</a></small>
                     <button id="btn-signin" type="submit" class="btn btn-primary w-100 p-3">SIGN IN</button>
-                    </form>
+                </form>
             </div>
         </section>
     </main>

@@ -156,21 +156,35 @@
                     <img src="{{asset('img/logo.jpg')}}" class="logo" alt="" onerror="errorImg(this)">
                 </a>
                 <ul id="nav-ul" class="ms-auto d-flex justify-content-end align-items-center p-0 m-0">
-                    <li class="me-5">
+                    {{-- <li class="me-5">
                         <a href="/product" class="fs-7 fw-bolder hover:bg-light">商品管理</a>
                     </li>
                     <li class="me-5">
                         <a href="/banner" class="fs-7 fw-bolder">Banner</a>
-                    </li>
+                    </li> --}}
                     <li class="me-5">
                         <a href="/comment" class="fs-7 fw-bolder">Comment</a>
                     </li>
-                    <li class="me-5">
+                    {{-- <li class="me-5">
                         <a href="" class="fs-7 fw-bolder">other</a>
-                    </li>
+                    </li> --}}
                     <li class="me-3">
                         <a  href="/shoppingS1"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
                     </li>
+
+                    @auth
+                    <li class="liLogin me-2">
+                        <a class="">{{Auth::user()->name}}, Hello~</a>
+                    </li>
+                    <li class="liLogin">
+                        <a href="" onclick="event.preventDefault(); document.querySelector('#logout_form').submit()">Logout</a>
+                        <form method="POST" action="{{ route('logout') }}" hidden id="logout_form" >
+                            @csrf
+                        </form>
+                    </li>
+                    @endauth
+
+                    @guest
                     <li class="liLogin">
                         <input type="checkbox" id="dropLogin" hidden>
                         <label for="dropLogin"><i class="fs-4 fa-solid fa-circle-user text-black"></i></label></i>
@@ -178,7 +192,7 @@
                             <a href="/login">Login</a>
                         </div>
                     </li>
-
+                    @endguest
                 </ul>
                 <input type="checkbox" id="burger" class="" hidden>
                 <label for="burger" class="d-flex justify-content-center align-items-center">
@@ -210,6 +224,8 @@
             </div>
         </div>
     </nav>
+
+    @yield('x-slot')
 
     @yield('main')
 

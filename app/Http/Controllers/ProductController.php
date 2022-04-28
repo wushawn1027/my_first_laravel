@@ -14,11 +14,18 @@ class ProductController extends Controller
 
         $datas = Product::orderby('id','desc')->get();
 
-        return view('product.index',compact('datas'));
+        $header = 'Product管理-首頁';
+        $slot = '';
+
+        return view('product.index',compact('datas' , 'header' , 'slot'));
     }
 
     public function create(){
-        return view('product.create');
+
+        $header = 'Product管理-新增';
+        $slot = '';
+
+        return view('product.create',compact('header' , 'slot'));
     }
 
     public function store(Request $request){
@@ -55,7 +62,10 @@ class ProductController extends Controller
 
         $edit = Product::find($id);
 
-        return view('product.edit',compact('edit'));
+        $header = 'Product管理-編輯';
+        $slot = '';
+
+        return view('product.edit',compact('edit' , 'header' , 'slot'));
     }
 
     public function update($id, Request $request){

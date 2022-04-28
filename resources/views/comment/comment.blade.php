@@ -4,6 +4,15 @@
     Comment
 @endsection
 
+@section('link')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+@endsection
+
 @section('css')
 <style>
     main {
@@ -66,8 +75,10 @@
                         {{$comments->content}}
                     </div>
                     <div class="">
-                        <a href="/comment/delete/{{$comments->id}}" class="me-1 text-secondary"><i class="fa-solid fa-trash-can"></i> 刪除</a>
-                        <a href="/comment/edit/{{$comments->id}}" class="ms-1 text-secondary"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
+                        @auth
+                            <a href="/comment/delete/{{$comments->id}}" class="me-1 text-secondary"><i class="fa-solid fa-trash-can"></i> 刪除</a>
+                            <a href="/comment/edit/{{$comments->id}}" class="ms-1 text-secondary"><i class="fa-solid fa-pen-to-square"></i> 編輯</a>
+                        @endauth
                     </div>
                 </div>
                 @endforeach
@@ -89,7 +100,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">清除內容</button>
-                        <button type="submit" id="btnSend" class="btn btn-primary btn-lg fs-6 ms-1">送出文章</button>
+                        <button type="submit" id="btnSend" class="text-black btn btn-primary btn-lg fs-6 ms-1">送出文章</button>
                     </div>
                 </form>
             </div>

@@ -17,4 +17,8 @@ class NewsController extends Controller
     public function dice(){
         return view('others.dice');
     }
+
+    // public function bs(){
+    //     return view('index');
+    // }
 }
