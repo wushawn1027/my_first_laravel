@@ -473,8 +473,8 @@
                           <div class="swiper-pagination"></div>
                     </div>
                     <div class="col-12 col-lg-6 pt-4 pb-4 pe-0 ps-5">
-                        <p class="text-secondary">商品數量:{{$merch->quantity}}</p>
                         <h2 class="">{{$merch->name}}</h2>
+                        <p class="text-secondary">商品數量:{{$merch->quantity}}</p>
                         <div class="d-flex">
                             <div class="d-flex border-end">
                                 <div class="stars">

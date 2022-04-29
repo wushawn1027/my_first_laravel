@@ -173,11 +173,11 @@
                     </li>
 
                     @auth
-                    <li class="liLogin me-2">
-                        <a class="">{{Auth::user()->name}}, Hello~</a>
+                    <li class="liLogin me-3">
+                        <a class="">{{Auth::user()->name}}, 您好~</a>
                     </li>
                     <li class="liLogin">
-                        <a href="" onclick="event.preventDefault(); document.querySelector('#logout_form').submit()">Logout</a>
+                        <a href="" onclick="event.preventDefault(); document.querySelector('#logout_form').submit()">登出</a>
                         <form method="POST" action="{{ route('logout') }}" hidden id="logout_form" >
                             @csrf
                         </form>
@@ -282,7 +282,7 @@
                         <p class="text-muted">© 2020 Tailblocks — </p>
                         <a href="#" class="text-secondary">@knyttneve</a>
                     </div>
-                    <div id="copy-social" class="d-flex col-xxl-3 col-xl-3 col-lg-3 col-md-12 col-sm-12 justify-content-center">
+                    <div id="copy-social" class="d-flex col-lg-3 col-sm-12 justify-content-center">
                         <i class="p-2 fs-5 text-secondary fa-brands fa-facebook-f"></i>
                         <i class="p-2 fs-5 text-secondary fa-brands fa-twitter"></i>
                         <i class="p-2 fs-5 text-secondary fa-brands fa-instagram"></i>

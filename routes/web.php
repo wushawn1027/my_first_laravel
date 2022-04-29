@@ -19,20 +19,21 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// 首頁
+Route::get('/', [BsController::class, 'index']);
+// Route::get('/', [Controller::class, 'index']);
 
+Route::get('/detail', [BsController::class, 'detail']);
+
+// 後台首頁
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth','power'])->name('dashboard');
 
+// 登入相關路由
 require __DIR__.'/auth.php';
 
-
-
-// Route::get('/', [Controller::class, 'index']);
-
+// 留言相關路由
 Route::get('/comment', [Controller::class, 'comment']);
 Route::get('/comment/save', [Controller::class, 'save_comment']);
 Route::get('/comment/edit/{id}', [Controller::class, 'edit_comment']);
@@ -40,13 +41,48 @@ Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 
 
-
+// 購物車相關路由
 Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
 Route::get('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
 Route::get('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
 Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
 
-// Route::get('/login', [Controller::class, 'login']);
+
+// 部分參考resful API 推薦的寫法
+// BANNER管理相關路由
+Route::prefix('banner')->middleware(['auth','power'])->group(function() { // Banner管理相關路由 群組化
+
+    Route::get('/', [BannerController::class, 'index']);
+    Route::get('/create', [BannerController::class, 'create']);
+    Route::post('/store', [BannerController::class, 'store']);
+    Route::get('/edit/{id}', [BannerController::class, 'edit']);
+    Route::post('/update/{id}', [BannerController::class, 'update']);
+    Route::delete('/delete/{id}', [BannerController::class, 'destory']);
+
+});
+
+
+// 商品管理相關路由
+Route::prefix('product')->middleware(['auth','power'])->group(function() {
+
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/create', [ProductController::class, 'create']);
+    Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/edit/{id}', [ProductController::class, 'edit']);
+    Route::post('/update/{id}', [ProductController::class, 'update']);
+    Route::delete('/delete/{id}', [ProductController::class, 'destory']);
+    Route::delete('/delete_img/{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片id
+});
+
+
+
+
+// welcome相關路由
+Route::get('/microsoft', [NewsController::class, 'micro']);
+Route::get('/color', [NewsController::class, 'color']);
+Route::get('/dice', [NewsController::class, 'dice']);
+
+// Route::get('/index', [NewsController::class, 'bs']);
 
 
 // Banner 管理頁面 手工建立版本 (遵照resful API的規定)
@@ -62,48 +98,3 @@ Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
 
 // Route::resource('banner', BannerController::class);
 
-// 部分參考resful API 推薦的寫法
-
-Route::prefix('banner')->middleware(['auth','power'])->group(function() { // Banner管理相關路由 群組化
-
-    Route::get('/', [BannerController::class, 'index']);
-    Route::get('/create', [BannerController::class, 'create']);
-    Route::post('/store', [BannerController::class, 'store']);
-    Route::get('/edit/{id}', [BannerController::class, 'edit']);
-    Route::post('/update/{id}', [BannerController::class, 'update']);
-    Route::post('/delete/{id}', [BannerController::class, 'destory']);
-
-});
-
-
-
-Route::prefix('product')->middleware(['auth','power'])->group(function() {
-
-    Route::get('/', [ProductController::class, 'index']);
-    Route::get('/create', [ProductController::class, 'create']);
-    Route::post('/store', [ProductController::class, 'store']);
-    Route::get('/edit/{id}', [ProductController::class, 'edit']);
-    Route::post('/update/{id}', [ProductController::class, 'update']);
-    Route::post('/delete/{id}', [ProductController::class, 'destory']);
-    Route::delete('/delete_img/{img_id}', [ProductController::class, 'delete_img']); //刪除次要圖片id
-});
-
-
-
-Route::get('/', [BsController::class, 'index']);
-
-
-
-
-
-
-
-
-
-Route::get('/microsoft', [NewsController::class, 'micro']);
-
-Route::get('/color', [NewsController::class, 'color']);
-
-Route::get('/dice', [NewsController::class, 'dice']);
-
-// Route::get('/index', [NewsController::class, 'bs']);

@@ -83,7 +83,7 @@
                                     <button onclick="location.href='/product/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
                                     <button onclick="document.querySelector('#deleteForm{{$data->id}}').submit();" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</button>
                                     <form action="/product/delete/{{$data->id}}" method="post" hidden id="deleteForm{{$data->id}}">
-                                        {{-- p --}}
+                                        @method('DELETE')
                                         @csrf
                                     </form>
                                 </div>

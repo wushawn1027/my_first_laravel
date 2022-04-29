@@ -98,7 +98,7 @@
                     <div class="form-group w-100">
                         <textarea type="text" class="p-2 form-control mb-3" id="inputContent" name="content"  placeholder=""></textarea>
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-4">
                         <button type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">清除內容</button>
                         <button type="submit" id="btnSend" class="text-black btn btn-primary btn-lg fs-6 ms-1">送出文章</button>
                     </div>

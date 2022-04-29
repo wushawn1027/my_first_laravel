@@ -74,6 +74,7 @@
                                 <button onclick="document.querySelector('#deleteForm{{$banner->id}}').submit();" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</button>
                                 <form action="/banner/delete/{{$banner->id}}" method="post" hidden id="deleteForm{{$banner->id}}">
                                     @csrf
+                                    @method('DELETE')
                                 </form>
                             </td>
                         </tr>

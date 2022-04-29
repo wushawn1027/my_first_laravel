@@ -40,5 +40,9 @@ class BsController extends Controller
         return view('index',compact('intros' , 'merchs' , 'cards'));
     }
 
+    public function detail(){
+        
+        return view('detail');
+    }
 
 }

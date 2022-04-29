@@ -17,7 +17,10 @@ class AccountPower
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->name == 'Tony'){
+        //假設這個平台只有兩個使用者 Tony 跟 Senna
+        // Tony 登入後會到後台(因為他是超級管理者)
+        // Senna 登入後只能到前台 (因為她只能管理留言)
+        if (Auth::user()->name == 'Tony'){
             return $next($request);
         }else{
             return redirect('/');
