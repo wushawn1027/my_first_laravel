@@ -21,7 +21,7 @@
 <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 1000px;
+        height: 850px;
     }
     #product-detail {
         background-color: rgb(243, 242, 242);
@@ -29,13 +29,13 @@
         height: 100%;
     }
     .box {
-        height: 800px;
+        height: 600px;
     }
     .innerboxTop {
-        height: 700px;
+        height: 550px;
     }
     .imgBox {
-        height: 700px;
+        height: 550px;
     }
     .imgSwiper {
         height: 500px;
@@ -60,13 +60,22 @@
     .innerboxBtm ul li {
         display: inline;
     }
+    .innerboxBtm ul {
+        padding: unset;
+    }
+    .innerboxBtm li {
+        margin-right: 15px;
+    }
+    .heartBtm {
+        background-color: rgb(255, 158, 190);
+    }
+/* ------------------------------992---------------------------------- */
     @media(max-width:992px) {
         #product-detail {
             width: 700px;
         }
-
     }
-
+/* ------------------------------swiper---------------------------------- */
     .swiper {
         width: 100%;
         height: 100%;
@@ -149,14 +158,17 @@
                             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-0.png')}}" />
+                                        <img src="{{$details->img_path}}">
                                     </div>
+
+                                    @foreach ($details->imgs as $item)
+
                                     <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-1.png')}}" />
+                                        <img src="{{$item->img_path}}">
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-0.png')}}" />
-                                    </div>
+
+                                    @endforeach
+
                                 </div>
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
@@ -164,27 +176,32 @@
                             <div thumbsSlider="" class="swiper mySwiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-0.png')}}" />
+                                        <img src="{{$details->img_path}}">
                                     </div>
+
+                                    @foreach ($details->imgs as $item)
+
                                     <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-1.png')}}" />
+                                        <img src="{{$item->img_path}}">
                                     </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('img/gray-0.png')}}" />
-                                    </div>
+
+                                    @endforeach
+
                                 </div>
                             </div>
-                            </div>
                         </div>
-                        <div class="imgBtm"></div>
                     </div>
                     <div class="detailBox col-7 d-flex flex-column">
-                        <h2 class="fw-bolder mb-1">123</h2>
+                        <h2 class="fw-bolder mb-1">{{$details->name}}</h2>
                         <div class="d-flex flex-row mb-2">
                             <span class="review text-muted w-25 me-1">尚未有評價</span>
                             <span class="text-muted w-25 d-flex justify-content-center">已售出 0</span>
                         </div>
-                        <p class="text-danger fs-4 p-2 bg-white">$9999</p>
+                        <p class="text-danger fs-4 p-2 bg-white rounded">${{$details->price}}</p>
+                        <div class="d-flex flex-row mb-3">
+                            <p class="col-lg-3 col-sm-6"><i class="fa-solid fa-circle-info"></i> 商品介紹：</p>
+                            <p class="col-lg-3 col-sm-6">{{$details->introduction}}</p>
+                        </div>
                         <div class="d-flex flex-row mb-2">
                             <span class="col-lg-3 col-sm-6"><i class="fa-solid fa-money-check-dollar"></i> 付款方式：</span>
                             <span class="col-lg-3 col-sm-6">全家取貨付款</span>
@@ -199,38 +216,37 @@
                                 <input id="min" name="" type="button" value="-" />
                                 <input id="quantity" name="" type="text" value="1" />
                                 <input id="add" name="" type="button" value="+" />
-                                <span class="ms-2">還剩 1 件</span>
+                                <span class="ms-2">還剩 {{$details->quantity}} 件</span>
                             </div>
-
                         </div>
                         <div class="d-flex flex-row justify-content-center">
-                            <button class="w-50 bg-warning text-danger me-1 p-1"><i class="text-danger fa-solid fa-cart-plus"></i> 加入購物車</button>
-                            <button class="w-50 bg-danger text-light ms-1 p-1"><i class="text-light fa-solid fa-cash-register"></i> 直接購買</button>
+                            <button class="w-50 bg-warning text-danger me-1 p-1 rounded"><i class="text-danger fa-solid fa-cart-plus"></i> 加入購物車</button>
+                            <button class="w-50 bg-danger text-light ms-1 p-1 rounded"><i class="text-light fa-solid fa-cash-register"></i> 直接購買</button>
                         </div>
                     </div>
                 </div>
                 <div class="innerboxBtm d-flex flex-row">
                     <div class="w-50 d-flex">
-                        <ul>
+                        <ul class="">
                             <li>
-                                <span class="">分享 :</span>
+                                <span class="fs-4">分享 :</span>
                             </li>
                             <li>
-                                <a class="" href=""><i class="fa-brands fa-facebook-square"></i></a>
+                                <a class="fs-4" href=""><i class="fa-brands fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a class="" href=""><i class="fa-brands fa-instagram-square"></i></i></a>
+                                <a class="fs-4" href=""><i class="fa-brands fa-instagram-square"></i></i></a>
                             </li>
                             <li>
-                                <a class="" href=""><i class="fa-brands fa-line"></i></a>
+                                <a class="fs-4" href=""><i class="fa-brands fa-line"></i></a>
                             </li>
                             <li>
-                                <a class="" href=""><i class="fa-brands fa-twitter-square"></i></a>
+                                <a class="fs-4" href=""><i class="fa-brands fa-twitter-square"></i></a>
                             </li>
                         </ul>
                     </div>
                     <div class="w-50 d-flex justify-content-center">
-                        <button class=""><i class="fa-solid fa-heart"></i> 收藏</button>
+                        <button class="heartBtm rounded w-50"><i class="fa-solid fa-heart"></i> 收藏</button>
                     </div>
                 </div>
             </div>

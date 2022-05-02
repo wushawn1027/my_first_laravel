@@ -75,6 +75,7 @@ Route::prefix('product')->middleware(['auth','power'])->group(function() {
 });
 
 
+Route::get('/detail/{id}', [BsController::class, 'detail']);
 
 
 // welcome相關路由

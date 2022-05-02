@@ -37,12 +37,14 @@ class BsController extends Controller
 
         $cards = Product::orderby('id','desc')->take(8)->get();
 
-        return view('index',compact('intros' , 'merchs' , 'cards'));
+        return view('index' , compact('intros' , 'merchs' , 'cards'));
     }
 
-    public function detail(){
-        
-        return view('detail');
+    public function detail($id){
+
+        $details = Product::find($id);
+
+        return view('detail' , compact('details'));
     }
 
 }

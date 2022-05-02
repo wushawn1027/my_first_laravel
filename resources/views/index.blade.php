@@ -543,17 +543,19 @@
                     @foreach ($cards as $card)
 
                     <div class="col-sm-10 col-md-6 col-lg-3 p-1">
-                        <div class="card p-3 border-0">
-                            <div class="card2ImgBox">
-                                <img src="{{$card->img_path}}" id="card2Img" class="card-img-top " alt="" onerror="errorImg(this)">
+                        <a href="/detail/{{$card->id}}">
+                            <div class="card p-3 border-0">
+                                <div class="card2ImgBox">
+                                    <img src="{{$card->img_path}}" id="card2Img" class="card-img-top " alt="" onerror="errorImg(this)">
+                                </div>
+                                <div class="card-body">
+                                <p class="fs-9 text-secondary">商品數量:{{$card->quantity}}</p>
+                                <h5 class="card-title">{{$card->name}}</h5>
+                                <p class="card-text text-secondary">{{$card->introduction}}</p>
+                                <p class="card-text text-secondary">{{$card->price}} 元</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                              <p class="fs-9 text-secondary">商品數量:{{$card->quantity}}</p>
-                              <h5 class="card-title">{{$card->name}}</h5>
-                              <p class="card-text text-secondary">{{$card->introduction}}</p>
-                              <p class="card-text text-secondary">{{$card->price}} 元</p>
-                            </div>
-                          </div>
+                        </a>
                     </div>
 
                     @endforeach
