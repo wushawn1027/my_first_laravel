@@ -41,7 +41,7 @@
     <main class="pt-5 pb-5 d-flex justify-content-center">
         <section id="accountCreate" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
             <h1 class="w-100 mb-3 text-primary fw-bolder">會員新增</h1>
-            <span class="fw-bolder text-danger">{{ session('problem') }}</span>
+            <span class="fw-bolder text-danger mb-2">{{ session('problem') }}</span>
             <div class="mb-4">
                 <form class="d-flex flex-column" action="/account/store" method="post">
                     @csrf

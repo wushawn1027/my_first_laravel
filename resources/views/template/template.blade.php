@@ -162,14 +162,14 @@
                     <li class="me-5">
                         <a href="/banner" class="fs-7 fw-bolder">Banner</a>
                     </li> --}}
-                    <li class="me-5">
-                        <a href="/comment" class="fs-7 fw-bolder">Comment</a>
+                    <li class="me-3">
+                        <a href="/comment" class="fs-7 fw-bolder"><i class="fa-solid fa-comment-dots"></i> Comment</a>
                     </li>
                     {{-- <li class="me-5">
                         <a href="" class="fs-7 fw-bolder">other</a>
                     </li> --}}
                     <li class="me-3">
-                        <a  href="/shoppingS1"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
+                        <a  href="/shoppingS1" class="fs-7 fw-bolder"><i class="fa-solid fa-cart-shopping"></i> 購物車</a>
                     </li>
 
                     @auth
@@ -177,11 +177,11 @@
                     {{-- 如果是帳號管理者 要顯示後台的連結 --}}
                     @if (Auth::user()->power == 1)
                     <li class="me-3">
-                        <a  href="/dashboard" class="fs-7 fw-bolder">後台</a>
+                        <a  href="/dashboard" class="fs-7 fw-bolder"><i class="fa-solid fa-screwdriver-wrench"></i> 後台</a>
                     </li>
                     @endif
 
-                    <li class="liLogin me-3">
+                    <li class="liLogin me-3 ms-2">
                         <a class="">{{Auth::user()->name}}, 您好~</a>
                     </li>
                     <li class="liLogin">
@@ -195,7 +195,7 @@
                     @guest
                     <li class="liLogin">
                         <input type="checkbox" id="dropLogin" hidden>
-                        <label for="dropLogin"><i class="fs-4 fa-solid fa-circle-user text-black"></i></label></i>
+                        <label for="dropLogin"><i class="fa-solid fa-circle-user text-black"></i></label></i>
                         <div class="Login p-2 rounded">
                             <a href="/login">Login</a>
                         </div>
@@ -211,19 +211,25 @@
                 </label>
                 <div id="burgerMenu">
                     <div id="burgerMenuBox" class="w-100 bg-light p-4">
-                        <button  class="btn btn-link btn-block border-bottom m-0">
+                        {{-- <button  class="btn btn-link btn-block border-bottom m-0">
                             <a id="burgerMenuBoxA" href="/product" class="fs-7 fw-bolder">商品管理</a>
                             </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
                             <a id="burgerMenuBoxA" href="/banner" class="fs-7 fw-bolder">Banner</a>
-                        </button>
+                        </button> --}}
                         <button class="btn btn-link btn-block border-bottom m-0">
                             <a id="burgerMenuBoxA" href="/comment" class="fs-7 fw-bolder">Comment</a>
                         </button>
+
+                        @auth
+                        @if (Auth::user()->power == 1)
                         <button class="btn btn-link btn-block border-bottom m-0 mb-3">
-                            <a id="burgerMenuBoxA" href="" class="fs-7 fw-bolder">other</a>
+                            <a id="burgerMenuBoxA" href="/dashboard" class="fs-7 fw-bolder">後台</a>
                         </button>
-                        <div class="w-100 d-flex justify-content-center align-items-center m-0">
+                        @endif
+                        @endauth
+
+                        <div class="w-100 d-flex justify-content-center align-items-center m-0 mt-4">
                             <a href="/shoppingS1"><i class="fs-4 fa-solid fa-cart-shopping"></i></a>
                             <a href="/login"><i class="fs-4 fa-solid fa-circle-user text-black ms-3"></i></a>
                         </div>

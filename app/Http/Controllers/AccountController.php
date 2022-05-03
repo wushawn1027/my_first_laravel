@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-// use Illuminate\Auth\Events\Registered;
-// use Illuminate\Support\Facades\Auth;
-// use App\Rules\Uppercase;
 use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
@@ -33,6 +28,13 @@ class AccountController extends Controller
         return view('account.create',compact('header' , 'slot'));
     }
 
+    /**
+     * Store a new blog post.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+
     public function store(Request $request){
 
         // laravel內建的帳號註冊的防呆
@@ -44,15 +46,20 @@ class AccountController extends Controller
 
 
         // 改寫成直接呼叫一個驗證器去幫我們驗證
-        $validator = Validator::make($request()->all(),[
+        $validator = Validator::make($request->all(),[
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        // $validator = Validator::make($request->all(),[
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'password' => 'required|confirmed', Rules\Password::defaults(),
+        // ]);
 
         if ($validator->fails()){
             return redirect('account/create')->with('problem','輸入資訊錯誤, 請重新檢查!');
-        }
+        };
 
         $uesr = User::create([
             'name' => $request->name,
