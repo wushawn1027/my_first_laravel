@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    商品管理
+    會員管理
 @endsection
 
 @section('link')
@@ -19,7 +19,7 @@
         background-color: rgb(180, 181, 182);
         height: 100%;
     }
-    #product {
+    #account {
         background-color: rgb(243, 242, 242);
         width: 900px;
         height: 100%;
@@ -31,7 +31,7 @@
     .tbodyTr {
         height: 100px;
     }
-    .productImg {
+    .accountImg {
         width: 100px;
         height: 100px;
     }
@@ -40,7 +40,7 @@
         height: 100%;
     }
     @media(max-width:992px) {
-        #product {
+        #account {
             width: 600px;
         }
     }
@@ -49,21 +49,19 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <section id="product" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
+        <section id="account" class="container-xxl rounded-3 p-5 d-flex flex-column mb-2">
             <div class="d-flex justify-content-between mb-2">
-                <h1 class="w-100 mb-3 text-primary fw-bolder">商品管理</h1>
-                <a id="btnCreate" href="/product/create" class="w-25 btn btn-success">新增商品</a>
+                <h1 class="w-100 mb-3 text-primary fw-bolder">會員管理</h1>
+                <a id="btnCreate" href="/account/create" class="w-25 btn btn-success">新增會員</a>
             </div>
 
             <div class="">
-                <table id="productList" class="display">
+                <table id="accountList" class="display">
                     <thead>
                         <tr>
-                          <th>商品圖片</th>
-                          <th>商品名稱</th>
-                          <th>商品價格</th>
-                          <th>商品數量</th>
-                          <th>商品介紹</th>
+                          <th>使用者名稱</th>
+                          <th>信箱</th>
+                          <th>權限</th>
                           <th>編輯/刪除</th>
                         </tr>
                       </thead>
@@ -71,18 +69,20 @@
 
                         @foreach ($datas as $data)
                         <tr class="tbodyTr">
-                            <td>
-                                <img src="{{$data->img_path}}" alt="" class="productImg">
-                            </td>
                             <td class="fw-bolder">{{$data->name}}</td>
-                            <td>{{$data->price}} 元</td>
-                            <td>{{$data->quantity}}</td>
-                            <td>{{$data->introduction}}</td>
+                            <td>{{$data->email}}</td>
+                            <td>
+                                @if ($data->power == 1)
+                                    管理者
+                                @else
+                                    一般會員
+                                @endif
+                            </td>
                             <td>
                                 <div class="btnED ">
-                                    <button onclick="location.href='/product/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
+                                    <button onclick="location.href='/account/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
                                     <button onclick="document.querySelector('#deleteForm{{$data->id}}').submit();" class="text-white p-1 rounded btn-danger"><i class="fa-solid fa-trash-can"></i> 刪除</button>
-                                    <form action="/product/delete/{{$data->id}}" method="post" hidden id="deleteForm{{$data->id}}">
+                                    <form action="/account/delete/{{$data->id}}" method="post" hidden id="deleteForm{{$data->id}}">
                                         @method('DELETE')
                                         @csrf
                                     </form>
@@ -103,7 +103,7 @@
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#productList').DataTable();
+            $('#accountList').DataTable();
         } );
     </script>
 @endsection

@@ -28,8 +28,17 @@ class Product extends Model
      */
     protected $fillable = ['created_at', 'updated_at', 'img_path', 'name', 'price', 'quantity', 'introduction'];
 
+    // 每一筆商品資料
+
     public function imgs(){
 
+        // 可以有很多張商品圖片
         return $this->hasMany(Product_img::class, 'product_id', 'id'); // 因為是hasMany,所以會輸出一個陣列
+    }
+
+    public function shoppingCart(){
+
+        // 可以存在很多購物車內
+        return $this->hasMany(ShoppingCart::class, 'product_id', 'id');
     }
 }

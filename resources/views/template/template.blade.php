@@ -173,6 +173,14 @@
                     </li>
 
                     @auth
+
+                    {{-- 如果是帳號管理者 要顯示後台的連結 --}}
+                    @if (Auth::user()->power == 1)
+                    <li class="me-3">
+                        <a  href="/dashboard" class="fs-7 fw-bolder">後台</a>
+                    </li>
+                    @endif
+
                     <li class="liLogin me-3">
                         <a class="">{{Auth::user()->name}}, 您好~</a>
                     </li>

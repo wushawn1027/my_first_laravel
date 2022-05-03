@@ -7,6 +7,7 @@ use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\BsController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,17 @@ Route::prefix('product')->middleware(['auth','power'])->group(function() {
 
 
 Route::get('/detail/{id}', [BsController::class, 'detail']);
+
+
+Route::prefix('account')->middleware(['auth','power'])->group(function() {
+
+    Route::get('/', [AccountController::class, 'index']);
+    Route::get('/create', [AccountController::class, 'create']);
+    Route::post('/store', [AccountController::class, 'store']);
+    Route::get('/edit/{id}', [AccountController::class, 'edit']);
+    Route::post('/update/{id}', [AccountController::class, 'update']);
+    Route::delete('/delete/{id}', [AccountController::class, 'destory']);
+});
 
 
 // welcome相關路由

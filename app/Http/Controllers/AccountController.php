@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+// use Illuminate\Auth\Events\Registered;
+// use Illuminate\Support\Facades\Auth;
+// use App\Rules\Uppercase;
+use Illuminate\Support\Facades\Validator;
+
+class AccountController extends Controller
+{
+    public function index(){
+
+        $datas = User::orderby('id','desc')->get();
+
+        $header = 'Account管理-首頁';
+        $slot = '';
+
+        return view('account.index',compact('datas' , 'header' , 'slot'));
+    }
+
+    public function create(){
+
+        $header = 'Account管理-新增';
+        $slot = '';
+
+        return view('account.create',compact('header' , 'slot'));
+    }
+
+    public function store(Request $request){
+
+        // laravel內建的帳號註冊的防呆
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+
+
+        // 改寫成直接呼叫一個驗證器去幫我們驗證
+        $validator = Validator::make($request()->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        if ($validator->fails()){
+            return redirect('account/create')->with('problem','輸入資訊錯誤, 請重新檢查!');
+        }
+
+        $uesr = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'power' => 1,
+        ]);
+
+        return redirect('/account');
+    }
+
+    public function edit($id){
+
+        $edit = User::find($id);
+
+        $header = 'Account管理-編輯';
+        $slot = '';
+
+        return view('account.edit',compact('edit' , 'header' , 'slot'));
+    }
+
+    public function update($id, Request $request){
+
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->power = $request->power;
+
+        // needRehash 檢查是否已經做過Hash運算了, 如果沒有才會執行裡面的程式
+        if (Hash::needsRehash($request->password)) {
+            $user->password = Hash::make($request->password);
+        };
+
+        $user->save();
+
+        return redirect('/account');
+    }
+
+    public function destory($id){
+
+        $Users = User::find($id)->delete();
+
+        return redirect('/account');
+    }
+
+}
