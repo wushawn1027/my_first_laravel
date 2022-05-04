@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -43,13 +42,16 @@
     .review {
         border-right: 1px solid grey;
     }
-    #quantity {
-        width: 30px;
+    #qty {
+        width: 45px;
         text-align: center;
     }
-    #min , #add {
-        width: 25px;
+    /* #minus , #plus{
+        width: 18px;
         text-align: center;
+    } */
+    #add_product {
+        border: 2px solid black;
     }
     .imgBtm {
         height: 200px;
@@ -72,7 +74,7 @@
 /* ------------------------------992---------------------------------- */
     @media(max-width:992px) {
         #product-detail {
-            width: 700px;
+            width: 750px;
         }
     }
 /* ------------------------------swiper---------------------------------- */
@@ -213,15 +215,15 @@
                         <div class="numBox d-flex flex-row mb-4">
                             <span class="col-lg-3 col-sm-6"><i class="fa-solid fa-arrow-up-9-1"></i>  數量：</span>
                             <div clsss="col-lg-3 col-sm-6">
-                                <input id="min" name="" type="button" value="-" />
-                                <input id="quantity" name="" type="text" value="1" />
-                                <input id="add" name="" type="button" value="+" />
-                                <span class="ms-2">還剩 {{$details->quantity}} 件</span>
+                                <input id="minus" name="" type="button" value="-" />
+                                <input id="qty" name="qty" type="number" value="1" />
+                                <input id="plus" name="" type="button" value="+" />
+                                <span class="">還剩<span class="text-danger fw-bolder">{{$details->quantity}}</span>件</span>
                             </div>
                         </div>
                         <div class="d-flex flex-row justify-content-center">
-                            <button class="w-50 bg-warning text-danger me-1 p-1 rounded"><i class="text-danger fa-solid fa-cart-plus"></i> 加入購物車</button>
-                            <button class="w-50 bg-danger text-light ms-1 p-1 rounded"><i class="text-light fa-solid fa-cash-register"></i> 直接購買</button>
+                            <a id="add_product" role="button" class="d-flex flex-row justify-content-center align-items-center w-50 bg-danger text-dark me-1 p-1 rounded"><i class="text-dark fa-solid fa-cart-plus"></i> 加入購物車</a role="button">
+                            <button onclick="location.href='/'" class="w-50 bg-warning text-dark ms-1 p-1 rounded"><i class="text-dark fa-solid fa-house"></i> 返回首頁</button>
                         </div>
                     </div>
                 </div>
@@ -255,29 +257,60 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>
-    $(function(){
-        var t = $("#quantity");
-        $("#add").click(function(){
-            t.val(parseInt(t.val())+1);
-            $("#min").removeAttr("disabled");
-            setTotal();
-        })
-        $("#min").click(function(){
-                   if (parseInt(t.val())>1) {
-                    t.val(parseInt(t.val())-1)
-                    }else{
-                    $("#min").attr("disabled","disabled")
-                   }
-            setTotal();
-        })
-        function setTotal(){
-            $("#total").html((parseInt(t.val())*3.95).toFixed(2));
+
+    <script>
+        const minus = document.querySelector('#minus');
+        const qty = document.querySelector('#qty');
+        const plus = document.querySelector('#plus');
+
+        minus.onclick = function(){
+
+            if (parseInt(qty.value) >= 2){
+                qty.value = parseInt(qty.value) - 1;
+            }
         }
-        setTotal();
-        })
+
+        plus.onclick = function(){
+
+            if (parseInt(qty.value) < {!! $details->quantity !!}){
+                qty.value = parseInt(qty.value) + 1;
+            }
+        }
+
+
+        const add_product = document.querySelector('#add_product');
+
+        add_product.onclick = function(){
+            // 在JS建立一個虛擬的form表單
+            var formData = new FormData();
+
+            formData.append('add_qty', parseInt(qty.value));
+            formData.append('product_id',  {{ $details->id }});
+            formData.append('_token',  '{{ csrf_token() }}');
+
+            // 利用fetch將form表單送過去
+            fetch('/add_to_cart', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .catch(error => {
+                alert('新增失敗, 請再嘗試一次!')
+                return 'error';
+            })
+            .then(response => {
+                if (response != 'error'){
+                    if (response.result == 'success')
+                        alert('新增成功!')
+                    else{
+                        alert('新增失敗:' + response.message)
+                    }
+                }
+            });
+        }
+
     </script>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>

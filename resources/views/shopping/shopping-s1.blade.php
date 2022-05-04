@@ -77,8 +77,8 @@
     #textNum {
         width: 35px;
         height: 25px;
-        border: 1px solid grey;
-        background-color: rgb(243, 242, 242);
+        /* border: 1px solid grey;
+        background-color: rgb(243, 242, 242); */
     }
     #order-table {
         border-bottom: 1px solid rgb(219, 216, 216);
@@ -120,7 +120,29 @@
             </div>
             <div class="order-lists d-flex flex-column mt-3">
                 <h3>訂單明細</h3>
+
+                @foreach ($datas as $data)
                 <div class="order-list">
+                    <div class="d-flex align-items-center">
+                        <div class="shoppimg-img me-3">
+                            {{-- <img src="{{$datas->product->img_path}}" class="" alt=""> --}}
+                        </div>
+                        <div clsss="d-flex flex-column">
+                            {{-- <p class="m-0 fs-6">{{$item->name}}</p>
+                            <p class="m-0 p-num">{{$item->introduction}}</p> --}}
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div clsss="">
+                            <span class="me-1">數量：</span>
+                            <span id="textNum">{{$data->qty}}</span>
+                        </div>
+                        {{-- <span class="ms-4">${{$item->price}}</span> --}}
+                    </div>
+                </div>
+                @endforeach
+
+                {{-- <div class="order-list">
                     <div class="d-flex align-items-center">
                         <div class="shoppimg-img me-3">
                             <img src="{{asset('img/cat4.jpg')}}" class="" alt="" onerror="errorImg(this)">
@@ -176,7 +198,7 @@
                         </div>
                         <span class="ms-4">$10.50</span>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                 <table>
@@ -190,7 +212,7 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">$100.00</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>

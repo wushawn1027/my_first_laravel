@@ -78,6 +78,9 @@ Route::prefix('product')->middleware(['auth','power'])->group(function() {
 
 Route::get('/detail/{id}', [BsController::class, 'detail']);
 
+Route::post('/add_to_cart', [BsController::class, 'add_cart']);
+
+
 
 Route::prefix('account')->middleware(['auth','power'])->group(function() {
 
