@@ -8,6 +8,7 @@ use App\Http\Controllers\BsController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +44,13 @@ Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 
 
 // 購物車相關路由
-Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
-Route::get('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
-Route::get('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
-Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
+    Route::post('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
+    Route::post('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
+    Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
+});
+
 
 
 // 部分參考resful API 推薦的寫法
@@ -91,6 +95,11 @@ Route::prefix('account')->middleware(['auth','power'])->group(function() {
     Route::post('/update/{id}', [AccountController::class, 'update']);
     Route::delete('/delete/{id}', [AccountController::class, 'destory']);
 });
+
+
+Route::get('/order', [OrderController::class, 'index']);
+Route::get('/order/edit/{id}', [OrderController::class, 'edit']);
+Route::post('/order/update/{id}', [OrderController::class, 'update']);
 
 
 // welcome相關路由

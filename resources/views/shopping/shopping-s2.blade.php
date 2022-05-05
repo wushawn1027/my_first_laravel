@@ -89,7 +89,8 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <section id="shopping-s2" class="container-xxl rounded-3 p-5">
+        <form action="/shoppingS3" method="POST" id="shopping-s2" class="container-xxl rounded-3 p-5">
+            @csrf
             <div class="buy-progress">
                 <h2 class="fw-bolder">購物車</h2>
                 <div class="p-4 steps d-flex align-items-center">
@@ -107,15 +108,15 @@
                 <div class="">
                     <div class="payBox p-3">
                         <input type="radio" name="payWay" id="payCard">
-                        <label class="fs-5 ms-1" for="payCard">信用卡付款</label>
+                        <label class="fs-5 ms-1" for="payCard" value="1">信用卡付款</label>
                     </div>
                     <div class="payBox p-3">
                         <input type="radio" name="payWay" id="payATM">
-                        <label class="fs-5 ms-1" for="payATM">網路 ATM</label>
+                        <label class="fs-5 ms-1" for="payATM" value="2">網路 ATM</label>
                     </div>
                     <div class="p-3">
                         <input type="radio" name="payWay" id="payStore">
-                        <label class="fs-5 ms-1" for="payStore">超商代碼</label>
+                        <label class="fs-5 ms-1" for="payStore" value="3">超商代碼</label>
                     </div>
                 </div>
             </div>
@@ -123,12 +124,12 @@
                 <h3 class="w-100">運送方式</h3>
                 <div class="">
                     <div class="sendBox p-3">
-                        <input type="radio" name="sendWay" id="sendHome">
-                        <label class="fs-5 ms-1" for="sendHome">黑貓宅配</label>
+                        <input type="radio" name="deliver" id="sendHome">
+                        <label class="fs-5 ms-1" for="sendHome" value="1">黑貓宅配</label>
                     </div>
                     <div class="p-3">
-                        <input type="radio" name="sendWay" id="sendStore">
-                        <label class="fs-5 ms-1" for="sendStore">超商店到店</label>
+                        <input type="radio" name="deliver" id="sendStore">
+                        <label class="fs-5 ms-1" for="sendStore" value="2">超商店到店</label>
                     </div>
                 </div>
             </div>
@@ -157,9 +158,9 @@
                     <button id="btnGoBack" type="button" onclick="location.href='/shoppingS1'" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
                 </div>
                 <div class="">
-                    <button type="button" onclick="location.href='/shoppingS3'" class="btn btn-primary btn-lg fs-6">下一步</button>
+                    <button type="submit" class="btn btn-primary btn-lg fs-6">下一步</button>
                 </div>
             </div>
-        </section>
+        </form>
     </main>
 @endsection

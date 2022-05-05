@@ -8,12 +8,12 @@
     <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 980px;
+        height: 100%;
     }
     #shopping-s1 {
         background-color: rgb(243, 242, 242);
         width: 900px;
-        height: 880px;
+        height: 100%;
     }
     #shopping-s1 .buy-progress {
         height: 180px;
@@ -56,7 +56,7 @@
         border-radius: 5px;
     }
     .order-lists {
-        height: 400px;
+        height: 100%;
     }
     .order-list {
         height: 150px;
@@ -74,17 +74,15 @@
         font-size: 10px;
         color: grey;
     }
-    #textNum {
-        width: 35px;
-        height: 25px;
-        /* border: 1px solid grey;
-        background-color: rgb(243, 242, 242); */
+    #qty {
+        width: 45px;
+        text-align: center;
     }
     #order-table {
         border-bottom: 1px solid rgb(219, 216, 216);
     }
     table {
-        width: 200px;
+        width: 100%;
     }
     .fa-arrow-left:hover {
         color: black;
@@ -94,7 +92,7 @@
     }
     @media(max-width:992px) {
         #shopping-s1 {
-            width: 500px;
+            width: 650px;
         }
         #shopping-s1 .buy-progress .steps .buy-progress-bar {
             width: 40px;
@@ -105,7 +103,8 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <section id="shopping-s1" class="container-xxl rounded-3 p-5">
+        <form action="/shoppingS2" method="POST" id="shopping-s1" class="container-xxl rounded-3 p-5">
+            @csrf
             <div class="buy-progress">
                 <h2 class="fw-bolder">購物車</h2>
                 <div class="p-4 steps d-flex align-items-center">
@@ -121,94 +120,46 @@
             <div class="order-lists d-flex flex-column mt-3">
                 <h3>訂單明細</h3>
 
-                @foreach ($datas as $data)
-                <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            {{-- <img src="{{$datas->product->img_path}}" class="" alt=""> --}}
+                    @foreach ($datas as $item)
+                    <div class="order-list">
+                        <div class="d-flex align-items-center">
+                            <div class="shoppimg-img me-3">
+                                <img src="{{$item->product->img_path}}" class="" alt="">
+                            </div>
+                            <div clsss="d-flex flex-column">
+                                <p class="m-0 fs-6 fw-bolder">{{$item->product->name}}</p>
+                                <p class="m-0 p-num">{{$item->product->introduction}}</p>
+                            </div>
                         </div>
-                        <div clsss="d-flex flex-column">
-                            {{-- <p class="m-0 fs-6">{{$item->name}}</p>
-                            <p class="m-0 p-num">{{$item->introduction}}</p> --}}
+                        <div class="d-flex align-items-center">
+                            <div clsss="">
+                                <span class="me-1">數量：</span>
+                                <input id="minus" name="" type="button" value="-" />
+                                <input id="qty" name="qty[]" type="number" value="{{$item->qty}}" />
+                                <input id="plus" name="" type="button" value="+" />
+                            </div>
+                            <span class="ms-4">${{$item->qty * $item->product->price}}</span>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">數量：</span>
-                            <span id="textNum">{{$data->qty}}</span>
-                        </div>
-                        {{-- <span class="ms-4">${{$item->price}}</span> --}}
-                    </div>
-                </div>
-                @endforeach
+                    @endforeach
 
-                {{-- <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="{{asset('img/cat4.jpg')}}" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Chicken momo</p>
-                            <p class="m-0 p-num">#41551</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">-</span>
-                            <input id="textNum" type="text" value="1" class="rounded text-center">
-                            <span class="ms-1">+</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
-                </div>
-                <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="/img/rick-roll.gif" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Spicy Mexican potatoes</p>
-                            <p class="m-0 p-num">#66999</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">-</span>
-                            <input id="textNum" type="text" value="1" class="rounded text-center">
-                            <span class="ms-1">+</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
-                </div>
-                <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="/img/cat6.jpg" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Breakfast</p>
-                            <p class="m-0 p-num">#86577</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">-</span>
-                            <input id="textNum" type="text" value="1" class="rounded text-center">
-                            <span class="ms-1">+</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
-                </div> --}}
             </div>
+            <?php
+            $subtotal = 0;
+
+            foreach ($datas as $value) {
+                $subtotal += $value->qty* $value->product->price;
+            }
+            ?>
             <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                 <table>
                     <tr>
                         <td class="text-secondary">數量:</td>
-                        <td class="float-end fw-bolder fs-5">3</td>
+                        <td class="float-end fw-bolder fs-5">{{count($datas)}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
@@ -216,7 +167,7 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
                     </tr>
                 </table>
             </div>
@@ -226,10 +177,31 @@
                     返回購物
                 </p>
                 <div class="">
-                    <button type="button" onclick="location.href='/shoppingS2'" class="btn btn-primary btn-lg fs-6">下一步</button>
+                    <button type="submit" class="btn btn-primary btn-lg fs-6">下一步</button>
                 </div>
             </div>
-        </section>
+        </form>
     </main>
 @endsection
 
+@section('script')
+<script>
+    const minus = document.querySelector('#minus');
+    const qty = document.querySelector('#qty');
+    const plus = document.querySelector('#plus');
+
+    minus.onclick = function(){
+
+        if (parseInt(qty.value) >= 2){
+            qty.value = parseInt(qty.value) - 1;
+        }
+    }
+
+    plus.onclick = function(){
+
+        if (parseInt(qty.value) < {!! $item->product->quantity !!}){
+            qty.value = parseInt(qty.value) + 1;
+        }
+    }
+</script>
+@endsection
