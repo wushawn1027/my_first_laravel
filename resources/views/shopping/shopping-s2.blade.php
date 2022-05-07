@@ -8,12 +8,12 @@
     <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 1000px;
+        height: 100%;
     }
     #shopping-s2 {
         background-color: rgb(243, 242, 242);
         width: 900px;
-        height: 910px;
+        height: 100%;
     }
     #shopping-s2 .buy-progress {
         height: 180px;
@@ -78,7 +78,7 @@
     }
     @media(max-width:992px) {
         #shopping-s2 {
-            width: 500px;
+            width: 650px;
         }
         #shopping-s2 .buy-progress .steps .buy-progress-bar {
             width: 40px;
@@ -107,15 +107,15 @@
                 <h3 class="w-100">付款方式</h3>
                 <div class="">
                     <div class="payBox p-3">
-                        <input type="radio" name="payWay" id="payCard">
+                        <input type="radio" name="pay" id="payCard">
                         <label class="fs-5 ms-1" for="payCard" value="1">信用卡付款</label>
                     </div>
                     <div class="payBox p-3">
-                        <input type="radio" name="payWay" id="payATM">
+                        <input type="radio" name="pay" id="payATM">
                         <label class="fs-5 ms-1" for="payATM" value="2">網路 ATM</label>
                     </div>
                     <div class="p-3">
-                        <input type="radio" name="payWay" id="payStore">
+                        <input type="radio" name="pay" id="payStore">
                         <label class="fs-5 ms-1" for="payStore" value="3">超商代碼</label>
                     </div>
                 </div>
@@ -153,9 +153,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
                 <div class="">
-                    <button id="btnGoBack" type="button" onclick="location.href='/shoppingS1'" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
+                    <button id="btnGoBack" type="button" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS1">上一步</a></button>
                 </div>
                 <div class="">
                     <button type="submit" class="btn btn-primary btn-lg fs-6">下一步</button>

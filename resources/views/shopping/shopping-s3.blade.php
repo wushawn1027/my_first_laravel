@@ -8,12 +8,12 @@
 <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 1080px;
+        height: 100%;
     }
     #shopping-s3 {
         background-color: rgb(243, 242, 242);
         width: 900px;
-        height: 980px;
+        height: 100%;
     }
     #shopping-s3 .buy-progress {
         height: 180px;
@@ -85,7 +85,7 @@
     }
     @media(max-width:992px) {
         #shopping-s3 {
-            width: 500px;
+            width: 650px;
         }
         #shopping-s3 .buy-progress .steps .buy-progress-bar {
             width: 40px;
@@ -96,7 +96,8 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <section id="shopping-s3" class="container-xxl rounded-3 p-5">
+        <form action="/shoppingS4" method="POST" id="shopping-s3" class="container-xxl rounded-3 p-5">
+            @csrf
             <div class="buy-progress">
                 <h2 class="fw-bolder">購物車</h2>
                 <div class="p-4 steps d-flex align-items-center">
@@ -157,14 +158,14 @@
                     </tr>
                 </table>
             </div>
-            <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
                 <div class="">
-                    <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
+                    <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS2">上一步</a></button>
                 </div>
                 <div class="">
                     <button type="button" onclick="location.href='/shoppingS4'" class="btn btn-primary btn-lg fs-6">前往付款</button>
                 </div>
             </div>
-        </section>
+        </form>
     </main>
 @endsection

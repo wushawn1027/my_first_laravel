@@ -80,8 +80,10 @@ Route::prefix('product')->middleware(['auth','power'])->group(function() {
 });
 
 
+// 商品詳情
 Route::get('/detail/{id}', [BsController::class, 'detail']);
 
+// 接受加入購物車請求
 Route::post('/add_to_cart', [BsController::class, 'add_cart']);
 
 

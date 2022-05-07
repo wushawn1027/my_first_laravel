@@ -78,6 +78,9 @@
         width: 45px;
         text-align: center;
     }
+    .productPrice {
+        width: 80px;
+    }
     #order-table {
         border-bottom: 1px solid rgb(219, 216, 216);
     }
@@ -127,7 +130,7 @@
                                 <img src="{{$item->product->img_path}}" class="" alt="">
                             </div>
                             <div clsss="d-flex flex-column">
-                                <p class="m-0 fs-6 fw-bolder">{{$item->product->name}}</p>
+                                <p class="m-0 fs-5 fw-bolder">{{$item->product->name}}</p>
                                 <p class="m-0 p-num">{{$item->product->introduction}}</p>
                             </div>
                         </div>
@@ -138,19 +141,12 @@
                                 <input id="qty" name="qty[]" type="number" value="{{$item->qty}}" />
                                 <input id="plus" name="" type="button" value="+" />
                             </div>
-                            <span class="ms-4">${{$item->qty * $item->product->price}}</span>
+                            <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->product->price}}</span>
                         </div>
                     </div>
                     @endforeach
 
             </div>
-            <?php
-            $subtotal = 0;
-
-            foreach ($datas as $value) {
-                $subtotal += $value->qty* $value->product->price;
-            }
-            ?>
             <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                 <table>
                     <tr>
@@ -171,13 +167,13 @@
                     </tr>
                 </table>
             </div>
-            <div class="d-flex justify-content-between align-items-center pt-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
                 <p class="fs-7 text-black">
                     <a href="/"><i class="fa-solid fa-arrow-left me-1"></i></a>
                     返回購物
                 </p>
                 <div class="">
-                    <button type="submit" class="btn btn-primary btn-lg fs-6">下一步</button>
+                    <button type="submit" class="btn btn-primary btn-lg fs-6" role="button">下一步</button>
                 </div>
             </div>
         </form>

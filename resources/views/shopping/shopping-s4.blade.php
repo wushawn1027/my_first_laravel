@@ -8,12 +8,12 @@
     <style>
     main {
         background-color: rgb(180, 181, 182);
-        height: 1300px;
+        height: 100%;
     }
     #shopping-s4 {
         background-color: rgb(243, 242, 242);
         width: 900px;
-        height: 1200px;
+        height: 100%;
     }
     #shopping-s4 .buy-progress {
         height: 180px;
@@ -73,6 +73,7 @@
     }
     .sendDatd {
         border-bottom: 1px solid rgb(219, 216, 216);
+        height: 100%;
     }
     .sendDatd table {
         width: 400px;
@@ -92,7 +93,7 @@
     }
     @media(max-width:992px) {
         #shopping-s4 {
-            width: 500px;
+            width: 650px;
         }
         #shopping-s4 .buy-progress .steps .buy-progress-bar {
             width: 40px;
@@ -214,7 +215,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="d-flex justify-content-end align-items-center pt-3 pb-3">
+            <div class="d-flex justify-content-end align-items-center pt-3 pb-3 mt-4">
                 <div class="">
                     <button type="button" onclick="location.href='/'" class="btn btn-primary btn-lg fs-6">返回首頁</button>
                 </div>

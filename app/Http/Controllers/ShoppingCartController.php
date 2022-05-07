@@ -18,6 +18,12 @@ class ShoppingCartController extends Controller
         // 登入的使用者ID, 為了搜尋屬於他的購物清單
         $user = Auth::id();
         $datas = ShoppingCart::where('user_id',$user)->get();
+        //每次從資料庫抓資料出來都應當先dd一下確認是否有抓對
+
+        $subtotal = 0;
+        foreach ($datas as $value) {
+            $subtotal += $value->qty * $value->product->price;
+        }
 
         // for ($i=0; $i < count($data); $i++) {
         //     $item = $datas[$i];
@@ -34,15 +40,14 @@ class ShoppingCartController extends Controller
         //     dump($item->product->price);
         // };
 
-        return view('shopping.shopping-s1' , compact('datas'));
+        return view('shopping.shopping-s1' , compact('datas','subtotal'));
     }
     public function shoppingS2(Request $request){
 
         // session的使用方法 使用 鍵與值的方法 將想帶到下一頁的資料寫進去
-        $qty = $request->qty;
         session([
             // key value 鍵與值
-            'amount' => $request->$qty,
+            'amount' => $request->qty,
         ]);
 
         return view('shopping.shopping-s2');
@@ -50,8 +55,8 @@ class ShoppingCartController extends Controller
     public function shoppingS3(Request $request){
 
         session([
-            'pay' => $request->$payway,
-            'deliver' => $request->$deliver,
+            'pay' => $request->payway,
+            'deliver' => $request->deliver,
         ]);
 
         return view('shopping.shopping-s3');
@@ -59,8 +64,8 @@ class ShoppingCartController extends Controller
     public function shoppingS4(Request $request){
 
         //
-        dump(session()->all());
-        dd($request->all());
+        // dump(session()->all());
+        // dd($request->all());
         return view('shopping.shopping-s4');
     }
 }

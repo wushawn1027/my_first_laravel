@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('payway'); // 付款方式：1->代表信用卡 2->網路atm 3->超商代碼
             $table->integer('shipping_way'); // 運送方式 1->黑貓宅配 2->超商店到店
             $table->string('store_address'); // 取貨超商
-            $table->integer('status'); // 訂單狀態 1->訂單成立(未付款) 2->已付款 3->退貨
+            $table->integer('status'); // 訂單狀態 1->訂單成立(未付款) 2->已付款 3->已出貨, 4->已結單, 5->已取消
             $table->string('ps'); // 訂單備註
             $table->timestamps();
         });

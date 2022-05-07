@@ -37,7 +37,7 @@ class AccountController extends Controller
 
     public function store(Request $request){
 
-        // laravel內建的帳號註冊的防呆
+        // laravel內建的帳號註冊的防呆, 檢查輸入是否錯誤
         // $request->validate([
         //     'name' => ['required', 'string', 'max:255'],
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -51,11 +51,6 @@ class AccountController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|confirmed', Rules\Password::defaults(),
-        // ]);
 
         if ($validator->fails()){
             return redirect('account/create')->with('problem','輸入資訊錯誤, 請重新檢查!');
@@ -68,7 +63,7 @@ class AccountController extends Controller
             'power' => 1,
         ]);
 
-        return redirect('/account');
+        return redirect('/account')->with('success','新增成功');
     }
 
     public function edit($id){
