@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Models\Product;
 use App\Models\ShoppingCart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -48,22 +49,44 @@ class ShoppingCartController extends Controller
         session([
             // key value 鍵與值
             'amount' => $request->qty,
+            'subtotal' => $request->subtotal,
+            'total' => $request->subtotal . 100,
         ]);
 
         return view('shopping.shopping-s2');
     }
     public function shoppingS3(Request $request){
 
-        session([
-            'pay' => $request->payway,
-            'deliver' => $request->deliver,
-        ]);
+        // session([
+        //     'pay' => $request->payway,
+        //     'deliver' => $request->deliver,
+        // ]);
 
         return view('shopping.shopping-s3');
     }
     public function shoppingS4(Request $request){
 
-        //
+
+        // $value = Session::pull('amount', 'subtotal', 'total', 'pay', 'deliver');
+
+        $order = Order::create([
+            'product_qty' => $value->amount,
+            'payway' => $value->pay,
+            'shipping_way' => $value->deliver,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            // 'address' => $request->zone.city.address,
+            // 'subtotal' => $value->subtotal,
+            // 'shipping_fee' => 100,
+            // 'total' => $value->total,
+            // 'product_qty' => $value->amount,
+            // 'payway' => $value->pay,
+            // 'shipping_way' => $value->deliver,
+        ]);
+
+
+
         // dump(session()->all());
         // dd($request->all());
         return view('shopping.shopping-s4');

@@ -89,7 +89,7 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <form action="/shoppingS3" method="POST" id="shopping-s2" class="container-xxl rounded-3 p-5">
+        <form action="/shoppingS3" method="post" id="shopping-s2" class="container-xxl rounded-3 p-5">
             @csrf
             <div class="buy-progress">
                 <h2 class="fw-bolder">購物車</h2>
@@ -107,15 +107,15 @@
                 <h3 class="w-100">付款方式</h3>
                 <div class="">
                     <div class="payBox p-3">
-                        <input type="radio" name="pay" id="payCard">
+                        <input type="radio" name="payWay" id="payCard">
                         <label class="fs-5 ms-1" for="payCard" value="1">信用卡付款</label>
                     </div>
                     <div class="payBox p-3">
-                        <input type="radio" name="pay" id="payATM">
+                        <input type="radio" name="payWay" id="payATM">
                         <label class="fs-5 ms-1" for="payATM" value="2">網路 ATM</label>
                     </div>
                     <div class="p-3">
-                        <input type="radio" name="pay" id="payStore">
+                        <input type="radio" name="payWay" id="payStore">
                         <label class="fs-5 ms-1" for="payStore" value="3">超商代碼</label>
                     </div>
                 </div>

@@ -51,7 +51,7 @@
         background-color: rgb(71, 179, 71);
     }
     .order-lists {
-        height: 400px;
+        height: 100%;
     }
     .order-list {
         height: 150px;

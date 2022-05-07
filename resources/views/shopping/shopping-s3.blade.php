@@ -96,76 +96,78 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <form action="/shoppingS4" method="POST" id="shopping-s3" class="container-xxl rounded-3 p-5">
-            @csrf
-            <div class="buy-progress">
-                <h2 class="fw-bolder">購物車</h2>
-                <div class="p-4 steps d-flex align-items-center">
-                    <div class="step green" data-text="確認購物車">1</div>
-                    <div class="buy-progress-bar progress-100"></div>
-                    <div class="step green" data-text="付款與運送方式">2</div>
-                    <div class="buy-progress-bar progress-100"></div>
-                    <div class="step green" data-text="填寫資料">3</div>
-                    <div class="buy-progress-bar progress-25"></div>
-                    <div class="step" data-text="完成訂購">4</div>
+        <section id="shopping-s3" class="container-xxl rounded-3 p-5">
+            <form action="/shoppingS4" method="post">
+                @csrf
+                <div class="buy-progress">
+                    <h2 class="fw-bolder">購物車</h2>
+                    <div class="p-4 steps d-flex align-items-center">
+                        <div class="step green" data-text="確認購物車">1</div>
+                        <div class="buy-progress-bar progress-100"></div>
+                        <div class="step green" data-text="付款與運送方式">2</div>
+                        <div class="buy-progress-bar progress-100"></div>
+                        <div class="step green" data-text="填寫資料">3</div>
+                        <div class="buy-progress-bar progress-25"></div>
+                        <div class="step" data-text="完成訂購">4</div>
+                    </div>
                 </div>
-            </div>
-            <div class="sendData p-1 mt-3">
-                <h3>寄送資料</h3>
-                <div class="form">
-                    <form action="" class="d-flex flex-column">
-                        <span class="mb-1 fs-5">姓名</span>
-                        <div class="form-group w-100">
-                            <input type="text" class="p-2 form-control mb-3" id="inputName"  placeholder="王小明">
-                        </div>
-                        <span class="mb-1 fs-5">電話</span>
-                        <div class="form-group w-100">
-                            <input type="number"  class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
-                        </div>
-                        <span class="mb-1 fs-5">Email</span>
-                        <div class="form-group w-100">
-                            <input type="text"  class="p-2 form-control mb-3" id="inputEmail"  placeholder="abc123@gmail.com">
-                        </div>
-                        <span class="mb-1 fs-5">地址</span>
-                        <div class="w-100 d-flex">
-                            <input type="text" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="城市">
-                            <input type="text" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
-                        </div>
-                        <div class="">
-                            <input type="text" class="p-2 form-control mb-3" id="inputAddress"  placeholder="地址">
-                        </div>
-
-                    </form>
+                <div class="sendData p-1 mt-3">
+                    <h3>寄送資料</h3>
+                    <div class="form">
+                        <form action="" class="d-flex flex-column">
+                            @csrf
+                            <span class="mb-1 fs-5">姓名</span>
+                            <div class="form-group w-100">
+                                <input type="text" name="name" class="p-2 form-control mb-3" id="inputName"  placeholder="王小明">
+                            </div>
+                            <span class="mb-1 fs-5">電話</span>
+                            <div class="form-group w-100">
+                                <input type="number" name="phone" class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
+                            </div>
+                            <span class="mb-1 fs-5">Email</span>
+                            <div class="form-group w-100">
+                                <input type="text" name="email" class="p-2 form-control mb-3" id="inputEmail"  placeholder="abc123@gmail.com">
+                            </div>
+                            <span class="mb-1 fs-5">地址</span>
+                            <div class="w-100 d-flex">
+                                <input type="text" name="city" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="城市">
+                                <input type="text" name="zone" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
+                            </div>
+                            <div class="">
+                                <input type="text" name="address" class="p-2 form-control mb-3" id="inputAddress"  placeholder="地址">
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
-                <table>
-                    <tr>
-                        <td class="text-secondary">數量:</td>
-                        <td class="float-end fw-bolder fs-5">3</td>
-                    </tr>
-                    <tr>
-                        <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
-                    </tr>
-                    <tr>
-                        <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
-                    </tr>
-                    <tr>
-                        <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
-                <div class="">
-                    <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS2">上一步</a></button>
+                <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
+                    <table>
+                        <tr>
+                            <td class="text-secondary">數量:</td>
+                            <td class="float-end fw-bolder fs-5">3</td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">小計:</td>
+                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">運費:</td>
+                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">總計:</td>
+                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="">
-                    <button type="button" onclick="location.href='/shoppingS4'" class="btn btn-primary btn-lg fs-6">前往付款</button>
+                <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
+                    <div class="">
+                        <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS2">上一步</a></button>
+                    </div>
+                    <div class="">
+                        <button type="button" onclick="location.href='/shoppingS4'" class="btn btn-primary btn-lg fs-6">前往付款</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </section>
     </main>
 @endsection
