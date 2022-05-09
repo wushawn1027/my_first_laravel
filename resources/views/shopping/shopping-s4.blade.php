@@ -120,7 +120,7 @@
             <div class="order-lists d-flex flex-column mt-3">
                 <h3>訂單明細</h3>
 
-                {{-- @foreach ($order->detail as $item)
+                @foreach ($order->detail as $item)
                 <div class="order-list">
                 <div class="d-flex align-items-center">
                 <div class="shoppimg-img me-3">
@@ -134,12 +134,12 @@
                 <div class="d-flex align-items-center">
                 <div clsss="">
                     <span class="me-1">數量：</span>
-                    <span class="ms-1">1</span>
+                    <span class="ms-1">{{ $item->qty }}</span>
                 </div>
-                <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->product->price}}</span>
+                <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->price}}</span>
                 </div>
                 </div>
-                @endforeach --}}
+                @endforeach
 
             </div>
             <div class="sendDatd d-flex flex-column pt-3 pb-3">
@@ -158,40 +158,39 @@
                         <td class="fs-5">{{$order->email}}</td>
                     </tr>
                     <tr>
-                        <td class="fs-5">
-                        @if ($order->deliver == 1)
-                            地址
-                        @else
-                            超商地址
-                        @endif
-                        </td>
+                    @if ($order->shipping_way == 1)
+                        <td class="fs-5">地址</td>
                         <td class="fs-5">{{$order->address}}</td>
+                    @else
+                        <td class="fs-5">超商地址</td>
+                        <td class="fs-5">{{$order->store_address}}</td>
+                    @endif
                     </tr>
                 </table>
             </div>
             <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                 <table>
-                    {{-- <tr>
+                    <tr>
                         <td class="text-secondary">數量:</td>
-                        <td class="float-end fw-bolder fs-5">{{count($merch)}}</td>
+                        <td class="float-end fw-bolder fs-5">{{$order->product_qty}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
+                        <td class="float-end fw-bolder fs-5">${{$order->subtotal}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$100.00</td>
+                        <td class="float-end fw-bolder fs-5">${{$order->shipping_fee}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
-                    </tr> --}}
+                        <td class="float-end fw-bolder fs-5">${{$order->total}}</td>
+                    </tr>
                 </table>
             </div>
             <div class="d-flex justify-content-end align-items-center pt-3 pb-3 mt-4">
                 <div class="">
-                    <button type="button" onclick="location.href='/'" class="btn btn-primary btn-lg fs-6">返回首頁</button>
+                    <a class="btn btn-primary btn-lg fs-6" href="/" role="button">返回首頁</a>
                 </div>
             </div>
         </section>

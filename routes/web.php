@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
     Route::post('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
     Route::post('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
-    Route::get('/show_order/{id}', [ShoppingCartController::class, 'show_order']);
+    Route::get('/show_order/{id}', [ShoppingCartController::class, 'show_order']); //展示訂單
 });
 
 
