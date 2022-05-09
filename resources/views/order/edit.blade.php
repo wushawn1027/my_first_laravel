@@ -43,7 +43,7 @@
             <h1 class="w-100 mb-3 text-primary fw-bolder">訂單編輯</h1>
             <div class="mb-4">
 
-                <form class="d-flex flex-column" action="/product/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
+                <form class="d-flex flex-column" action="/order/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     {{-- <label for="productName" class="fs-5 mb-2">訂單名稱</label>
@@ -54,9 +54,11 @@
 
                     <label for="orderStatus" class="fs-5 mb-2">訂單狀態</label>
                     <select name="status" id="orderStatus">
-                        <option value="1" @if ($edit->status == 1 ) selected @endif>訂單成立(未付款)</option>
+                        <option value="1" @if ($edit->status == 1 ) selected @endif>未付款</option>
                         <option value="2" @if ($edit->status == 2 ) selected @endif>已付款</option>
-                        <option value="3" @if ($edit->status == 3 ) selected @endif>退貨</option>
+                        <option value="3" @if ($edit->status == 3 ) selected @endif>已出貨</option>
+                        <option value="4" @if ($edit->status == 4 ) selected @endif>已結單</option>
+                        <option value="5" @if ($edit->status == 5 ) selected @endif>已取消</option>
                     </select>
 
                     <label for="orderIntro" class="fs-5 mb-2">訂單備註</label>

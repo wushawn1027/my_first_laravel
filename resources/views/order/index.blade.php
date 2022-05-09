@@ -49,11 +49,11 @@
                 <table id="orderList" class="display">
                     <thead>
                         <tr>
-                          <th>訂單商品品項</th>
+                          <th>訂單編號</th>
                           <th>買家姓名</th>
-                          <th>買家電話</th>
-                          <th>商品狀態</th>
-                          <th>商品備註</th>
+                          <th>買家信箱</th>
+                          <th>總金額</th>
+                          <th>訂單狀態</th>
                           <th>編輯</th>
                         </tr>
                       </thead>
@@ -61,13 +61,25 @@
 
                         @foreach ($datas as $data)
                         <tr class="tbodyTr">
-                            <td>{{$data->product_qty}}</td>
+                            <td>{{$data->id}}</td>
                             <td class="fw-bolder">{{$data->name}}</td>
-                            <td>{{$data->phone}}</td>
-                            <td>{{$data->status}}</td>
-                            <td>{{$data->ps}}</td>
+                            <td>{{$data->email}}</td>
+                            <td>{{$data->total}}</td>                            <td>{{$data->ps}}</td>
                             <td>
-                                <button onclick="location.href='/order/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 編輯</button>
+                                @if ($data->status = 1)
+                                    未付款
+                                @elseif ($data->status = 2)
+                                    已付款
+                                @elseif ($data->status = 3)
+                                    已出貨
+                                @elseif ($data->status = 4)
+                                    已結單
+                                @elseif ($data->status = 5)
+                                    已取消
+                                @endif
+                            </td>
+                            <td>
+                                <button onclick="location.href='/order/edit/{{$data->id}}'" class="me-2 text-white p-1 rounded btn-success"><i class="fa-solid fa-pen-to-square"></i> 修改訂單狀態</button>
                             </td>
                         </tr>
                         @endforeach

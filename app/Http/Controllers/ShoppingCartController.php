@@ -41,54 +41,135 @@ class ShoppingCartController extends Controller
         //     dump($item->product->price);
         // };
 
+
         return view('shopping.shopping-s1' , compact('datas','subtotal'));
     }
+
+
     public function shoppingS2(Request $request){
+
+        $user = Auth::id();
+        $datas = ShoppingCart::where('user_id',$user)->get();
+
+        $subtotal = 0;
+        foreach ($datas as $value) {
+            $subtotal += $value->qty * $value->product->price;
+        }
 
         // session的使用方法 使用 鍵與值的方法 將想帶到下一頁的資料寫進去
         session([
             // key value 鍵與值
             'amount' => $request->qty,
-            'subtotal' => $request->subtotal,
-            'total' => $request->subtotal . 100,
+            // 'subtotal' => $request->subtotal,
+            // 'total' => $request->subtotal . 100,
         ]);
 
-        return view('shopping.shopping-s2');
-    }
-    public function shoppingS3(Request $request){
-
-        // session([
-        //     'pay' => $request->payway,
-        //     'deliver' => $request->deliver,
+        // 不使用session 直接將新數量寫入購物車(待買清單)的資料表
+        // Order::create([
+        //     'subtotal' => $subtotal,
+        //     'shipping_fee' => $fee,
+        //     'total' => $subtotal + $fee,
         // ]);
 
-        return view('shopping.shopping-s3');
+
+        return view('shopping.shopping-s2', compact('datas','subtotal'));
     }
+
+
+    public function shoppingS3(Request $request){
+
+        $user = Auth::id();
+        $datas = ShoppingCart::where('user_id',$user)->get();
+
+        $subtotal = 0;
+        foreach ($datas as $value) {
+            $subtotal += $value->qty * $value->product->price;
+        }
+
+        session([
+            'pay' => $request->payway,
+            'deliver' => $request->deliver,
+        ]);
+
+        $deliver = $request->deliver;
+
+        return view('shopping.shopping-s3', compact('datas','subtotal','deliver'));
+    }
+
+
     public function shoppingS4(Request $request){
 
+        // 為了計算單價 將購物車根據使用者Id抓出來
+        $user = Auth::id();
+        $merch = ShoppingCart::where('user_id',$user)->get();
 
-        // $value = Session::pull('amount', 'subtotal', 'total', 'pay', 'deliver');
+        $subtotal = 0;
+        // 利用foreach迴圈 將價格與數量乘一起
+        foreach ($merch as $key => $goods) {
+            $subtotal += $goods->product->price * session()->get('amount')[$key];
+        }
+
+        // 如果購物車有在第一步就將數量更新到最新
+        // $user = Auth::id();
+        // $datas = ShoppingCart::where('user_id',$user)->get();
+
+        // $subtotal = 0;
+        // foreach ($datas as $value) {
+        //     $subtotal += $value->qty * $value->product->price;
+        // }
+
+
+        // 根據取貨方式決定運費金額
+        if (session()->get('deliver') =='1'){
+            $fee = 150;
+        }else{
+            $fee = 60;
+        }
+
+        // 如果要做 滿額免運 (ex:10000)
+        // if ($subtotal >= 10000) {
+        //     $fee = 0;
+        // }
+
 
         $order = Order::create([
-            'product_qty' => $value->amount,
-            'payway' => $value->pay,
-            'shipping_way' => $value->deliver,
+            'subtotal' => $subtotal,
+            'shipping_fee' => $fee,
+            'total' => $subtotal + $fee,
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            // 'address' => $request->zone.city.address,
-            // 'subtotal' => $value->subtotal,
-            // 'shipping_fee' => 100,
-            // 'total' => $value->total,
-            // 'product_qty' => $value->amount,
-            // 'payway' => $value->pay,
-            // 'shipping_way' => $value->deliver,
+            'product_qty' => count(session()->get('amount')),
+            'payway' => session()->get('pay'),
+            'shipping_way' => session()->get('deliver'),
+            'status' => 1,
+            'user_id' => Auth::id(),
         ]);
 
+        if ($order->shipping_way == 1){
+            $order->address = $request->code.$request->city.$request->address;
+        }else{
+            $order->store_address = $request->code.$request->city.$request->address;
+        }
+        $order->save();
+
+        foreach ($merch as $key => $value) {
+            Order::create([
+                'product_id' => $value->product->id,
+                'qty' => $value->qty,
+                'price' => $value->product->price,
+                'order_id' => $order->id,
+            ]);
+        }
+
+        // return view('shopping.shopping-s4', compact('order'));
+        return redirect('/show_order/'.$order->id);
+    }
 
 
-        // dump(session()->all());
-        // dd($request->all());
-        return view('shopping.shopping-s4');
+    public function show_order($id){
+
+        $order = Order::find($id);
+        return view('shopping.shopping-s4', compact('order'));
     }
 }

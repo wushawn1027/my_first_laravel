@@ -96,7 +96,7 @@
             width: 650px;
         }
         #shopping-s4 .buy-progress .steps .buy-progress-bar {
-            width: 40px;
+            width: 95px;
         }
     }
     </style>
@@ -119,100 +119,74 @@
             </div>
             <div class="order-lists d-flex flex-column mt-3">
                 <h3>訂單明細</h3>
+
+                {{-- @foreach ($order->detail as $item)
                 <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="{{asset('img/cat4.jpg')}}" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Chicken momo</p>
-                            <p class="m-0 p-num">#41551</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">x</span>
-                            <span class="ms-1">1</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
+                <div class="d-flex align-items-center">
+                <div class="shoppimg-img me-3">
+                    <img src="{{$item->product->img_path}}" class="" alt="">
                 </div>
-                <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="{{asset('img/rick-roll.gif')}}" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Spicy Mexican potatoes</p>
-                            <p class="m-0 p-num">#66999</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">x</span>
-                            <span class="ms-1">1</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
+                <div clsss="d-flex flex-column">
+                    <p class="m-0 fs-5 fw-bolder">{{$item->product->name}}</p>
+                    <p class="m-0 p-num">{{$item->product->introduction}}</p>
                 </div>
-                <div class="order-list">
-                    <div class="d-flex align-items-center">
-                        <div class="shoppimg-img me-3">
-                            <img src="{{asset('img/cat6.jpg')}}" class="" alt="" onerror="errorImg(this)">
-                        </div>
-                        <div clsss="d-flex flex-column">
-                            <p class="m-0 fs-6">Breakfast</p>
-                            <p class="m-0 p-num">#86577</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div clsss="">
-                            <span class="me-1">x</span>
-                            <span class="ms-1">1</span>
-                        </div>
-                        <span class="ms-4">$10.50</span>
-                    </div>
                 </div>
+                <div class="d-flex align-items-center">
+                <div clsss="">
+                    <span class="me-1">數量：</span>
+                    <span class="ms-1">1</span>
+                </div>
+                <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->product->price}}</span>
+                </div>
+                </div>
+                @endforeach --}}
+
             </div>
             <div class="sendDatd d-flex flex-column pt-3 pb-3">
                 <h3 class="w-100">寄送資料</h3>
                 <table>
                     <tr>
                         <td class="fs-5">姓名</td>
-                        <td class="fs-5">王曉明</td>
+                        <td class="fs-5">{{$order->name}}</td>
                     </tr>
                     <tr>
                         <td class="fs-5">電話</td>
-                        <td class="fs-5">0912345678</td>
+                        <td class="fs-5">{{$order->phone}}</td>
                     </tr>
                     <tr>
                         <td class="fs-5">Email</td>
-                        <td class="fs-5">abc123@gmail.com</td>
+                        <td class="fs-5">{{$order->email}}</td>
                     </tr>
                     <tr>
-                        <td class="fs-5">地址</td>
-                        <td class="fs-5">409 台中市小鎮村英雄路1號</td>
+                        <td class="fs-5">
+                        @if ($order->deliver == 1)
+                            地址
+                        @else
+                            超商地址
+                        @endif
+                        </td>
+                        <td class="fs-5">{{$order->address}}</td>
                     </tr>
                 </table>
             </div>
             <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                 <table>
-                    <tr>
+                    {{-- <tr>
                         <td class="text-secondary">數量:</td>
-                        <td class="float-end fw-bolder fs-5">3</td>
+                        <td class="float-end fw-bolder fs-5">{{count($merch)}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">$100.00</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
-                    </tr>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
+                    </tr> --}}
                 </table>
             </div>
             <div class="d-flex justify-content-end align-items-center pt-3 pb-3 mt-4">

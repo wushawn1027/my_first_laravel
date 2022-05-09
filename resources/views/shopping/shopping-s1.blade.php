@@ -98,7 +98,7 @@
             width: 650px;
         }
         #shopping-s1 .buy-progress .steps .buy-progress-bar {
-            width: 40px;
+            width: 95px;
         }
     }
     </style>
@@ -137,9 +137,9 @@
                         <div class="d-flex align-items-center">
                             <div clsss="">
                                 <span class="me-1">數量：</span>
-                                <input id="minus" name="" type="button" value="-" />
-                                <input id="qty" name="qty[]" type="number" value="{{$item->qty}}" />
-                                <input id="plus" name="" type="button" value="+" />
+                                <input id="minus" name="" type="button" value="-">
+                                <input id="qty" name="qty[]" type="number" value="{{$item->qty}}">
+                                <input id="plus" name="" type="button" value="+">
                             </div>
                             <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->product->price}}</span>
                         </div>

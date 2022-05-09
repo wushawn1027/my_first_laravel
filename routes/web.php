@@ -48,7 +48,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
     Route::post('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
     Route::post('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
-    Route::get('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
+    Route::post('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
+    Route::get('/show_order/{id}', [ShoppingCartController::class, 'show_order']);
 });
 
 
@@ -99,6 +100,7 @@ Route::prefix('account')->middleware(['auth','power'])->group(function() {
 });
 
 
+// order相關路由
 Route::get('/order', [OrderController::class, 'index']);
 Route::get('/order/edit/{id}', [OrderController::class, 'edit']);
 Route::post('/order/update/{id}', [OrderController::class, 'update']);

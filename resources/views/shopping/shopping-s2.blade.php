@@ -81,7 +81,7 @@
             width: 650px;
         }
         #shopping-s2 .buy-progress .steps .buy-progress-bar {
-            width: 40px;
+            width: 95px;
         }
     }
     </style>
@@ -107,16 +107,16 @@
                 <h3 class="w-100">付款方式</h3>
                 <div class="">
                     <div class="payBox p-3">
-                        <input type="radio" name="payWay" id="payCard">
-                        <label class="fs-5 ms-1" for="payCard" value="1">信用卡付款</label>
+                        <input type="radio" name="payway" id="payCard" value="1">
+                        <label class="fs-5 ms-1" for="payCard">信用卡付款</label>
                     </div>
                     <div class="payBox p-3">
-                        <input type="radio" name="payWay" id="payATM">
-                        <label class="fs-5 ms-1" for="payATM" value="2">網路 ATM</label>
+                        <input type="radio" name="payway" id="payATM" value="2">
+                        <label class="fs-5 ms-1" for="payATM">網路 ATM</label>
                     </div>
                     <div class="p-3">
-                        <input type="radio" name="payWay" id="payStore">
-                        <label class="fs-5 ms-1" for="payStore" value="3">超商代碼</label>
+                        <input type="radio" name="payway" id="payStore" value="3">
+                        <label class="fs-5 ms-1" for="payStore">超商代碼</label>
                     </div>
                 </div>
             </div>
@@ -124,12 +124,12 @@
                 <h3 class="w-100">運送方式</h3>
                 <div class="">
                     <div class="sendBox p-3">
-                        <input type="radio" name="deliver" id="sendHome">
-                        <label class="fs-5 ms-1" for="sendHome" value="1">黑貓宅配</label>
+                        <input type="radio" name="deliver" id="sendHome" value="1">
+                        <label class="fs-5 ms-1" for="sendHome">黑貓宅配</label>
                     </div>
                     <div class="p-3">
-                        <input type="radio" name="deliver" id="sendStore">
-                        <label class="fs-5 ms-1" for="sendStore" value="2">超商店到店</label>
+                        <input type="radio" name="deliver" id="sendStore" value="2">
+                        <label class="fs-5 ms-1" for="sendStore">超商店到店</label>
                     </div>
                 </div>
             </div>
@@ -137,19 +137,19 @@
                 <table>
                     <tr>
                         <td class="text-secondary">數量:</td>
-                        <td class="float-end fw-bolder fs-5">3</td>
+                        <td class="float-end fw-bolder fs-5">{{count($datas)}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">$100.00</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">$24.90</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
                     </tr>
                 </table>
             </div>

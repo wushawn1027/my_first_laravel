@@ -88,7 +88,7 @@
             width: 650px;
         }
         #shopping-s3 .buy-progress .steps .buy-progress-bar {
-            width: 40px;
+            width: 95px;
         }
     }
     </style>
@@ -113,49 +113,65 @@
                 </div>
                 <div class="sendData p-1 mt-3">
                     <h3>寄送資料</h3>
-                    <div class="form">
-                        <form action="" class="d-flex flex-column">
-                            @csrf
-                            <span class="mb-1 fs-5">姓名</span>
+                    <div class="form mt-4">
+                        <div action="" class="d-flex flex-column">
+                            <label for="inputName">
+                                <h5 class="mb-1">姓名</h5>
+                            </label>
                             <div class="form-group w-100">
                                 <input type="text" name="name" class="p-2 form-control mb-3" id="inputName"  placeholder="王小明">
                             </div>
-                            <span class="mb-1 fs-5">電話</span>
+
+                            <label for="inputPhone">
+                                <h5 class="mb-1">電話</h5>
+                            </label>
                             <div class="form-group w-100">
-                                <input type="number" name="phone" class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
+                                <input type="text" name="phone" class="p-2 form-control mb-3" id="inputPhone"  placeholder="0912345678">
                             </div>
-                            <span class="mb-1 fs-5">Email</span>
+
+                            <label for="inputEmail">
+                                <h5 class="mb-1">Email</h5>
+                            </label>
                             <div class="form-group w-100">
                                 <input type="text" name="email" class="p-2 form-control mb-3" id="inputEmail"  placeholder="abc123@gmail.com">
                             </div>
-                            <span class="mb-1 fs-5">地址</span>
+
+                            <label for="inputCity">
+                                <h5 class="mb-1">
+                                    @if ($deliver == 1)
+                                        地址
+                                    @else
+                                        超商地址
+                                    @endif
+                                </h5>
+                            </label>
                             <div class="w-100 d-flex">
-                                <input type="text" name="city" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="城市">
-                                <input type="text" name="zone" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
+                                <input type="text" name="city" class="w-50 p-2 form-control mb-3 me-1" id="inputCity"  placeholder="XX市XX區">
+                                <input type="text" name="code" class="w-50 p-2 form-control mb-3 ms-1" id="inputZoneNum"  placeholder="郵遞區號">
                             </div>
                             <div class="">
-                                <input type="text" name="address" class="p-2 form-control mb-3" id="inputAddress"  placeholder="地址">
+                                <input type="text" name="address" class="p-2 form-control mb-3" id="inputAddress"  placeholder="XX路XX段XX號">
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div id="order-table" class="d-flex justify-content-end pt-3 pb-3">
                     <table>
                         <tr>
                             <td class="text-secondary">數量:</td>
-                            <td class="float-end fw-bolder fs-5">3</td>
+                            <td class="float-end fw-bolder fs-5">{{count($datas)}}</td>
                         </tr>
                         <tr>
                             <td class="text-secondary">小計:</td>
-                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                            <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
                         </tr>
                         <tr>
                             <td class="text-secondary">運費:</td>
-                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                            <td class="float-end fw-bolder fs-5">$100.00</td>
                         </tr>
                         <tr>
                             <td class="text-secondary">總計:</td>
-                            <td class="float-end fw-bolder fs-5">$24.90</td>
+                            <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
                         </tr>
                     </table>
                 </div>
@@ -164,7 +180,7 @@
                         <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS2">上一步</a></button>
                     </div>
                     <div class="">
-                        <button type="button" onclick="location.href='/shoppingS4'" class="btn btn-primary btn-lg fs-6">前往付款</button>
+                        <button type="submit" class="btn btn-primary btn-lg fs-6">前往付款</button>
                     </div>
                 </div>
             </form>
