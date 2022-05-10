@@ -352,10 +352,10 @@
                             <tbody>
                                 @foreach ($orders as $order)
                                 <tr>
-                                    <th scope="row" class="text-secondary">{{$order->id}}</th>
+                                    <th scope="row" class="text-dark">{{$order->id}}</th>
                                     <td class="text-secondary fw-bolder">{{$order->name}}</td>
                                     <td class="text-secondary">${{$order->total}}</td>
-                                    <td class="fw-bolder">
+                                    <td class="fw-bolder text-danger">
                                         @if ($order->status == 1)
                                             未付款
                                         @elseif ($order->status == 2)
@@ -368,7 +368,8 @@
                                             已取消
                                         @endif
                                     </td>
-                                    <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
+                                    <td><a role="button" class="text-light bg-primary" href="/order_list/{{$order->id}}">明細查詢</a></td>
+                                    {{-- <td class=""><input class="float-end" type="radio" name="A" value="1"></td> --}}
                                 </tr>
                                 @endforeach
 

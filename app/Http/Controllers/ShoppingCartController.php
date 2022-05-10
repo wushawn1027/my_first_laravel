@@ -74,7 +74,27 @@ class ShoppingCartController extends Controller
     }
 
 
+    public function shoppingS2_1(Request $request){
+
+        $datas = ShoppingCart::where('user_id', Auth::id())->get();
+
+        $subtotal = 0;
+        foreach ($datas as $value) {
+            $subtotal += $value->qty * $value->product->price;
+        }
+
+
+        return view('shopping.shopping-s2', compact('datas','subtotal'));
+    }
+
+
     public function shoppingS3(Request $request){
+
+        session([
+            'pay' => $request->payway,
+            'deliver' => $request->deliver,
+        ]);
+        
 
         $datas = ShoppingCart::where('user_id', Auth::id())->get();
         $subtotal = 0;
@@ -88,12 +108,6 @@ class ShoppingCartController extends Controller
             $fee = 60;
         }
         $total = $subtotal + $fee;
-
-
-        session([
-            'pay' => $request->payway,
-            'deliver' => $request->deliver,
-        ]);
 
         $deliver = $request->deliver;
 

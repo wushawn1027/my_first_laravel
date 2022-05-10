@@ -145,7 +145,7 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$60(宅配) 或 $150(超商)</td>
+                        <td class="float-end fw-bolder fs-5">$150(宅配) 或 $60(超商)</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>

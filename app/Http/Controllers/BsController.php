@@ -52,12 +52,14 @@ class BsController extends Controller
         return view('index' , compact('banners' , 'comments' , 'merchs' , 'cards' , 'orders'));
     }
 
-    // public function edit_comment($id){
 
-    //     $edit = Comment::find($id);
+    public function order_detail($id){
 
-    //     return view('comment.edit',compact('edit'));
-    // }
+        $details = Order::find($id);
+
+        return view('order-detail' , compact('details'));
+    }
+
 
     public function detail($id){
 

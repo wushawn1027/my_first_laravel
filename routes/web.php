@@ -47,6 +47,7 @@ Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 Route::middleware(['auth'])->group(function(){
     Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
     Route::post('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
+    Route::post('/shoppingS2-1', [ShoppingCartController::class, 'shoppingS2_1']);
     Route::post('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
     Route::post('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
     Route::get('/show_order/{id}', [ShoppingCartController::class, 'show_order']); //展示訂單
@@ -107,6 +108,8 @@ Route::post('/order/update/{id}', [OrderController::class, 'update']);
 
 //檢視訂單列表
 Route::get('/order_list', [BsController::class, 'order_list']);
+Route::get('/order_list/{id}', [BsController::class, 'order_detail']);
+
 
 
 // welcome相關路由
