@@ -64,17 +64,17 @@
                             <td>{{$data->id}}</td>
                             <td class="fw-bolder">{{$data->name}}</td>
                             <td>{{$data->email}}</td>
-                            <td>{{$data->total}}</td>                            <td>{{$data->ps}}</td>
+                            <td>{{$data->total}}</td>
                             <td>
-                                @if ($data->status = 1)
+                                @if ($data->status == 1)
                                     未付款
-                                @elseif ($data->status = 2)
+                                @elseif ($data->status == 2)
                                     已付款
-                                @elseif ($data->status = 3)
+                                @elseif ($data->status == 3)
                                     已出貨
-                                @elseif ($data->status = 4)
+                                @elseif ($data->status == 4)
                                     已結單
-                                @elseif ($data->status = 5)
+                                @elseif ($data->status == 5)
                                     已取消
                                 @endif
                             </td>

@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use App\Models\Banner;
+use App\Models\Comment;
+use App\Models\Order;
 use App\Models\ShoppingCart;
 
 
@@ -34,14 +37,27 @@ class BsController extends Controller
 
     public function index(){
 
-        $intros = DB::table('news')->orderby('id','desc')->take(3)->get();
+        $banners = Banner::orderby('weight','desc')->get();
+
+        // $intros = DB::table('news')->orderby('id','desc')->take(3)->get();
+
+        $comments = Comment::inRandomOrder()->take(3)->get();
 
         $merchs = Product::inRandomOrder()->take(1)->get();
 
         $cards = Product::orderby('id','desc')->take(8)->get();
 
-        return view('index' , compact('intros' , 'merchs' , 'cards'));
+        $orders = Order::orderby('id','desc')->get();
+
+        return view('index' , compact('banners' , 'comments' , 'merchs' , 'cards' , 'orders'));
     }
+
+    // public function edit_comment($id){
+
+    //     $edit = Comment::find($id);
+
+    //     return view('comment.edit',compact('edit'));
+    // }
 
     public function detail($id){
 

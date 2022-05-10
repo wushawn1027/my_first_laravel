@@ -188,7 +188,7 @@
 
     minus.onclick = function(){
 
-        if (parseInt(qty.value) >= 2){
+        if (parseInt(qty.value) > 1){
             qty.value = parseInt(qty.value) - 1;
         }
     }

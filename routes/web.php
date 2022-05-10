@@ -105,6 +105,9 @@ Route::get('/order', [OrderController::class, 'index']);
 Route::get('/order/edit/{id}', [OrderController::class, 'edit']);
 Route::post('/order/update/{id}', [OrderController::class, 'update']);
 
+//檢視訂單列表
+Route::get('/order_list', [BsController::class, 'order_list']);
+
 
 // welcome相關路由
 Route::get('/microsoft', [NewsController::class, 'micro']);

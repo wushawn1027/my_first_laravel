@@ -28,11 +28,13 @@
     .imgNull {
         width: 80px;
         height: 80px;
-        background-color:aqua;
+        background-color:lightgoldenrodyellow;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 18px;
+        font-weight: bolder;
     }
     #intro .btn {
         width: 120px;
@@ -46,6 +48,12 @@
     #gallery .container {
         height: 800px;
     }
+    /* #gallery #smallImg {
+        height: 188px;
+    }
+    #gallery #bigImg {
+        height: 382px;
+    } */
     /* ------------------------------------special--------------------------------------- */
     #special .container {
         height: 1000px;
@@ -106,6 +114,7 @@
         #gallery .container {
             height: 400px;
         }
+
         #card-2 .container {
             height: 1800px !important;
         }
@@ -183,7 +192,7 @@
     @media(max-width:650px) {
         #intro .container {
             height: 1300px;
-        }}
+        }
         #merch .container {
             height: 300px;
         }
@@ -203,15 +212,13 @@
                 <div class="banner w-100 h-100">
                     <div class="swiper mySwiper w-100 h-100">
                         <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="{{asset('img/gray-1.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="{{asset('img/gray-0.png')}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
-                          </div>
+
+                            @foreach ($banners as $banner)
+                            <div class="swiper-slide">
+                                <img src="{{$banner->img_path}}" class="w-100 h-100" alt="" onerror="errorImg(this)">
+                            </div>
+                            @endforeach
+
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -224,34 +231,39 @@
         <section id="intro">
             <div class="container p-2">
                 <div class="row p-5 d-flex justify-content-center">
-                        <p class="h2 text-center mb-4">Raw Denim Heirloom Man Braid</p>
-                        <p id="intro-con-row-p2" class="col-8 fs-7 text-center text-secondary">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
+                        <p class="h1 text-center mb-4 fw-bolder">留言區</p>
+                        <p id="intro-con-row-p2" class="col-8 fs-7 text-center text-secondary">歡迎大家一起來討論與交流~~~</p>
                         <div class="mt-2 d-flex justify-content-center">
                             <span id="span-1" class="mt-1 bg-primary"></span>
                         </div>
                 </div>
                 <div class="row">
 
-                    @foreach ($intros as $intro)
+                    @foreach ($comments as $comment)
                     <div class="col-sm-12 col-md-4">
                         <div class="d-flex justify-content-center mb-4">
-                        @if ($intro->img == "" || $intro->img == null)
-                            <div class="imgNull">{{ mb_substr($intro->title,0,1,"utf-8")}}</div>
+                        @if ($comment->img == "" || $comment->img == null)
+                            <div class="imgNull">{{ mb_substr($comment->title,0,1,"utf-8")}}</div>
                         @else
-                            <img src="{{$intro->img}}" alt="">
+                            <img src="{{$comment->img}}" alt="">
                         @endif
                         </div>
-                        <p class="h5 text-center">{{$intro->title}}</p>
-                        <p class="fs-7 text-center text-secondary">{{$intro->content}}</p>
-                        <p class="fs-7 text-center text-primary">Learn More
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                        <p class="h3 text-center">{{$comment->title}}</p>
+                        <p class="fs-6 text-center text-secondary">{{$comment->name}}</p>
+                        <p class="fs-5 text-center text-secondary">{{$comment->content}}</p>
+                        @auth
+                        @if (Auth::user()->power == 1)
+                        <p class="fs-6 text-center text-primary">編輯留言
+                            <a href="/comment/edit/{{$comment->id}}"><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
+                        @endif
+                        @endauth
                     </div>
                     @endforeach
 
                 </div>
                 <div class="row d-flex justify-content-center mt-3">
-                    <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
+                    <button type="button" class="btn btn-primary btn-lg fs-6"><a class="text-light" href="/comment">留言區</a></button>
                 </div>
             </div>
         </section>
@@ -265,24 +277,24 @@
                 <div id="gallery-box" class="row w-100 d-flex">
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/500-300.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/500-300.png')}}" class="w-100" id="smallImg" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/501-301.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/501-301.png')}}" class="w-100" id="smallImg" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-100">
-                            <img src="{{asset('img/600-360.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/600-360.png')}}" class="w-100" id="bigImg" alt="" onerror="errorImg(this)">
                         </div>
                     </div>
                     <div class="w-50 p-0 d-flex flex-wrap flex-row">
                         <div class="md:p-2 p-1 w-100">
-                            <img src="{{asset('img/601-361.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/601-361.png')}}" class="w-100" id="bigImg" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/503-303.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/503-303.png')}}" class="w-100" id="smallImg" alt="" onerror="errorImg(this)">
                         </div>
                         <div class="md:p-2 p-1 w-50">
-                            <img src="{{asset('img/502-302.png')}}" class="w-100" alt="" onerror="errorImg(this)">
+                            <img src="{{asset('img/502-302.png')}}" class="w-100" id="smallImg" alt="" onerror="errorImg(this)">
                         </div>
                     </div>
                 </div>
@@ -292,57 +304,79 @@
         <section id="pricing">
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="row w-75 d-flex flex-column align-items-center">
-                    <h2 class="col text-center">Pricing</h2>
-                    <p class="col text-center text-secondary">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p>
+                    <h1 class="col text-center fw-bolder">訂單列表</h1>
+                    <p class="col text-center text-secondary">查看訂單明細及狀態</p>
                     <div class="mt-5">
                         <table class="table">
                             <thead class="thead">
                             <tr class="table-light">
-                                <th scope="col" class="text-secondary">Plan</th>
-                                <th scope="col" class="text-secondary">Speed</th>
-                                <th scope="col" class="text-secondary">Storage</th>
-                                <th scope="col" class="text-secondary">Price</th>
+                                <th scope="col" class="text-secondary">訂單編號</th>
+                                <th scope="col" class="text-secondary">購買人</th>
+                                <th scope="col" class="text-secondary">總價</th>
+                                <th scope="col" class="text-secondary">訂單狀態</th>
                                 <th scope="col" class="text-secondary"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row" class="text-secondary">Start</th>
-                                <td class="text-secondary">5 Mb/s</td>
-                                <td class="text-secondary">15 GB</td>
-                                <td class="fw-bolder">Free</td>
-                                <td><input class="float-end" type="radio" name="A" value="1"></td>
-                            </tr>
+                                @foreach ($orders as $order)
+                                <tr>
+                                    <th scope="row" class="text-secondary">{{$order->id}}</th>
+                                    <td class="text-secondary fw-bolder">{{$order->name}}</td>
+                                    <td class="text-secondary">${{$order->total}}</td>
+                                    <td class="fw-bolder">
+                                        @if ($order->status == 1)
+                                            未付款
+                                        @elseif ($order->status == 2)
+                                            已付款
+                                        @elseif ($order->status == 3)
+                                            已出貨
+                                        @elseif ($order->status == 4)
+                                            已結單
+                                        @elseif ($order->status == 5)
+                                            已取消
+                                        @endif
+                                    </td>
+                                    <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
+                                </tr>
+                                @endforeach
+
+                            {{--<tr>
+                                    <th scope="row" class="text-secondary">Start</th>
+                                    <td class="text-secondary">5 Mb/s</td>
+                                    <td class="text-secondary">15 GB</td>
+                                    <td class="fw-bolder">Free</td>
+                                    <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
+                                </tr>
                             <tr>
                                 <th scope="row" class="text-secondary">Pro</th>
                                 <td class="text-secondary">25 Mb/s</td>
                                 <td class="text-secondary">25 GB</td>
                                 <td class="fw-bolder">$24</td>
-                                <td><input class="float-end" type="radio" name="A" value="1"></td>
+                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-secondary">Business</th>
                                 <td class="text-secondary">36 Mb/s</td>
                                 <td class="text-secondary">40 GB</td>
                                 <td class="fw-bolder">$50</td>
-                                <td><input class="float-end" type="radio" name="A" value="1"></td>
+                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-secondary">Exclusive</th>
                                 <td class="text-secondary">48 Mb/s</td>
                                 <td class="text-secondary">120 GB</td>
                                 <td class="fw-bolder">$72</td>
-                                <td><input class="float-end" type="radio" name="A" value="1"></td>
-                            </tr>
+                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
+                            </tr> --}}
                             </tbody>
                         </table>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="fs-7 text-primary">Learn More
+                        <p class="fs-7 text-primary">查看更多
                             <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                         <div class="">
-                            <button type="button" class="btn btn-primary btn-lg fs-6">Button</button>
+                            <button type="button" class="btn btn-primary btn-lg fs-6">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -462,11 +496,17 @@
                               <img src="{{$merch->img_path}}" class="" alt="">
                             </div>
                             <div class="swiper-slide">
-                              <img src="/img/rick-roll.gif" class="" alt="">
+                                <img src="/img/rick-roll.gif" class="" alt="">
                             </div>
                             <div class="swiper-slide">
-                              <img src="/img/gray-0.png" class="" alt="">
+                                <img src="/img/cat1.png" class="" alt="">
                             </div>
+                            {{-- @foreach ($merchs->imgs as $merch)
+                            <div class="swiper-slide">
+                              <img src="{{$merch->img_path}}" class="" alt="">
+                            </div>
+                            @endforeach --}}
+
                           </div>
                           <div class="swiper-button-next"></div>
                           <div class="swiper-button-prev"></div>
@@ -476,7 +516,7 @@
                         <h2 class="">{{$merch->name}}</h2>
                         <p class="text-secondary">商品數量:{{$merch->quantity}}</p>
                         <div class="d-flex">
-                            <div class="d-flex border-end">
+                            <div class="d-flex border-end pe-1">
                                 <div class="stars">
                                     <svg fill="#0d6efd" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -496,7 +536,7 @@
                                 </div>
                                 <p class="text-secondary border-right border-secondary mx-lg-2">4 Reviews</p>
                             </div>
-                            <div class="mx-lg-2">
+                            <div class="mx-lg-2 ms-1">
                                 <i class="fa-brands fa-facebook-f text-secondary"></i>
                                 <i class="fa-brands fa-twitter text-secondary"></i>
                                 <i class="fa-solid fa-comment text-secondary"></i>

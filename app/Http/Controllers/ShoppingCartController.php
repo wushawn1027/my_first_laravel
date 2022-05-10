@@ -111,7 +111,7 @@ class ShoppingCartController extends Controller
 
         // 如果購物車有在第一步就將數量更新到最新
         foreach ($merch as $value) {
-            $subtotal += $value->qty * $value->product->product_price;
+            $subtotal += $value->qty * $value->product->price;
         }
 
 
@@ -129,13 +129,13 @@ class ShoppingCartController extends Controller
 
 
         $order = Order::create([
+            'product_qty' => count($merch),
             'subtotal' => $subtotal,
             'shipping_fee' => $fee,
             'total' => $subtotal + $fee,
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'product_qty' => count($merch),
             'payway' => session()->get('pay'),
             'shipping_way' => session()->get('deliver'),
             'status' => 1,
