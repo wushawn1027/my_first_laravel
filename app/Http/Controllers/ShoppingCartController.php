@@ -49,14 +49,6 @@ class ShoppingCartController extends Controller
 
     public function shoppingS2(Request $request){
 
-
-        $user = Auth::id();
-        $datas = ShoppingCart::where('user_id',$user)->get();
-        $subtotal = 0;
-        foreach ($datas as $value) {
-            $subtotal += $value->qty * $value->product->price;
-        }
-
         // session的使用方法 使用 鍵與值的方法 將想帶到下一頁的資料寫進去
         // session([
             // key value 鍵與值
@@ -64,12 +56,17 @@ class ShoppingCartController extends Controller
         // ]);
 
         // 不使用session 直接將新數量寫入購物車(待買清單)的資料表
-        $shopping = ShoppingCart::where('user_id', Auth::id())->get();
+        $datas = ShoppingCart::where('user_id', Auth::id())->get();
 
         //事先將新的數量更新至資料表中
-        foreach ($shopping as $key => $item) {
+        foreach ($datas as $key => $item) {
             $item->qty = $request->qty[$key];
             $item->save();
+        }
+
+        $subtotal = 0;
+        foreach ($datas as $value) {
+            $subtotal += $value->qty * $value->product->price;
         }
 
 
@@ -79,12 +76,19 @@ class ShoppingCartController extends Controller
 
     public function shoppingS3(Request $request){
 
-        $user = Auth::id();
-        $datas = ShoppingCart::where('user_id',$user)->get();
+        $datas = ShoppingCart::where('user_id', Auth::id())->get();
         $subtotal = 0;
         foreach ($datas as $value) {
             $subtotal += $value->qty * $value->product->price;
         }
+
+        if (session()->get('deliver') =='1'){
+            $fee = 150;
+        }else{
+            $fee = 60;
+        }
+        $total = $subtotal + $fee;
+
 
         session([
             'pay' => $request->payway,
@@ -93,7 +97,7 @@ class ShoppingCartController extends Controller
 
         $deliver = $request->deliver;
 
-        return view('shopping.shopping-s3', compact('datas','subtotal','deliver'));
+        return view('shopping.shopping-s3', compact('datas','subtotal','deliver','total'));
     }
 
 

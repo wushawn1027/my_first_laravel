@@ -68,7 +68,7 @@
     }
 
     table {
-        width: 200px;
+        width: 300px;
     }
     .btn-lg {
         width: 150px;
@@ -145,11 +145,11 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$100.00</td>
+                        <td class="float-end fw-bolder fs-5">$60(宅配) 或 $150(超商)</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 運費</td>
                     </tr>
                 </table>
             </div>

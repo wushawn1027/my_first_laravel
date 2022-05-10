@@ -85,7 +85,7 @@
         border-bottom: 1px solid rgb(219, 216, 216);
     }
     table {
-        width: 100%;
+        width: 300px;
     }
     .fa-arrow-left:hover {
         color: black;
@@ -159,11 +159,11 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$100.00</td>
+                        <td class="float-end fw-bolder fs-5">$60(宅配) 或 $150(超商)</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 運費</td>
                     </tr>
                 </table>
             </div>

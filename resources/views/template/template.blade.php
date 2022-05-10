@@ -256,28 +256,28 @@
                         <p class="fs-6 text-muted d-flex align-items-center">Air plant banjo lyft occupy retro adaptogen indego</p>
                     </div>
                     <div class="col-lg-8 col-md-7 col-sm-12 d-flex flex-row flex-wrap">
-                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 col-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 col-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 col-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>
                             <p class="text-black">Third Link</p>
                             <p class="text-black">Fourth Link</p>
                         </div>
-                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 p-4">
+                        <div class="d-flex flex-column align-items-center col-lg-3 col-md-6 col-sm-12 col-12 p-4">
                             <p class="text-black">CATEGORIES</p>
                             <p class="text-black">First Link</p>
                             <p class="text-black">Second Link</p>

@@ -64,6 +64,11 @@
         width: 150px;
         border: 1px solid black;
     }
+    #orderPs {
+        resize: none;
+        width: 100%;
+        height: 100px;
+    }
     @media(max-width:992px) {
         #orderEdit {
             width: 650px;
@@ -151,7 +156,7 @@
                 </div>
                 <form class="d-flex flex-column" action="/order/update/{{$edit->id}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <label for="orderStatus" class="fs-5 mb-2">訂單狀態</label>
+                    <label for="orderStatus" class="fs-5 mt-4 mb-2">訂單狀態</label>
                     <select name="status" id="orderStatus">
                         <option value="1" @if ($edit->status == 1 ) selected @endif>未付款</option>
                         <option value="2" @if ($edit->status == 2 ) selected @endif>已付款</option>
@@ -160,9 +165,10 @@
                         <option value="5" @if ($edit->status == 5 ) selected @endif>已取消</option>
                     </select>
 
-                    <label for="orderIntro" class="fs-5 mb-2">訂單備註</label>
-                    <input type="text" name="ps" id="orderPs" class="mb-2" value="{{$edit->ps}}">
-
+                    <label for="orderPS" class="fs-5 mb-2 mt-3">訂單備註</label>
+                    {{-- <input type="text" name="ps" id="orderPs" class="mb-2" value="{{$edit->ps}}"> --}}
+                    <textarea type="text" name="ps" id="orderPs" class="mb-2">{{$edit->ps}}
+                    </textarea>
                     <div class="d-flex justify-content-center mt-5">
                         <button onclick="location.href='/order'" type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">取消編輯</button>
                         <button type="submit" id="btnSend" class="text-black btn btn-primary btn-lg fs-6 ms-1">編輯完成</button>

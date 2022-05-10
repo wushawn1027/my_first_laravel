@@ -167,11 +167,17 @@
                         </tr>
                         <tr>
                             <td class="text-secondary">運費:</td>
-                            <td class="float-end fw-bolder fs-5">$100.00</td>
+                            <td class="float-end fw-bolder fs-5">$
+                                @if ($deliver == 1)
+                                    150
+                                @else
+                                    60
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td class="text-secondary">總計:</td>
-                            <td class="float-end fw-bolder fs-5">${{$subtotal + 100}}</td>
+                            <td class="float-end fw-bolder fs-5">${{$total}}</td>
                         </tr>
                     </table>
                 </div>
