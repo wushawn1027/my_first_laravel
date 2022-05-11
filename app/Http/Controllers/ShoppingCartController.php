@@ -10,6 +10,8 @@ use App\Models\ShoppingCart;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\OrderComplete;
+use Illuminate\Support\Facades\Mail;
 
 
 class ShoppingCartController extends Controller
@@ -46,6 +48,19 @@ class ShoppingCartController extends Controller
         return view('shopping.shopping-s1' , compact('datas','subtotal'));
     }
 
+    public function delete_cart($id){
+
+        ShoppingCart::find($id)->delete();
+
+        return redirect('/shopping-s1');
+    }
+
+    // public function clear_cart($id){
+
+    //     ShoppingCart::where('user_id',$user)->delete();
+
+    //     return redirect('/shopping-s1');
+    // }
 
     public function shoppingS2(Request $request){
 
@@ -74,7 +89,7 @@ class ShoppingCartController extends Controller
     }
 
 
-    public function shoppingS2_1(Request $request){
+    public function shoppingS2_goback(Request $request){
 
         $datas = ShoppingCart::where('user_id', Auth::id())->get();
 
@@ -94,7 +109,7 @@ class ShoppingCartController extends Controller
             'pay' => $request->payway,
             'deliver' => $request->deliver,
         ]);
-        
+
 
         $datas = ShoppingCart::where('user_id', Auth::id())->get();
         $subtotal = 0;
@@ -179,6 +194,15 @@ class ShoppingCartController extends Controller
         }
         // 訂單建立成功, 將購物車資料清除
         ShoppingCart::where('user_id', Auth::id())->delete();
+
+
+        // 訂單建立成功後, 寄信給購買者
+        $data = [
+            'order_id' => $order->id,
+            'user_name' => Auth::user()->name,
+            'subject' => '下單成功通知',
+        ];
+        Mail::to(Auth::user()->email)->send(new OrderComplete);
 
         return redirect('/show_order/'.$order->id);
     }

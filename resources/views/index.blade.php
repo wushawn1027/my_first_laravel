@@ -337,16 +337,16 @@
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="row w-75 d-flex flex-column align-items-center">
                     <h1 class="col text-center fw-bolder">訂單列表</h1>
-                    <p class="col text-center text-secondary">查看訂單明細及狀態</p>
+                    <p class="col text-center text-secondary">檢視最新的 5 張訂單的簡單資訊</p>
                     <div class="mt-5">
                         <table class="table">
                             <thead class="thead">
                             <tr class="table-light">
                                 <th scope="col" class="text-secondary">訂單編號</th>
                                 <th scope="col" class="text-secondary">購買人</th>
-                                <th scope="col" class="text-secondary">總價</th>
+                                <th scope="col" class="text-secondary">總金額</th>
                                 <th scope="col" class="text-secondary">訂單狀態</th>
-                                <th scope="col" class="text-secondary"></th>
+                                <th scope="col" class="text-secondary">明細</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -405,8 +405,8 @@
                         </table>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="fs-7 text-primary">查看更多
-                            <a href=""><i class="fa-solid fa-arrow-right text-primary"></i></a>
+                        <p class="fs-7 text-primary">所有訂單
+                            <a href="/order_list"><i class="fa-solid fa-arrow-right text-primary"></i></a>
                         </p>
                         <div class="">
                             <button type="button" class="btn btn-primary btn-lg fs-6">下一步</button>
@@ -596,7 +596,7 @@
                         <div class="p-2 d-flex justify-content-between align-items-center">
                             <p class="fs-4">{{$merch->price}} 元</p>
                             <div class="d-flex p-2 align-items-center">
-                                <button type="button" class="btn btn-primary btn-lg fs-6 m-2">Button</button>
+                                <button type="button" class="btn btn-primary btn-lg fs-6 m-2"><a class="text-light" href="/detail/{{$merch->id}}">商品內頁</a></button>
                                 <button class="rounded-circle h-50 bg-gray-200 p-3 border-0 d-flex align-items-center justify-content-center text-secondary">
                                     <i class="fa-solid fa-heart"></i>
                                 </button>

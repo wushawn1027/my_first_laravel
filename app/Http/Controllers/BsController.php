@@ -47,17 +47,23 @@ class BsController extends Controller
 
         $cards = Product::orderby('id','desc')->take(8)->get();
 
-        $orders = Order::orderby('id','desc')->get();
+        $orders = Order::orderby('id','desc')->take(5)->get();
 
         return view('index' , compact('banners' , 'comments' , 'merchs' , 'cards' , 'orders'));
     }
 
+    public function order_list(){
+
+        $orders = Order::orderby('id','desc')->get();
+
+        return view('order.order-list' , compact('orders'));
+    }
 
     public function order_detail($id){
 
         $details = Order::find($id);
 
-        return view('order-detail' , compact('details'));
+        return view('order.order-detail' , compact('details'));
     }
 
 

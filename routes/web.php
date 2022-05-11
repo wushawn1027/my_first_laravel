@@ -43,11 +43,13 @@ Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 Route::get('/comment/delete/{id}', [Controller::class, 'delete_comment']);
 
 
-// 購物車相關路由
+// 購物車相關路由shoppingS1_delete
 Route::middleware(['auth'])->group(function(){
     Route::get('/shoppingS1', [ShoppingCartController::class, 'shoppingS1']);
+    Route::post('/shoppingS1/delete/{id}', [ShoppingCartController::class, 'delete_cart']); //刪除品項
+    // Route::post('/shoppingS1/clear/{id}', [ShoppingCartController::class, 'clear_cart']); //清除購物車
     Route::post('/shoppingS2', [ShoppingCartController::class, 'shoppingS2']);
-    Route::post('/shoppingS2-1', [ShoppingCartController::class, 'shoppingS2_1']);
+    Route::post('/shoppingS2/goback', [ShoppingCartController::class, 'shoppingS2_goback']);
     Route::post('/shoppingS3', [ShoppingCartController::class, 'shoppingS3']);
     Route::post('/shoppingS4', [ShoppingCartController::class, 'shoppingS4']);
     Route::get('/show_order/{id}', [ShoppingCartController::class, 'show_order']); //展示訂單

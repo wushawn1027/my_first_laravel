@@ -162,8 +162,9 @@
                     @endif
                 </span>
             </div>
-            <div class="d-flex justify-content-end align-items-center pt-3 pb-3 mt-4">
-                <div class="">
+            <div class="w-100 d-flex align-items-center pt-3 pb-3 mt-4">
+                <div class="w-100 d-flex justify-content-between">
+                    <button onclick="location.href='/order_list'" type="button" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">返回列表</button>
                     <a class="btn btn-primary btn-lg fs-6" href="/" role="button">返回首頁</a>
                 </div>
             </div>

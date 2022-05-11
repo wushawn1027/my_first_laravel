@@ -184,14 +184,13 @@
                 <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
                     <div class="">
                         <button id="btnGoBack" type="button" onclick="document.querySelector('#goBackForm').submit();" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
-                        {{-- <button id="btnGoBack" type="button" onclick="location.href='/shoppingS2'" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS2">上一步</a></button> --}}
                     </div>
                     <div class="">
                         <button type="submit" class="btn btn-primary btn-lg fs-6">前往付款</button>
                     </div>
                 </div>
             </form>
-            <form action="/shoppingS2-1" method="post" hidden id="goBackForm">
+            <form action="/shoppingS2/goback" method="post" hidden id="goBackForm">
                 @method('POST')
                 @csrf
             </form>

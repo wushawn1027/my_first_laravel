@@ -222,7 +222,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row justify-content-center">
-                            <a id="add_product" role="button" class="d-flex flex-row justify-content-center align-items-center w-50 bg-danger text-dark me-1 p-1 rounded"><i class="text-dark fa-solid fa-cart-plus"></i> 加入購物車</a role="button">
+                            <a id="add_product" role="button" class="d-flex flex-row justify-content-center align-items-center w-50 bg-danger text-dark me-1 p-1 rounded"><i class="text-dark fa-solid fa-cart-plus"></i> 加入購物車</a>
                             <button onclick="location.href='/'" class="w-50 bg-warning text-dark ms-1 p-1 rounded"><i class="text-dark fa-solid fa-house"></i> 返回首頁</button>
                         </div>
                     </div>

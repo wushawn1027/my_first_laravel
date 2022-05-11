@@ -74,12 +74,18 @@
         font-size: 10px;
         color: grey;
     }
-    #qty {
+    .qty {
         width: 45px;
         text-align: center;
     }
     .productPrice {
         width: 80px;
+    }
+    #deleteBtn {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     #order-table {
         border-bottom: 1px solid rgb(219, 216, 216);
@@ -121,7 +127,10 @@
                 </div>
             </div>
             <div class="order-lists d-flex flex-column mt-3">
-                <h3>訂單明細</h3>
+                <div class="w-100 d-flex justify-content-between">
+                    <h3>訂單明細</h3>
+                    {{-- <button type="button" onclick="clear_cart('{{$datas->user_id}}')" class="bg-danger text-light ms-2 rounded">清除購物車</button type="button"> --}}
+                </div>
 
                     @foreach ($datas as $item)
                     <div class="order-list">
@@ -131,17 +140,20 @@
                             </div>
                             <div clsss="d-flex flex-column">
                                 <p class="m-0 fs-5 fw-bolder">{{$item->product->name}}</p>
-                                <p class="m-0 p-num">{{$item->product->introduction}}</p>
+                                <p class="m-0 p-num" data-product_qty="{{$item->product->quantity}}" data-product_price="{{$item->product->price}}">
+                                    剩下 {{$item->product->quantity}} 件
+                                </p>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
                             <div clsss="">
                                 <span class="me-1">數量：</span>
-                                <input id="minus" name="" type="button" value="-">
-                                <input id="qty" name="qty[]" type="number" value="{{$item->qty}}">
-                                <input id="plus" name="" type="button" value="+">
+                                <input class="minus" type="button" value="-">
+                                <input class="qty" name="qty[]" type="number" value="{{$item->qty}}" readonly>
+                                <input class="plus" type="button" value="+">
                             </div>
                             <span class="productPrice ms-4 d-flex justify-content-end">${{$item->qty * $item->product->price}}</span>
+                            <button type="button" id="deleteBtn" onclick="delete_cart('{{$item->id}}')" class="btn-danger text-light ms-2">刪除</button type="button">
                         </div>
                     </div>
                     @endforeach
@@ -155,7 +167,7 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">小計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal}}</td>
+                        <td class="subtotal float-end fw-bolder fs-5">${{$subtotal}}</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
@@ -163,10 +175,11 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 運費</td>
+                        <td class="total float-end fw-bolder fs-5">${{$subtotal}} + 150 或 60</td>
                     </tr>
                 </table>
             </div>
+            <span class="subtotal"></span>
             <div class="d-flex justify-content-between align-items-center pt-3 pb-3 mt-4">
                 <p class="fs-7 text-black">
                     <a href="/"><i class="fa-solid fa-arrow-left me-1"></i></a>
@@ -182,22 +195,86 @@
 
 @section('script')
 <script>
-    const minus = document.querySelector('#minus');
-    const qty = document.querySelector('#qty');
-    const plus = document.querySelector('#plus');
+    const minus = document.querySelectorAll('.minus');
+    const qty = document.querySelectorAll('.qty');
+    const plus = document.querySelectorAll('.plus');
+    const sum_price = document.querySelectorAll('.productPrice');
 
-    minus.onclick = function(){
+    // 為了知道各個產品所剩數量 方便判斷 所以將資料印在html中 再使用js抓進來
+    const number = document.querySelectorAll('.p-num');
 
-        if (parseInt(qty.value) > 1){
-            qty.value = parseInt(qty.value) - 1;
+    const subtotal = document.querySelector('.subtotal');
+    const total = document.querySelector('.total');
+
+
+    for (let i = 0; i < minus.length; i++) {
+
+        minus[i].onclick = function(){
+
+            if (parseInt(qty[i].value) > 1){
+                qty[i].value = parseInt(qty[i].value) - 1;
+                // 重新計算價格 (商品單價*數量)
+                sum_price[i].innerHTML = '$' + (parseInt(number[i].dataset.product_price) * parseInt(qty[i].value))
+            }
+            get_total();
         }
+
+        plus[i].onclick = function(){
+
+            if (parseInt(qty[i].value) < parseInt(number[i].dataset.product_qty)){
+                qty[i].value = parseInt(qty[i].value) + 1;
+                sum_price[i].innerHTML = '$' + (parseInt(number[i].dataset.product_price) * parseInt(qty[i].value))
+            }
+            get_total();
+        }
+
     }
 
-    plus.onclick = function(){
+    // 計算所有品項的金額 並加總
+    function get_total() {
 
-        if (parseInt(qty.value) < {!! $item->product->quantity !!}){
-            qty.value = parseInt(qty.value) + 1;
+        var sum = 0;
+        for (let j = 0; j < minus.length; j++) {
+
+            sum += parseInt(number[j].dataset.product_price) * parseInt(qty[j].value)
         }
+        subtotal.innerHTML = '$' + sum;
+        console.log(subtotal);
+        total.innerHTML = '$' + sum + ' + 150 或 60';
     }
+
+
+    function delete_cart(id){
+
+        var form = new FormData();
+
+        form.append('_token', '{{ csrf_token() }}');
+
+        fetch('/shoppingS1/delete/' + id, {
+                method: 'POST',
+                body: form
+            }).then(res =>{
+                // 使用JS重新整理網頁
+                location.reload();
+            })
+    }
+
+
+    // function clear_cart(id){
+
+    // var form = new FormData();
+
+    // form.append('_token', '{{ csrf_token() }}');
+
+    // fetch('/shoppingS1/clear/' + id, {
+    //         method: 'POST',
+    //         body: form
+    //     }).then(res =>{
+    //         // 使用JS重新整理網頁
+    //         location.reload();
+    //     })
+    // }
+
+
 </script>
 @endsection

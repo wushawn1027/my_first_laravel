@@ -149,7 +149,7 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 運費</td>
+                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 150 或 60</td>
                     </tr>
                 </table>
             </div>
