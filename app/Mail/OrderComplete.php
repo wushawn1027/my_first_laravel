@@ -16,9 +16,9 @@ class OrderComplete extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        $this->mydata =$data;
+        $this->mydata = $data;
     }
 
     /**
@@ -30,6 +30,6 @@ class OrderComplete extends Mailable
     {
         $data = $this->mydata;
 
-        return $this->subject($data[''])->view('mail.order-complete' ,compact('data'));
+        return $this->subject($data['subject'])->view('mail.order-complete' ,compact('data'));
     }
 }

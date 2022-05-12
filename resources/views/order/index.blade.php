@@ -65,7 +65,7 @@
                             <td class="fw-bolder">{{$data->name}}</td>
                             <td>{{$data->email}}</td>
                             <td>{{$data->total}}</td>
-                            <td>
+                            <td class="text-danger">
                                 @if ($data->status == 1)
                                     未付款
                                 @elseif ($data->status == 2)

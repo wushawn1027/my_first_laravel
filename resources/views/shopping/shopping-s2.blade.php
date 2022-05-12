@@ -89,7 +89,7 @@
 
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
-        <form action="/shoppingS3" method="post" id="shopping-s2" class="container-xxl rounded-3 p-5">
+        <form name="s2" action="/shoppingS3" method="post" id="shopping-s2" class="container-xxl rounded-3 p-5">
             @csrf
             <div class="buy-progress">
                 <h2 class="fw-bolder">購物車</h2>
@@ -145,11 +145,11 @@
                     </tr>
                     <tr>
                         <td class="text-secondary">運費:</td>
-                        <td class="float-end fw-bolder fs-5">$150(宅配) 或 $60(超商)</td>
+                        <td class="fee float-end fw-bolder fs-5">$150(宅配) 或 $60(超商)</td>
                     </tr>
                     <tr>
                         <td class="text-secondary">總計:</td>
-                        <td class="float-end fw-bolder fs-5">${{$subtotal}} + 150 或 60</td>
+                        <td class="total float-end fw-bolder fs-5">${{$subtotal}} + 150 或 60</td>
                     </tr>
                 </table>
             </div>
@@ -158,9 +158,48 @@
                     <button id="btnGoBack" type="button" class="btn btn-light btn-lg fs-6"><a class="text-primary" href="/shoppingS1">上一步</a></button>
                 </div>
                 <div class="">
-                    <button type="submit" class="btn btn-primary btn-lg fs-6">下一步</button>
+                    <button id="nextBtn" onclick="next()" type="button" class="btn btn-primary btn-lg fs-6">下一步</button>
                 </div>
             </div>
         </form>
     </main>
+@endsection
+
+@section('script')
+<script>
+
+const sHome = document.querySelector('#sendHome');
+const sStore = document.querySelector('#sendStore');
+
+const fee = document.querySelector('.fee');
+const total = document.querySelector('.total');
+
+sHome.addEventListener('click',function(){
+
+    fee.innerHTML = '$' + 150;
+    total.innerHTML = '$' + (parseInt({{$subtotal}}) + 150);
+});
+
+sStore.addEventListener('click',function(){
+
+    fee.innerHTML = '$' + 60;
+    total.innerHTML = '$' + (parseInt({{$subtotal}}) + 60);
+});
+
+
+function next(){
+    if (!s2.payway[0].checked && !s2.payway[1].checked && !s2.payway[2].checked){
+        alert('請選擇付款方式!');
+    }else if(!s2.deliver[0].checked && !s2.deliver[1].checked) {
+        alert('請選擇運送方式!');
+    }else
+    s2.submit();
+}
+
+
+
+
+
+
+</script>
 @endsection

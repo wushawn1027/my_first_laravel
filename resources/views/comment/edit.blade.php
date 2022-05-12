@@ -64,7 +64,7 @@
                         </div>
                     <div class="d-flex justify-content-center">
                         <button onclick="location.href='/comment'" type="reset" id="btnClear" class="btn btn-light btn-lg fs-6 text-black me-1">取消編輯</button>
-                        <button type="submit" id="btnSend" class="text-black btn btn-primary btn-lg fs-6 ms-1">送出文章</button>
+                        <button type="submit" id="btnSend" class="text-black btn btn-primary btn-lg fs-6 ms-1">編輯文章</button>
                     </div>
                 </form>
             </div>

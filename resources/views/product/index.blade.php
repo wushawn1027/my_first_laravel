@@ -41,7 +41,7 @@
     }
     @media(max-width:992px) {
         #product {
-            width: 600px;
+            width: 700px;
         }
     }
     </style>

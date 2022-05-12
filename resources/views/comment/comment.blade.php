@@ -50,7 +50,7 @@
     }
     @media(max-width:992px) {
         #shopping-comment {
-            width: 500px;
+            width: 600px;
         }
 
     }
@@ -71,7 +71,7 @@
                         </div>
                         <span class="a-time w-50 d-flex justify-content-end align-items-center">{{substr($comments->created_at,5,2).'月'.substr($comments->created_at,8,2).'號'}}</span>
                     </div>
-                    <div class="a-content">
+                    <div class="a-content w-100">
                         {{$comments->content}}
                     </div>
                     <div class="">

@@ -127,10 +127,12 @@
                 </div>
             </div>
             <div class="order-lists d-flex flex-column mt-3">
-                <div class="w-100 d-flex justify-content-between">
+                {{-- <div class="w-100 d-flex justify-content-between"> --}}
                     <h3>訂單明細</h3>
-                    {{-- <button type="button" onclick="clear_cart('{{$datas->user_id}}')" class="bg-danger text-light ms-2 rounded">清除購物車</button type="button"> --}}
-                </div>
+                    {{-- @foreach ($datas as $data)
+                    <button type="button" onclick="clear_cart('{{$data->user_id}}')" class="bg-danger text-light ms-2 rounded">清除購物車</button type="button">
+                    @endforeach --}}
+                {{-- </div> --}}
 
                     @foreach ($datas as $item)
                     <div class="order-list">
@@ -239,7 +241,6 @@
             sum += parseInt(number[j].dataset.product_price) * parseInt(qty[j].value)
         }
         subtotal.innerHTML = '$' + sum;
-        console.log(subtotal);
         total.innerHTML = '$' + sum + ' + 150 或 60';
     }
 
@@ -262,15 +263,14 @@
 
     // function clear_cart(id){
 
-    // var form = new FormData();
+    // var formdata = new FormData();
 
-    // form.append('_token', '{{ csrf_token() }}');
+    // formdata.append('_token', '{{ csrf_token() }}');
 
     // fetch('/shoppingS1/clear/' + id, {
     //         method: 'POST',
-    //         body: form
+    //         body: formdata
     //     }).then(res =>{
-    //         // 使用JS重新整理網頁
     //         location.reload();
     //     })
     // }

@@ -97,7 +97,7 @@
 @section('main')
     <main class="pt-5 pb-5 d-flex justify-content-center">
         <section id="shopping-s3" class="container-xxl rounded-3 p-5">
-            <form action="/shoppingS4" method="post">
+            <form name="s3" action="/shoppingS4" method="post">
                 @csrf
                 <div class="buy-progress">
                     <h2 class="fw-bolder">購物車</h2>
@@ -186,7 +186,7 @@
                         <button id="btnGoBack" type="button" onclick="document.querySelector('#goBackForm').submit();" class="btn btn-light btn-lg fs-6 text-primary">上一步</button>
                     </div>
                     <div class="">
-                        <button type="submit" class="btn btn-primary btn-lg fs-6">前往付款</button>
+                        <button id="nextBtn" onclick="gopay()" type="button" class="btn btn-primary btn-lg fs-6">前往付款</button>
                     </div>
                 </div>
             </form>
@@ -196,4 +196,24 @@
             </form>
         </section>
     </main>
+@endsection
+
+@section('script')
+<script>
+
+function gopay(){
+    if (s3.name.value == "") {
+        alert('請填寫姓名!');
+    }else if (s3.phone.value == "") {
+        alert('請填寫電話!');
+    }else if (s3.email.value == "") {
+        alert('請填寫Email!');
+    }else if (s3.city.value == "" || s3.code.value == "" || s3.address.value == "") {
+        alert('請填寫完整地址!');
+    }else
+    s3.submit();
+}
+
+
+</script>
 @endsection

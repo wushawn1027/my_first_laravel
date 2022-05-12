@@ -23,7 +23,7 @@ class ShoppingCartController extends Controller
         $user = Auth::id();
         $datas = ShoppingCart::where('user_id',$user)->get();
         //每次從資料庫抓資料出來都應當先dd一下確認是否有抓對
-
+        // dd($datas);
         $subtotal = 0;
         foreach ($datas as $value) {
             $subtotal += $value->qty * $value->product->price;
@@ -83,7 +83,6 @@ class ShoppingCartController extends Controller
         foreach ($datas as $value) {
             $subtotal += $value->qty * $value->product->price;
         }
-
 
         return view('shopping.shopping-s2', compact('datas','subtotal'));
     }
@@ -202,7 +201,7 @@ class ShoppingCartController extends Controller
             'user_name' => Auth::user()->name,
             'subject' => '下單成功通知',
         ];
-        Mail::to(Auth::user()->email)->send(new OrderComplete);
+        Mail::to(Auth::user()->email)->send(new OrderComplete($data));
 
         return redirect('/show_order/'.$order->id);
     }
@@ -231,3 +230,4 @@ class ShoppingCartController extends Controller
         // foreach ($merch as $key => $goods) {
         //     $subtotal += $goods->product->product_price * session()->get('amount')[$key];
         // }
+
