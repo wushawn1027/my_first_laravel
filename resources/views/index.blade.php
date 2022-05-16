@@ -11,9 +11,6 @@
 
     @section('css')
     <style>
-        #banner .container-fluid , #map .container-fluid {
-        height: 650px;
-    }
 
     /* ------------------------------------banner--------------------------------------- */
     #banner .container-fluid {
@@ -89,6 +86,7 @@
     }
     /* ------------------------------------map--------------------------------------- */
     #map .container-fluid {
+        height: 650px;
         position: relative;
     }
     #map #map-text {
@@ -373,34 +371,6 @@
                                 </tr>
                                 @endforeach
 
-                            {{--<tr>
-                                    <th scope="row" class="text-secondary">Start</th>
-                                    <td class="text-secondary">5 Mb/s</td>
-                                    <td class="text-secondary">15 GB</td>
-                                    <td class="fw-bolder">Free</td>
-                                    <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
-                                </tr>
-                            <tr>
-                                <th scope="row" class="text-secondary">Pro</th>
-                                <td class="text-secondary">25 Mb/s</td>
-                                <td class="text-secondary">25 GB</td>
-                                <td class="fw-bolder">$24</td>
-                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-secondary">Business</th>
-                                <td class="text-secondary">36 Mb/s</td>
-                                <td class="text-secondary">40 GB</td>
-                                <td class="fw-bolder">$50</td>
-                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-secondary">Exclusive</th>
-                                <td class="text-secondary">48 Mb/s</td>
-                                <td class="text-secondary">120 GB</td>
-                                <td class="fw-bolder">$72</td>
-                                <td class=""><input class="float-end" type="radio" name="A" value="1"></td>
-                            </tr> --}}
                             </tbody>
                         </table>
                     </div>

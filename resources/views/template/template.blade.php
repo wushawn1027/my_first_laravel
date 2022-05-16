@@ -157,22 +157,22 @@
                 </a>
                 <ul id="nav-ul" class="ms-auto d-flex justify-content-end align-items-center p-0 m-0">
                     {{-- <li class="me-5">
-                        <a href="/product" class="fs-7 fw-bolder hover:bg-light">商品管理</a>
+                        <a href="/product" class="fs-6 fw-bolder hover:bg-light">商品管理</a>
                     </li>
                     <li class="me-5">
-                        <a href="/banner" class="fs-7 fw-bolder">Banner</a>
+                        <a href="/banner" class="fs-6 fw-bolder">Banner</a>
                     </li> --}}
                     <li class="me-3">
-                        <a href="/comment" class="fs-7 fw-bolder"><i class="fa-solid fa-comment-dots"></i> 留言區</a>
+                        <a href="/comment" class="fs-6 fw-bolder"><i class="fa-solid fa-comment-dots"></i> 留言區</a>
                     </li>
                     {{-- <li class="me-5">
-                        <a href="" class="fs-7 fw-bolder">other</a>
+                        <a href="" class="fs-6 fw-bolder">other</a>
                     </li> --}}
                     <li class="me-3">
-                        <a  href="/shoppingS1" class="fs-7 fw-bolder"><i class="fa-solid fa-cart-shopping"></i> 購物車</a>
+                        <a  href="/shoppingS1" class="fs-6 fw-bolder"><i class="fa-solid fa-cart-shopping"></i> 購物車</a>
                     </li>
                     <li class="me-3">
-                        <a  href="/order_list" class="fs-7 fw-bolder"><i class="fa-solid fa-clipboard-list"></i> 訂單查詢</a>
+                        <a  href="/order_list" class="fs-6 fw-bolder"><i class="fa-solid fa-clipboard-list"></i> 訂單查詢</a>
                     </li>
 
                     @auth
@@ -180,7 +180,7 @@
                     {{-- 如果是帳號管理者 要顯示後台的連結 --}}
                     @if (Auth::user()->power == 1)
                     <li class="me-3">
-                        <a  href="/dashboard" class="fs-7 fw-bolder"><i class="fa-solid fa-screwdriver-wrench"></i> 後台</a>
+                        <a  href="/dashboard" class="fs-6 fw-bolder"><i class="fa-solid fa-screwdriver-wrench"></i> 後台</a>
                     </li>
                     @endif
 
@@ -215,25 +215,25 @@
                 <div id="burgerMenu">
                     <div id="burgerMenuBox" class="w-100 bg-light p-4">
                         {{-- <button  class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="/product" class="fs-7 fw-bolder">商品管理</a>
+                            <a id="burgerMenuBoxA" href="/product" class="fs-6 fw-bolder">商品管理</a>
                             </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="/banner" class="fs-7 fw-bolder">Banner</a>
+                            <a id="burgerMenuBoxA" href="/banner" class="fs-6 fw-bolder">Banner</a>
                         </button> --}}
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="/comment" class="fs-7 fw-bolder">留言區</a>
+                            <a id="burgerMenuBoxA" href="/comment" class="fs-6 fw-bolder">留言區</a>
                         </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="/shoppingS1" class="fs-7 fw-bolder">購物車</a>
+                            <a id="burgerMenuBoxA" href="/shoppingS1" class="fs-6 fw-bolder">購物車</a>
                         </button>
                         <button class="btn btn-link btn-block border-bottom m-0">
-                            <a id="burgerMenuBoxA" href="/order_list" class="fs-7 fw-bolder">訂單查詢</a>
+                            <a id="burgerMenuBoxA" href="/order_list" class="fs-6 fw-bolder">訂單查詢</a>
                         </button>
 
                         @auth
                         @if (Auth::user()->power == 1)
                         <button class="btn btn-link btn-block border-bottom m-0 mb-3">
-                            <a id="burgerMenuBoxA" href="/dashboard" class="fs-7 fw-bolder">後台</a>
+                            <a id="burgerMenuBoxA" href="/dashboard" class="fs-6 fw-bolder">後台</a>
                         </button>
                         @endif
                         @endauth
